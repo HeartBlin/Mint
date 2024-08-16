@@ -1,0 +1,29 @@
+---
+name: Run linter
+
+on:
+  - push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: nix develop --accept-flake-config .#lint --command bash -e {0}
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Install nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Set up Magic Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Lint nix (statix)
+        run: statix check
+
+      - name: Lint nix (nixfmt)
+        run: nixfmt --check .

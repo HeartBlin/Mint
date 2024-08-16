@@ -25,7 +25,13 @@
         nixosConfigurations = { ${hosts.Skadi.hostname} = mkHost hosts.Skadi; };
       };
 
-      perSystem = { pkgs, ... }: { formatter = pkgs.nixfmt-classic; };
+      perSystem = { pkgs, ... }: {
+        devShells.lint = pkgs.mkShellNoCC {
+          nativeBuildInputs = with pkgs; [ statix nixfmt-classic ];
+        };
+
+        formatter = with pkgs; nixfmt-classic;
+      };
     };
 
   inputs = {

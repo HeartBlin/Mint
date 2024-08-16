@@ -32,26 +32,24 @@
     # Official repo
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Declarative home
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Declarative disk partitioning
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Alternative to 'nix'
-    lix = {
-      url =
-        "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Make flakes pretty
     flake-parts.url = "github:hercules-ci/flake-parts";
+
+    # Declarative home
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Declarative disk partitioning
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Alternative to 'nix'
+    lix.url =
+      "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+    lixinputs.nixpkgs.follows = "nixpkgs";
+
+    # Provides SecureBoot support
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
   };
 }

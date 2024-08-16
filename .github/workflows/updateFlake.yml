@@ -1,0 +1,33 @@
+name: Update Flake Lock
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 14,8 * * *'
+
+jobs:
+  lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Set up Magic Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Update flake.lock
+        uses: DeterminateSystems/update-flake-lock@main
+        id: flakeUpdate
+        with:
+          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
+          pr-title: "Update flake.lock"
+          pr-labels: dependencies automated nix
+          commit-msg: "flake.lock: Update lock"
+
+      - name: Merge
+        run: "gh pr merge --auto --merge ${{ steps.flakeUpdate.outputs.pull-request-number }}"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN_FOR_UPDATES }}

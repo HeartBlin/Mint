@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   inherit (lib) mkIf;
@@ -7,7 +7,10 @@ let
 in {
   config = mkIf cfg.enable {
     programs = {
-      steam.enable = true;
+      steam = {
+        enable = true;
+        extraCompatPackages = with pkgs; [ proton-ge-bin ];
+      };
       gamemode.enable = true;
     };
   };

@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   config.Ark = {
     chromium.enable = true;
     git = {

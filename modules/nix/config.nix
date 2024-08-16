@@ -1,6 +1,6 @@
 { config, inputs, pkgs, ... }:
 
-let flakeDir = config.Ark.flakeDir;
+let inherit (config.Ark) flakeDir;
 in {
   imports = [ inputs.lix.nixosModules.default ];
 

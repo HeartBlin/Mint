@@ -1,6 +1,6 @@
 { config, ... }:
 
-let flakeDir = config.Ark.flakeDir;
+let inherit (config.Ark) flakeDir;
 in {
   assertions = [{
     assertion = flakeDir != null;

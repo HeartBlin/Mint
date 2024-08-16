@@ -7,9 +7,10 @@
 
       linuxArch = "x86_64-linux";
       stateVersion = "24.11";
-      mkHost = (import ./functions/hosts.nix {
+      inherit (import ./functions/hosts.nix {
         inherit inputs self stateVersion;
-      }).mkHost;
+      })
+        mkHost;
 
       hosts = {
         Skadi = {
@@ -28,6 +29,23 @@
       perSystem = { pkgs, ... }: {
         devShells.lint = pkgs.mkShellNoCC {
           nativeBuildInputs = with pkgs; [ statix nixfmt-classic ];
+        };
+
+        checks.statix = pkgs.stdenvNoCC.mkDerivation {
+          name = "statix-check";
+          src = ./.;
+          doCheck = true;
+          nativeBuildInputs = with pkgs; [ statix nixfmt-classic ];
+
+          checkPhase = ''
+            statix check
+            nixfmt -c .
+          '';
+
+          # Shitty workaround
+          installPhase = ''
+            mkdir $out
+          '';
         };
 
         formatter = with pkgs; nixfmt-classic;

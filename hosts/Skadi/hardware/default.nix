@@ -3,11 +3,22 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules =
-    [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      kernelModules = [ ];
+      availableKernelModules =
+        [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
+    };
+
+    kernelModules = [ "kvm-amd" ];
+    extraModulePackages = [ ];
+
+    # Hibernation
+    resumeDevice = "/dev/disk/by-uuid/559c68ba-790c-432a-bd2d-24adcbc8c281";
+    kernelParams = [ "resume_offset=533760" ];
+  };
+
+  swapDevices = [{ device = "/swap/swapfile"; }];
 
   networking.useDHCP = lib.mkDefault true;
   hardware.cpu.amd.updateMicrocode =

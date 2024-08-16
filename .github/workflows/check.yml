@@ -1,5 +1,5 @@
 ---
-name: Run linter
+name: Run Checks
 
 on:
   - push

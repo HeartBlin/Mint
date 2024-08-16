@@ -1,8 +1,10 @@
-{ ... }:
-
-{
+_: {
   config = {
-    Ark = { flakeDir = "/home/heartblin/Ark"; };
+    Ark = {
+      flakeDir = "/home/heartblin/Ark";
+      gaming.enable = true;
+    };
+
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 

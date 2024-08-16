@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (lib) fakeSha256 mkDefault;
+  inherit (lib) fakeSha256 mkDefault mkIf;
 
   bleedingEdge = config.boot.kernelPackages.nvidiaPackages.mkDriver {
     version = "560.31.02";
@@ -11,8 +11,10 @@ let
     settingsSha256 = fakeSha256;
     persistencedSha256 = "sha256-BDtdpH5f9/PutG3Pv9G4ekqHafPm3xgDYdTcQumyMtg=";
   };
+
+  cfg = config.Ark.nvidia;
 in {
-  config = {
+  config = mkIf cfg.enable {
     nixpkgs.config = {
       allowUnfree = true;
       nvidia.acceptLicense = true; # IDK why this is here tbh
@@ -49,12 +51,12 @@ in {
       dynamicBoost.enable = true;
       modesetting.enable = true;
 
-      prime = {
+      prime = mkIf cfg.hybrid.enable {
         reverseSync.enable = true;
         reverseSync.setupCommands.enable = true;
 
-        amdgpuBusId = "PCI:6:0:0";
-        nvidiaBusId = "PCI:1:0:0";
+        amdgpuBusId = "${cfg.hybrid.id.amd}";
+        nvidiaBusId = "${cfg.hybrid.id.nvidia}";
       };
 
       powerManagement = {

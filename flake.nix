@@ -46,7 +46,7 @@
     # Alternative to 'nix'
     lix.url =
       "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-    lixinputs.nixpkgs.follows = "nixpkgs";
+    lix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Provides SecureBoot support
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";

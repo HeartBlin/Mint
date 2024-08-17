@@ -6,7 +6,7 @@
   # Underclock & Undervolt
   # Until I go get my laptop fixed I'll sacrifice performance for nice temps
   # Normally pushing 98C in high loads
-  hardware.cpu.x86.msr.enable =  true;
+  hardware.cpu.x86.msr.enable = true;
   environment.systemPackages = with pkgs; [
     linuxKernel.packages.linux_zen.cpupower
     amdctl

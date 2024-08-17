@@ -4,6 +4,7 @@ let
   inherit (lib) mkIf;
 
   cfg = config.Ark.vscode;
+  shell = config.Ark.terminal.shell;
 in {
   config = mkIf cfg.enable {
     programs.vscode = {
@@ -69,6 +70,7 @@ in {
 
         # Terminal
         "terminal.integrated.smoothScrolling" = true;
+        "terminal.integrated.defaultProfile.linux" = "${shell}";
 
         # Window
         "window.autoDetectColorScheme" = true;

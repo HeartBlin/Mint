@@ -2,9 +2,9 @@
 
 let
   inherit (lib) mkIf;
+  inherit (config.Ark.terminal) shell;
 
   cfg = config.Ark.vscode;
-  shell = config.Ark.terminal.shell;
 in {
   config = mkIf cfg.enable {
     programs.vscode = {

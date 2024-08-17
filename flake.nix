@@ -75,5 +75,8 @@
     # Provides SecureBoot support
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Tiling wayland compositor
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 }

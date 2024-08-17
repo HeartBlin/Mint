@@ -9,6 +9,7 @@ in {
     (importModule "gaming")
     (importModule "nix")
     (importModule "nvidia")
+    (importModule "secureboot")
 
     [ # Extras
       ./nix/assertions.nix

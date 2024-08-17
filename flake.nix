@@ -60,21 +60,35 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     # Declarative home
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Declarative disk partitioning
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # Alternative to 'nix'
-    lix.url =
-      "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-    lix.inputs.nixpkgs.follows = "nixpkgs";
+    # Alternative to 'nix', on MAIN - BETA
+    lix-repo = {
+      url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
+      flake = false;
+    };
+
+    lix = {
+      url =
+        "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.lix.follows = "lix-repo";
+    };
 
     # Provides SecureBoot support
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
-    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Tiling wayland compositor
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";

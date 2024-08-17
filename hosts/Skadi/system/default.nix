@@ -16,6 +16,7 @@ _: {
       };
 
       secureboot.enable = true;
+      vm.enable = true;
     };
 
     networking.networkmanager.enable = true;

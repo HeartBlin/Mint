@@ -8,6 +8,7 @@ in {
     (importModule "chromium")
     (importModule "element")
     (importModule "git")
+    (importModule "terminal")
     (importModule "vscode")
 
     [ # Extras

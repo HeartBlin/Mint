@@ -7,6 +7,6 @@ let
 in {
   config = mkIf cfg.enable {
     virtualisation.libvirtd.enable = true;
-programs.virt-manager.enable = true;
+    programs.virt-manager.enable = true;
   };
 }

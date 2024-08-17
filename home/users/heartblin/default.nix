@@ -13,6 +13,11 @@ _: {
       };
     };
 
+    terminal = {
+      foot.enable = true;
+      shell = "fish";
+    };
+
     vscode.enable = true;
   };
 }

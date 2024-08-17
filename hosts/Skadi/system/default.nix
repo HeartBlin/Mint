@@ -1,6 +1,7 @@
 _: {
   config = {
     Ark = {
+      asus.enable = true;
       flakeDir = "/home/heartblin/Ark";
       gaming.enable = true;
       nvidia = {

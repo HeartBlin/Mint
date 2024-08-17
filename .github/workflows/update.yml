@@ -25,10 +25,14 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           pr-title: "Update flake.lock"
-          pr-labels: dependencies automated nix
+          pr-labels: |
+            dependencies
+            automated
+            nix
           commit-msg: "flake.lock: Update lock"
 
       - name: Merge
+        if: ${{ steps.flakeUpdate.outputs.pull-request-number != '' }}
         run: "gh pr merge --auto --merge ${{ steps.flakeUpdate.outputs.pull-request-number }}"
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN_FOR_UPDATES }}

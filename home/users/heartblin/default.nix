@@ -1,6 +1,7 @@
 _: {
   config.Ark = {
     chromium.enable = true;
+    element.enable = true;
     git = {
       enable = true;
       username = "HeartBlin";

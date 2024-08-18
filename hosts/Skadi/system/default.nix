@@ -4,6 +4,7 @@ _: {
       asus.enable = true;
       flakeDir = "/home/heartblin/Ark";
       gaming.enable = true;
+      role = "laptop";
       nvidia = {
         enable = true;
         hybrid = {

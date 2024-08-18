@@ -1,6 +1,9 @@
 { lib, ... }:
 let
-  inherit (lib) concatLists;
+  inherit (lib) concatLists mkOption;
+  inherit (lib.types) enum;
+
+  roles = [ "iso" "laptop" "workstation" "server" ];
 
   importModule = x: [ ./${x}/config.nix ./${x}/options.nix ];
 in {
@@ -16,4 +19,13 @@ in {
       ./nix/assertions.nix
     ]
   ];
+
+  options.Ark.role = mkOption {
+    type = enum roles;
+    default = "workstation";
+    description = ''
+      This enables/disables various modules
+      example: ISOs don't get 'nh'
+    '';
+  };
 }

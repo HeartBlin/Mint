@@ -7,15 +7,27 @@
 
       linuxArch = "x86_64-linux";
       stateVersion = "24.11";
-      inherit (import ./functions/hosts.nix {
+      inherit (import ./functions/mkHost.nix {
         inherit inputs self stateVersion;
       })
         mkHost;
+      inherit (import ./functions/mkIso.nix {
+        inherit inputs self stateVersion;
+      })
+        mkIso;
 
       hosts = {
+        # ROG Strix G513IE
         Skadi = {
           hostname = "Skadi";
           username = "heartblin";
+          platform = linuxArch;
+        };
+
+        # ISO
+        Specter = {
+          hostname = "Specter";
+          username = "nixos";
           platform = linuxArch;
         };
       };
@@ -23,7 +35,10 @@
       systems = [ linuxArch ];
 
       flake = {
-        nixosConfigurations = { ${hosts.Skadi.hostname} = mkHost hosts.Skadi; };
+        nixosConfigurations = {
+          ${hosts.Skadi.hostname} = mkHost hosts.Skadi;
+          ${hosts.Specter.hostname} = mkIso hosts.Specter;
+        };
       };
 
       perSystem = { pkgs, ... }: {

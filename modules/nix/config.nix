@@ -1,6 +1,8 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
-let inherit (config.Ark) flakeDir;
+let
+  inherit (lib) mkIf;
+  inherit (config.Ark) flakeDir role;
 in {
   imports = [ inputs.lix.nixosModules.default ];
 
@@ -49,7 +51,7 @@ in {
   environment.systemPackages = [ pkgs.git ];
   environment.defaultPackages = [ ];
 
-  programs.nh = {
+  programs.nh = mkIf (role != "iso") {
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 7d --keep 3";

@@ -15,7 +15,7 @@ in {
       boot = {
         loader = {
           systemd-boot.enable = mkForce false;
-          timeout = 0;
+          timeout = mkForce 0;
           efi.canTouchEfiVariables = true;
         };
 
@@ -30,8 +30,8 @@ in {
     # Give the system a bootloader
     (mkIf (!cfg.enable) {
       boot.loader = {
-        systemd-boot.enable = true;
-        timeout = 0;
+        systemd-boot.enable = mkForce true;
+        timeout = mkForce 0;
         efi.canTouchEfiVariables = true;
       };
     })

@@ -42,25 +42,24 @@
       };
 
       perSystem = { pkgs, ... }: {
-        devShells.lint = pkgs.mkShellNoCC {
+        devShells.default = pkgs.mkShellNoCC {
           nativeBuildInputs = with pkgs; [ statix nixfmt-classic ];
         };
 
-        checks.statix = pkgs.stdenvNoCC.mkDerivation {
-          name = "statix-check";
+        checks.linterChecks = pkgs.stdenvNoCC.mkDerivation {
+          name = "Linter Checks";
           src = ./.;
           doCheck = true;
-          nativeBuildInputs = with pkgs; [ statix nixfmt-classic ];
+          nativeBuildInputs = with pkgs; [ statix nixfmt-classic actionlint ];
 
           checkPhase = ''
-            statix check
             nixfmt -c .
+            statix check
+            actionlint
           '';
 
           # Shitty workaround
-          installPhase = ''
-            mkdir $out
-          '';
+          installPhase = "touch $out";
         };
 
         formatter = with pkgs; nixfmt-classic;

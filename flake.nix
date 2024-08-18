@@ -43,7 +43,14 @@
 
       perSystem = { pkgs, ... }: {
         devShells.default = pkgs.mkShellNoCC {
-          nativeBuildInputs = with pkgs; [ statix nixfmt-classic ];
+          nativeBuildInputs = with pkgs; [
+            statix
+            nixfmt-classic
+            actionlint
+            fish
+          ];
+
+          shellHook = "exec fish";
         };
 
         checks.linterChecks = pkgs.stdenvNoCC.mkDerivation {

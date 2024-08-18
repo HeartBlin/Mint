@@ -90,6 +90,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # CachyOS kernel provider
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     # Tiling wayland compositor
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };

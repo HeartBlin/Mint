@@ -1,14 +1,17 @@
-{ config, lib, modulesPath, pkgs, ... }:
+{ config, inputs, lib, modulesPath, pkgs, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    inputs.chaotic.nixosModules.default
+  ];
 
   # Underclock & Undervolt
   # Until I go get my laptop fixed I'll sacrifice performance for nice temps
   # Normally pushing 98C in high loads
   hardware.cpu.x86.msr.enable = true;
   environment.systemPackages = with pkgs; [
-    linuxKernel.packages.linux_zen.cpupower
+    linuxKernel.packages.linux_zen.cpupower # ehhh...
     amdctl
   ];
   systemd.services.underclockAndUndervolt = let
@@ -36,7 +39,7 @@
         [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
     };
 
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelPackages = pkgs.linuxPackages_cachyos-lto;
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
 

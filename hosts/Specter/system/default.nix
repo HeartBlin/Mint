@@ -7,6 +7,7 @@ in {
       asus.enable = false;
       flakeDir = "N/A"; # I clone the github repo
       gaming.enable = false;
+      hyprland.enable = false;
       role = "iso";
       nvidia.enable = false;
       secureboot.enable = false;

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, osConfig, pkgs, ... }:
 
 let
   inherit (lib) mkIf;
@@ -19,6 +19,7 @@ let
     (lib.versions.major pkgs.ungoogled-chromium.version);
 
   cfg = config.Ark.chromium;
+  hyprlandOnNvidia = osConfig.Ark.nvidia.enable && config.Ark.hyprland.enable;
 in {
   config = mkIf cfg.enable {
     programs.chromium = {
@@ -42,6 +43,7 @@ in {
 
       package = pkgs.ungoogled-chromium.override {
         commandLineArgs = [
+          (if hyprlandOnNvidia then "--disable-gpu-compositing" else " ")
           "--force-punycode-hostnames"
           "--hide-crashed-bubble"
           "--popups-to-tabs"

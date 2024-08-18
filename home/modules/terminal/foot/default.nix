@@ -8,6 +8,7 @@ in {
   config = mkIf cfg.foot.enable {
     programs.foot = {
       enable = true;
+      server.enable = true;
 
       settings = {
         main = {

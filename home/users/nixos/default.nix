@@ -11,6 +11,7 @@ _: {
       signing.enable = false;
     };
 
+    hyprland.enable = false;
     terminal = {
       foot.enable = true;
       shell = "fish";

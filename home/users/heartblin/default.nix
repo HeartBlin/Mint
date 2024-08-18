@@ -1,4 +1,7 @@
-_: {
+{ osConfig, ... }:
+
+let hyprland = osConfig.Ark.hyprland.enable;
+in {
   config.Ark = {
     chromium.enable = true;
     element.enable = true;
@@ -13,6 +16,7 @@ _: {
       };
     };
 
+    hyprland.enable = hyprland;
     terminal = {
       foot.enable = true;
       shell = "fish";

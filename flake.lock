@@ -666,6 +666,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1724006181,
+        "narHash": "sha256-iv99eBazOPW/qr6axVH1CefGINFuNTXtrCL1MB8d62c=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "a19d533182fdd7783135ad918f70d13143884aa1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks-nix": {
       "inputs": {
         "flake-compat": [
@@ -703,7 +718,8 @@
         "lanzaboote": "lanzaboote",
         "lix": "lix",
         "lix-repo": "lix-repo",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_3",
+        "nur": "nur"
       }
     },
     "rust-analyzer-src": {

@@ -108,6 +108,9 @@
     # CachyOS kernel provider
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+    # For getting waydroid-scripts.
+    nur.url = "github:nix-community/NUR";
+
     # Tiling wayland compositor
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };

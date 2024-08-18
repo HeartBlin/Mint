@@ -17,7 +17,11 @@ _: {
       };
 
       secureboot.enable = true;
-      vm.enable = true;
+      vms = {
+        enable = true;
+        virtManager.enable = true;
+        waydroid.enable = true;
+      };
     };
 
     networking.networkmanager.enable = true;

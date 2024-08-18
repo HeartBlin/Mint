@@ -10,7 +10,7 @@ in {
       role = "iso";
       nvidia.enable = false;
       secureboot.enable = false;
-      vm.enable = false;
+      vms.enable = false;
     };
 
     ### TODO: Integrate them in module system

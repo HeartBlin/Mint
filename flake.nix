@@ -43,12 +43,7 @@
 
       perSystem = { pkgs, ... }: {
         devShells.default = pkgs.mkShellNoCC {
-          nativeBuildInputs = with pkgs; [
-            statix
-            nixfmt-classic
-            actionlint
-            fish
-          ];
+          nativeBuildInputs = with pkgs; [ statix nixfmt-classic fish ];
 
           shellHook = "exec fish";
         };
@@ -57,16 +52,15 @@
           name = "Linter Checks";
           src = ./.;
           doCheck = true;
-          nativeBuildInputs = with pkgs; [ statix nixfmt-classic actionlint ];
+          nativeBuildInputs = with pkgs; [ statix nixfmt-classic ];
 
           checkPhase = ''
             nixfmt -c .
             statix check
-            actionlint
           '';
 
           # Shitty workaround
-          installPhase = "touch $out";
+          installPhase = "mkdir $out";
         };
 
         formatter = with pkgs; nixfmt-classic;

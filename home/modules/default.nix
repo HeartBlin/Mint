@@ -9,6 +9,7 @@ in {
     (importModule "element")
     (importModule "git")
     (importModule "hyprland")
+    (importModule "mangohud")
     (importModule "terminal")
     (importModule "vscode")
 

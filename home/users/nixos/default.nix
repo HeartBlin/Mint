@@ -12,6 +12,7 @@ _: {
     };
 
     hyprland.enable = false;
+    mangohud.enable = false;
     terminal = {
       foot.enable = true;
       shell = "fish";

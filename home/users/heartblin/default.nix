@@ -31,6 +31,8 @@ in {
         };
       };
     };
+
+    mangohud.enable = true;
     terminal = {
       foot.enable = true;
       shell = "fish";

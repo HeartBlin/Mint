@@ -2,6 +2,7 @@ _: {
   config = {
     Ark = {
       asus.enable = true;
+      audio.enable = true;
       flakeDir = "/home/heartblin/Ark";
       gaming.enable = true;
       hyprland.enable = true;

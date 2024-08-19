@@ -9,6 +9,7 @@ let
 in {
   imports = concatLists [
     (importModule "asus")
+    (importModule "audio")
     (importModule "gaming")
     (importModule "hyprland")
     (importModule "nix")

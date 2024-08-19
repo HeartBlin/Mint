@@ -5,6 +5,7 @@ in {
   config = {
     Ark = {
       asus.enable = false;
+      audio.enable = true;
       flakeDir = "N/A"; # I clone the github repo
       gaming.enable = false;
       hyprland.enable = false;

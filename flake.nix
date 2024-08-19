@@ -5,7 +5,11 @@
     let
       inherit (flake-parts.lib) mkFlake;
 
-      linuxArch = "x86_64-linux";
+      systems = {
+        x86-linux = "x86_64-linux";
+        all-linux = [ "x86_64-linux" "aarch64-linux" ];
+      };
+
       stateVersion = "24.11";
       inherit (import ./functions/mkHost.nix {
         inherit inputs self stateVersion;
@@ -21,18 +25,18 @@
         Skadi = {
           hostname = "Skadi";
           username = "heartblin";
-          platform = linuxArch;
+          platform = systems.x86-linux;
         };
 
         # ISO
         Specter = {
           hostname = "Specter";
           username = "nixos";
-          platform = linuxArch;
+          platform = systems.x86-linux;
         };
       };
     in mkFlake { inherit inputs; } {
-      systems = [ linuxArch ];
+      systems = systems.all-linux;
 
       flake = {
         nixosConfigurations = {

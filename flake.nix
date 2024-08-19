@@ -42,12 +42,6 @@
       };
 
       perSystem = { pkgs, ... }: {
-        devShells.default = pkgs.mkShellNoCC {
-          nativeBuildInputs = with pkgs; [ statix nixfmt-classic fish ];
-
-          shellHook = "exec fish";
-        };
-
         checks.linterChecks = pkgs.stdenvNoCC.mkDerivation {
           name = "Linter Checks";
           src = ./.;
@@ -63,7 +57,13 @@
           installPhase = "mkdir $out";
         };
 
+        devShells.default = pkgs.mkShellNoCC {
+          nativeBuildInputs = with pkgs; [ statix nixfmt-classic fish ];
+          shellHook = "exec fish";
+        };
+
         formatter = with pkgs; nixfmt-classic;
+        packages.arkWallpapers = pkgs.callPackage ./packages/arkWallpapers { };
       };
     };
 

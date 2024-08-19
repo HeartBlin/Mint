@@ -4,6 +4,9 @@ let
   inherit (lib) mkIf;
   inherit (osConfig.programs.hyprland) package;
 
+  cursorTheme = "Bibata-Modern-Ice";
+  cursorSize = 25;
+
   ## TODO: Hyprland should read a lot of options from
   ## config or osConfig, to adjust various parameters
   ## ex: if NixOS is set to Romanian, input.kb_layout should be 'ro'
@@ -13,6 +16,8 @@ let
   chromium = config.Ark.chromium.enable;
   cfg = config.Ark.hyprland;
 in {
+  imports = [ ./frags/wallpaper.nix ];
+
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       inherit package;
@@ -25,6 +30,9 @@ in {
         ];
 
         env = [
+          "XCURSOR_THEME,${cursorTheme}"
+          "XCURSOR_SIZE,${toString cursorSize}"
+
           (mkIf nvidia "LIVBA_DRIVER_NAME,nvidia")
           (mkIf nvidia "XDG_SESSION_TYPE,wayland")
           (mkIf nvidia "__GLX_VENDOR_LIBRARY_NAME,nvidia")
@@ -34,6 +42,9 @@ in {
         exec-once = [
           # Polkit
           "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+
+          # Set cursor
+          "hyprctl setcursor ${cursorTheme} ${toString cursorSize}-Hyprcursor"
         ];
 
         cursor = mkIf nvidia {
@@ -90,6 +101,11 @@ in {
           mouse_move_enables_dpms = true;
           key_press_enables_dpms = true;
           force_default_wallpaper = 2;
+
+          # Default wallpapers are nice, but I have my own
+          disable_hyprland_logo = true;
+          disable_splash_rendering = true;
+          background_color = "rgb(000000)";
         };
 
         bind = [
@@ -132,6 +148,14 @@ in {
         bindm =
           [ "Super, mouse:272, movewindow" "Super, mouse:273, resizewindow" ];
       };
+    };
+
+    home.pointerCursor = {
+      package = pkgs.bibata-cursors;
+      name = "${cursorTheme}";
+      size = cursorSize;
+      gtk.enable = true;
+      x11.enable = true;
     };
   };
 }

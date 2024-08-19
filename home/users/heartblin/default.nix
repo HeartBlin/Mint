@@ -1,6 +1,8 @@
-{ osConfig, ... }:
+{ osConfig, pkgs, self, ... }:
 
-let hyprland = osConfig.Ark.hyprland.enable;
+let
+  hyprland = osConfig.Ark.hyprland.enable;
+  wallpaper = "${self.packages.${pkgs.system}.arkWallpapers}/share/wallpapers";
 in {
   config.Ark = {
     chromium.enable = true;
@@ -16,7 +18,19 @@ in {
       };
     };
 
-    hyprland.enable = hyprland;
+    hyprland = {
+      enable = hyprland;
+      wallpapers = {
+        "eDP-1" = {
+          monitor = "eDP-1";
+          path = "${wallpaper}/Bloom-Dark.jpg";
+        };
+        "HDMI-A-1" = {
+          monitor = "HDMI-A-1";
+          path = "${wallpaper}/Bloom-Dark.jpg";
+        };
+      };
+    };
     terminal = {
       foot.enable = true;
       shell = "fish";

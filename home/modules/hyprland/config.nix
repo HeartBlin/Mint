@@ -133,6 +133,7 @@ in {
           "Super, F3, workspace, 8"
           "Super, F4, workspace, 9"
           "Super, F5, workspace, 10"
+          "Super, S, togglespecialworkspace"
 
           "Super Shift, 1, movetoworkspace, 1"
           "Super Shift, 2, movetoworkspace, 2"
@@ -144,6 +145,7 @@ in {
           "Super Shift, F3, movetoworkspace, 8"
           "Super Shift, F4, movetoworkspace, 9"
           "Super Shift, F5, movetoworkspace, 10"
+          "Super Shift, S, movetoworkspace, special"
         ];
 
         bindm =

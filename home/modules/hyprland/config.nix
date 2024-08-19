@@ -36,6 +36,7 @@ in {
           (mkIf nvidia "LIVBA_DRIVER_NAME,nvidia")
           (mkIf nvidia "XDG_SESSION_TYPE,wayland")
           (mkIf nvidia "__GLX_VENDOR_LIBRARY_NAME,nvidia")
+          (mkIf nvidia "NVD_BACKEND,direct")
           (mkIf nvidia "AQ_DRM_DEVICES,/dev/dri/card1:/dev/dri/card0")
         ];
 

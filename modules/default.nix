@@ -10,6 +10,7 @@ in {
   imports = concatLists [
     (importModule "asus")
     (importModule "audio")
+    (importModule "bluetooth")
     (importModule "gaming")
     (importModule "hyprland")
     (importModule "nix")

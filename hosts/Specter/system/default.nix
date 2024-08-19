@@ -6,6 +6,7 @@ in {
     Ark = {
       asus.enable = false;
       audio.enable = true;
+      bluetooth.enable = false;
       flakeDir = "N/A"; # I clone the github repo
       gaming.enable = false;
       hyprland.enable = false;

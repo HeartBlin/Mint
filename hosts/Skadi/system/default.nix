@@ -3,6 +3,7 @@ _: {
     Ark = {
       asus.enable = true;
       audio.enable = true;
+      bluetooth.enable = true;
       flakeDir = "/home/heartblin/Ark";
       gaming.enable = true;
       hyprland.enable = true;

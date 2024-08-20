@@ -6,6 +6,7 @@ let
 in {
   imports = concatLists [
     (importModule "chromium")
+    (importModule "discord")
     (importModule "element")
     (importModule "git")
     (importModule "hyprland")

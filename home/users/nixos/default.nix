@@ -1,6 +1,7 @@
 _: {
   config.Ark = {
     chromium.enable = true;
+    discord.enable = false;
     element.enable = false;
     git = {
       enable = true;

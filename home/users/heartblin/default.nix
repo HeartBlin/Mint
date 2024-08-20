@@ -6,6 +6,7 @@ let
 in {
   config.Ark = {
     chromium.enable = true;
+    discord.enable = true;
     element.enable = false;
     git = {
       enable = true;

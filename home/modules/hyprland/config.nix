@@ -150,6 +150,33 @@ in {
 
         bindm =
           [ "Super, mouse:272, movewindow" "Super, mouse:273, resizewindow" ];
+
+        bindl = [
+          # Mute
+          ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+          ", XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
+        ];
+
+        bindr = [
+          # CapsLock OSD
+          "CAPS, Caps_Lock, exec, swayosd-client --caps-lock"
+        ];
+
+        bindle = [
+          # Brightness
+          ", XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
+          ", XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
+
+          # Keyboard LED brightness
+          ", XF86KbdBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight set +33%"
+          ", XF86KbdBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl -d *::kbd_backlight set 33%-"
+
+          # Volume
+          ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+          ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+          ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl position 10-"
+          ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl position 10+"
+        ];
       };
     };
 
@@ -160,5 +187,7 @@ in {
       gtk.enable = true;
       x11.enable = true;
     };
+
+    services.swayosd.enable = true;
   };
 }

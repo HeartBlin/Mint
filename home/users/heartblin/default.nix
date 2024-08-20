@@ -6,7 +6,7 @@ let
 in {
   config.Ark = {
     chromium.enable = true;
-    element.enable = true;
+    element.enable = false;
     git = {
       enable = true;
       username = "HeartBlin";

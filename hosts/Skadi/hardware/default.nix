@@ -14,6 +14,7 @@
     linuxKernel.packages.linux_zen.cpupower # ehhh...
     amdctl
   ];
+
   systemd.services.underclockAndUndervolt = let
     cpupower = "${pkgs.linuxKernel.packages.linux_zen.cpupower}/bin/cpupower";
     amdctl = "${pkgs.amdctl}/bin/amdctl";
@@ -46,6 +47,14 @@
     # Hibernation
     resumeDevice = "/dev/disk/by-uuid/559c68ba-790c-432a-bd2d-24adcbc8c281";
     kernelParams = [ "resume_offset=533760" ];
+  };
+
+  services = {
+    logind.extraConfig = "HandlePowerKey=hibernate";
+    upower = {
+      enable = true;
+      criticalPowerAction = "Hibernate";
+    };
   };
 
   swapDevices = [{ device = "/swap/swapfile"; }];

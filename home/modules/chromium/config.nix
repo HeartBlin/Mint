@@ -37,7 +37,7 @@ in {
         (createChromiumExtension {
           id = "ddkjiahejlhfcafbddmgiahcphecmpfh";
           sha256 = "14krvrwfjy168m9g8arisnx3fcjg7ih7zk178vymk12461ap0dyn";
-          version = "2024.8.12.902";
+          version = "2024.8.19.905";
         })
       ];
 

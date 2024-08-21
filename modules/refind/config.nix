@@ -5,7 +5,5 @@ let
 
   cfg = config.Ark.refind;
 in {
-  config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.refind ];
-  };
+  config = mkIf cfg.enable { environment.systemPackages = [ pkgs.refind ]; };
 }

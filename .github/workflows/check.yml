@@ -21,8 +21,5 @@ jobs:
       - name: Install nix
         uses: DeterminateSystems/nix-installer-action@main
 
-      - name: Set up Magic Cache
-        uses: DeterminateSystems/magic-nix-cache-action@main
-
       - name: Check Flake (statix & nixfmt-classic)
         run: nix flake check

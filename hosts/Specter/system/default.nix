@@ -12,6 +12,7 @@ in {
       hyprland.enable = false;
       role = "iso";
       nvidia.enable = false;
+      refind.enable = false;
       secureboot.enable = false;
       vms.enable = false;
     };

@@ -15,6 +15,7 @@ in {
     (importModule "hyprland")
     (importModule "nix")
     (importModule "nvidia")
+    (importModule "refind")
     (importModule "secureboot")
     (importModule "vms")
 

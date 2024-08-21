@@ -19,6 +19,7 @@ _: {
         };
       };
 
+      refind.enable = true;
       secureboot.enable = true;
       vms = {
         enable = true;

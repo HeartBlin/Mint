@@ -4,12 +4,12 @@ let
   inherit (lib) fakeSha256 mkDefault mkIf;
 
   bleedingEdge = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    version = "560.31.02";
-    sha256_64bit = "sha256-0cwgejoFsefl2M6jdWZC+CKc58CqOXDjSi4saVPNKY0=";
+    version = "560.35.03";
+    sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
     sha256_aarch64 = fakeSha256;
-    openSha256 = "sha256-X5UzbIkILvo0QZlsTl9PisosgPj/XRmuuMH+cDohdZQ=";
+    openSha256 = "sha256-/32Zf0dKrofTmPZ3Ratw4vDM7B+OgpC4p7s+RHUjCrg=";
     settingsSha256 = fakeSha256;
-    persistencedSha256 = "sha256-BDtdpH5f9/PutG3Pv9G4ekqHafPm3xgDYdTcQumyMtg=";
+    persistencedSha256 = "sha256-E2J2wYYyRu7Kc3MMZz/8ZIemcZg68rkzvqEwFAL3fFs=";
   };
 
   cfg = config.Ark.nvidia;
@@ -52,8 +52,13 @@ in {
       modesetting.enable = true;
 
       prime = mkIf cfg.hybrid.enable {
-        reverseSync.enable = true;
-        reverseSync.setupCommands.enable = true;
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+
+        #reverseSync.enable = true;
+        #reverseSync.setupCommands.enable = true;
 
         amdgpuBusId = "${cfg.hybrid.id.amd}";
         nvidiaBusId = "${cfg.hybrid.id.nvidia}";

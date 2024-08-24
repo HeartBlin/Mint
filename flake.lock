@@ -381,11 +381,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1724442134,
-        "narHash": "sha256-RpA3GmcBvd6DLssIWfYKdDfiumLv8w4KIhDaI+//6ls=",
+        "lastModified": 1724505895,
+        "narHash": "sha256-7kthSO9d+sjZ29WbTezMUUuZJRKFnIA+I7cUnlCOnB8=",
         "ref": "refs/heads/main",
-        "rev": "688fe5c14781c63a1db23d4d02bf239283068ff6",
-        "revCount": 5131,
+        "rev": "82c67e61a96b23c7b962ab8e3ed9079f671942e1",
+        "revCount": 5133,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -565,7 +565,7 @@
         "narHash": "sha256-zNW/rqNJwhq2lYmQf19wJerRuNimjhxHKmzrWWFJYts=",
         "rev": "622a2253a071a1fb97a4d3c8103a91114acc1140",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/622a2253a071a1fb97a4d3c8103a91114acc1140.tar.gz?rev=622a2253a071a1fb97a4d3c8103a91114acc1140"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/622a2253a071a1fb97a4d3c8103a91114acc1140.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -687,11 +687,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1724486206,
-        "narHash": "sha256-AktI2GKW4DnVwj3WS+mTmYjtL2qug8H46IN0Rtf4O+Q=",
+        "lastModified": 1724503055,
+        "narHash": "sha256-Cv5GjaTAe7SadKcZiAnk8/qHqc4DcvW2dvy87io8PDo=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "8feee883ff50c836e711bb7e08f91b34f31feb84",
+        "rev": "6cb5bbfa5bc34ec99246d4902d8fd7625bc173f4",
         "type": "github"
       },
       "original": {

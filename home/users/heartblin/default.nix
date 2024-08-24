@@ -5,6 +5,7 @@ let
   wallpaper = "${self.packages.${pkgs.system}.arkWallpapers}/share/wallpapers";
 in {
   config.Ark = {
+    ags.enable = true;
     chromium.enable = true;
     discord.enable = true;
     element.enable = false;

@@ -111,5 +111,11 @@
 
     # Tiling wayland compositor
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    # Widgets && bars
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

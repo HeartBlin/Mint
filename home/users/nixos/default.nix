@@ -1,5 +1,6 @@
 _: {
   config.Ark = {
+    ags.enable = true;
     chromium.enable = true;
     discord.enable = false;
     element.enable = false;
@@ -14,6 +15,7 @@ _: {
 
     hyprland.enable = false;
     mangohud.enable = false;
+    quickshell.enable = false;
     terminal = {
       foot.enable = true;
       shell = "fish";

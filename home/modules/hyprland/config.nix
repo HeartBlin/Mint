@@ -44,6 +44,9 @@ in {
           # Polkit
           "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
+          # Widgets
+          "ags"
+
           # Set cursor
           "hyprctl setcursor ${cursorTheme} ${toString cursorSize}-Hyprcursor"
         ];
@@ -70,7 +73,30 @@ in {
           layout = "dwindle";
         };
 
-        decoration = { rounding = 5; };
+        decoration = {
+          rounding = 5;
+
+          blur = {
+            enabled = true;
+            size = 4;
+            passes = 2;
+            vibrancy = 0.1696;
+          };
+        };
+
+        blurls = [
+          "stack1"
+          "stack2"
+          "stack3"
+          "stack4"
+        ];
+
+        layerrule = [
+          "ignorealpha 0.97, stack1"
+          "ignorealpha 0.97, stack2"
+          "ignorealpha 0.97, stack3"
+          "ignorealpha 0.97, stack4"
+        ];
 
         workspace = [
           "1, monitor:eDP-1, default:true"

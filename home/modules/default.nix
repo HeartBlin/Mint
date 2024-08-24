@@ -5,6 +5,7 @@ let
   importModule = x: [ ./${x}/config.nix ./${x}/options.nix ];
 in {
   imports = concatLists [
+    (importModule "ags")
     (importModule "chromium")
     (importModule "discord")
     (importModule "element")

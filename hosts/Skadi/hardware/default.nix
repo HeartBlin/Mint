@@ -58,6 +58,7 @@
   };
 
   swapDevices = [{ device = "/swap/swapfile"; }];
+  zramSwap.enable = true;
 
   networking.useDHCP = lib.mkDefault true;
   hardware.cpu.amd.updateMicrocode =

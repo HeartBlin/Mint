@@ -84,12 +84,7 @@ in {
           };
         };
 
-        blurls = [
-          "stack1"
-          "stack2"
-          "stack3"
-          "stack4"
-        ];
+        blurls = [ "stack1" "stack2" "stack3" "stack4" ];
 
         layerrule = [
           "ignorealpha 0.97, stack1"

@@ -14,6 +14,7 @@ in {
       nvidia.enable = false;
       refind.enable = false;
       secureboot.enable = false;
+      tpm.enable = false;
       vms.enable = false;
     };
 

@@ -17,10 +17,12 @@ in {
     (importModule "nvidia")
     (importModule "refind")
     (importModule "secureboot")
+    (importModule "tpm")
     (importModule "vms")
 
     [ # Extras
       ./nix/assertions.nix
+      ./tpm/assertions.nix
     ]
   ];
 

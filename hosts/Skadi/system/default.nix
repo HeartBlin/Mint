@@ -21,6 +21,7 @@ _: {
 
       refind.enable = true;
       secureboot.enable = true;
+      tpm.enable = true;
       vms = {
         enable = true;
         virtManager.enable = true;

@@ -135,6 +135,7 @@ in {
           (mkIf foot "Super, Return, exec, footclient")
           (mkIf vscode "Super, C, exec, code")
           (mkIf chromium "Super, W, exec, chromium")
+          "Super, E, exec, nautilus"
           "Super, Space, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
 
           # Actions

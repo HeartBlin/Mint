@@ -23,5 +23,13 @@ in {
       defaultSession = "hyprland";
       sessionPackages = [ inputs.hyprland.packages.${pkgs.system}.default ];
     };
+
+    # Configure file explorer
+    environment.systemPackages = with pkgs; [ nautilus ];
+    programs.nautilus-open-any-terminal.enable = true;
+    services = {
+      gvfs.enable = true;
+      gnome.sushi.enable = true;
+    };
   };
 }

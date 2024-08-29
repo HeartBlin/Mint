@@ -1,5 +1,6 @@
 _: {
   boot = {
+    consoleLogLevel = 3;
     tmp.cleanOnBoot = true;
     kernelParams = [
       "quiet"

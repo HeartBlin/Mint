@@ -6,11 +6,6 @@ let
 in {
   config = mkIf cfg.enable {
     services.xserver.displayManager.lightdm.enable = false;
-    console = {
-      enable = true;
-      earlySetup = true;
-      font = "eurlatgr";
-    };
     environment.etc."issue" = {
       enable = true;
       # NFO-ass logo

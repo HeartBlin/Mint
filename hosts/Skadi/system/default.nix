@@ -6,6 +6,7 @@ _: {
       bluetooth.enable = true;
       flakeDir = "/home/heartblin/Ark";
       gaming.enable = true;
+      greeter.customGreeter.enable = true;
       hyprland.enable = true;
       role = "laptop";
       nvidia = {
@@ -32,12 +33,6 @@ _: {
     networking.networkmanager.enable = true;
 
     time.timeZone = "Europe/Bucharest";
-
-    services = {
-      xserver.enable = true;
-      displayManager.sddm.enable = true;
-      desktopManager.plasma6.enable = true;
-    };
   };
 }
 

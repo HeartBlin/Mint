@@ -16,7 +16,7 @@ let
   chromium = config.Ark.chromium.enable;
   cfg = config.Ark.hyprland;
 in {
-  imports = [ ./frags/wallpaper.nix ];
+  imports = [ ./frags/autoLaunch.nix ./frags/wallpaper.nix ];
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {

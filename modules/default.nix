@@ -12,6 +12,7 @@ in {
     (importModule "audio")
     (importModule "bluetooth")
     (importModule "gaming")
+    (importModule "greeter")
     (importModule "hyprland")
     (importModule "nix")
     (importModule "nvidia")

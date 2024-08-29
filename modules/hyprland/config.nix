@@ -18,12 +18,6 @@ in {
       };
     };
 
-    # Add to display manager
-    services.displayManager = {
-      defaultSession = "hyprland";
-      sessionPackages = [ inputs.hyprland.packages.${pkgs.system}.default ];
-    };
-
     # Configure file explorer
     environment.systemPackages = with pkgs; [ nautilus ];
     programs.nautilus-open-any-terminal.enable = true;

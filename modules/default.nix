@@ -22,6 +22,7 @@ in {
     (importModule "vms")
 
     [ # Extras
+      ./boot/config.nix # No options
       ./nix/assertions.nix
       ./tpm/assertions.nix
       ./networking/config.nix # No options

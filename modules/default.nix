@@ -24,6 +24,7 @@ in {
     [ # Extras
       ./nix/assertions.nix
       ./tpm/assertions.nix
+      ./networking/config.nix # No options
     ]
   ];
 

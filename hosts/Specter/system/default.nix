@@ -1,7 +1,4 @@
-{ lib, ... }:
-
-let inherit (lib) mkForce;
-in {
+_: {
   config = {
     Ark = {
       asus.enable = false;
@@ -17,12 +14,6 @@ in {
       secureboot.enable = false;
       tpm.enable = false;
       vms.enable = false;
-    };
-
-    ### TODO: Integrate them in module system
-    networking = {
-      wireless.enable = mkForce false;
-      networkmanager.enable = true;
     };
 
     time.timeZone = "Europe/Bucharest";

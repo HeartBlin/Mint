@@ -1,7 +1,5 @@
 { lib' }:
 
 {
-  Skadi = lib'.mkSystem {
-    hostname = "Skadi";
-  };
+  Skadi = lib'.mkSystem { hostname = "Skadi"; };
 }

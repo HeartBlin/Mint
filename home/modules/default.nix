@@ -10,6 +10,7 @@ in {
   imports = concatLists [
     (importModule path "chromium")
     (importModule path "hyprland")
+    (importModule path "terminal")
     (importModule path "vscode")
 
     # Extra

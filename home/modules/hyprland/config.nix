@@ -9,6 +9,7 @@
   inherit (lib) mkIf;
 
   chromium = config.Ark.chromium.enable;
+  foot = config.Ark.terminal.foot.enable;
   vscode = config.Ark.vscode.enable;
   nvidia = osConfig.Ark.nvidia.enable;
   cfg = config.Ark.hyprland;
@@ -106,6 +107,7 @@ in {
 
         bind = [
           # Programs
+          (mkIf foot "Super, Return, exec, footclient")
           (mkIf vscode "Super, C, exec, code")
           (mkIf chromium "Super, W, exec, chromium")
           "Super, E, exec, nautilus"

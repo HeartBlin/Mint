@@ -20,6 +20,7 @@
         modules = [
           # Module imports
           inputs.home-manager.nixosModules.home-manager
+          inputs.agenix.nixosModules.default
 
           # Paths
           "${self}/hosts/${hostname}/config"
@@ -30,6 +31,8 @@
           {nixpkgs.hostPlatform.system = system;}
           {system.stateVersion = stateVersion;}
           {networking.hostName = hostname;}
+          {environment.systemPackages = [inputs'.agenix.packages.default];}
+          {age.identityPaths = ["/home/heartblin/.ssh/HeartBlin"];}
 
           {
             # Create user
@@ -46,6 +49,9 @@
 
               users.${username} = {
                 imports = [
+                  # Modules
+                  inputs.agenix.homeManagerModules.default
+
                   # Paths
                   "${self}/home/${username}/config.nix"
                   "${self}/home/modules"

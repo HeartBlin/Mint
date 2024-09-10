@@ -11,5 +11,8 @@ in {
     (importModule path "chromium")
     (importModule path "hyprland")
     (importModule path "vscode")
+
+    # Extra
+    [./git/config.nix]
   ];
 }

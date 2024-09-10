@@ -17,6 +17,7 @@ in {
     (importModule path "tpm")
 
     # Extras
+    [./agenix/config.nix]
     [./hyprland/config.nix]
     [./networking/config.nix]
     [./nix/assertions.nix]

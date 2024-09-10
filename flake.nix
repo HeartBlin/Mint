@@ -15,6 +15,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Secrets management
+    agenix.url = "github:ryantm/agenix";
+
     # CachyOS kernel provider
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 

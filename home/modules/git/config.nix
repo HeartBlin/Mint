@@ -7,7 +7,7 @@
     extraConfig = {
       commit.gpgsign = true;
       gpg.format = "ssh";
-      user.signingkey = "/home/${username}/.ssh/GitHubAuth.pub";
+      user.signingkey = "/home/${username}/.ssh/GitHubSign.pub";
     };
   };
 
@@ -17,7 +17,7 @@
       Host github.com
         HostName github.com
         PreferredAuthentications publickey
-        IdentityFile /home/${username}/.ssh/GitHubSign
+        IdentityFile /home/${username}/.ssh/GitHubAuth
     '';
   };
 }

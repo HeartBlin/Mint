@@ -18,6 +18,7 @@ in {
 
     # Extras
     [./hyprland/config.nix]
+    [./networking/config.nix]
     [./nix/assertions.nix]
   ];
 

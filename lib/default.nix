@@ -12,13 +12,19 @@
     system ? "x86_64-linux",
     stateVersion ? "24.11",
   }:
-    withSystem system ({inputs', ...}:
+    withSystem system ({inputs', ...}: let
+      args = {inherit inputs inputs' lib';};
+    in
       nixosSystem {
-        specialArgs = {inherit inputs inputs' lib';};
+        specialArgs = args;
         modules = [
+          # Module imports
+          inputs.home-manager.nixosModules.home-manager
+
           # Paths
           "${self}/hosts/${hostname}/config"
           "${self}/hosts/${hostname}/hardware"
+          "${self}/modules"
 
           # Options
           {nixpkgs.hostPlatform.system = system;}
@@ -31,7 +37,31 @@
               isNormalUser = true;
               extraGroups = ["wheel" "video" "networkmanager"];
             };
+
+            # Home-Manager setup
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = args;
+
+              users.${username} = {
+                imports = [
+                  # Paths
+                  "${self}/home/${username}/config.nix"
+                  "${self}/home/modules"
+
+                  # Options
+                  {programs.home-manager.enable = true;}
+                  {home.stateVersion = stateVersion;}
+                ];
+              };
+            };
           }
         ];
       });
-in {inherit mkSystem;}
+
+  importModule = path: module: [
+    "${self}/${path}/${module}/config.nix"
+    "${self}/${path}/${module}/options.nix"
+  ];
+in {inherit mkSystem importModule;}

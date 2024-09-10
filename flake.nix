@@ -9,8 +9,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Declarative home
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # CachyOS kernel provider
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
+    # Wayland compositor
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
   outputs = inputs @ {flake-parts, ...}:

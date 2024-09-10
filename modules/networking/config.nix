@@ -1,6 +1,9 @@
-{ hostname, lib, ... }:
-
-let inherit (lib) mkForce mkIf;
+{
+  hostname,
+  lib,
+  ...
+}: let
+  inherit (lib) mkForce mkIf;
 in {
   networking = {
     wireless.enable = mkIf (hostname == "Specter") (mkForce false);

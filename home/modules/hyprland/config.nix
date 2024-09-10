@@ -8,6 +8,7 @@
 }: let
   inherit (lib) mkIf;
 
+  chromium = config.Ark.chromium.enable;
   vscode = config.Ark.vscode.enable;
   nvidia = osConfig.Ark.nvidia.enable;
   cfg = config.Ark.hyprland;
@@ -106,6 +107,7 @@ in {
         bind = [
           # Programs
           (mkIf vscode "Super, C, exec, code")
+          (mkIf chromium "Super, W, exec, chromium")
           "Super, E, exec, nautilus"
           "Super, Space, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
 

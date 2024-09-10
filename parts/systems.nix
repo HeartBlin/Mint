@@ -5,6 +5,7 @@ in {
   flake.nixosConfigurations = {
     Skadi = lib'.mkSystem {
       hostname = "Skadi";
+      username = "heartblin";
       system = "x86_64-linux";
     };
   };

@@ -14,6 +14,10 @@
   nvidia = osConfig.Ark.nvidia.enable;
   cfg = config.Ark.hyprland;
 in {
+  imports = [
+    ./frag/wallpaper.nix
+  ];
+
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;

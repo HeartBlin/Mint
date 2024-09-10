@@ -20,6 +20,12 @@
 
     # Wayland compositor
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    # SecureBoot support
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {flake-parts, ...}:

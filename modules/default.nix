@@ -13,6 +13,8 @@ in {
   imports = concatLists [
     (importModule path "nvidia")
     (importModule path "nix")
+    (importModule path "secureboot")
+    (importModule path "tpm")
 
     # Extras
     [./nix/assertions.nix]

@@ -64,4 +64,13 @@
     "${self}/${path}/${module}/config.nix"
     "${self}/${path}/${module}/options.nix"
   ];
-in {inherit mkSystem importModule;}
+
+  mkIfElse = let
+    inherit (inputs.nixpkgs.lib) mkIf mkMerge;
+  in
+    x: y: n:
+      mkMerge [
+        (mkIf x y)
+        (mkIf (!x) n)
+      ];
+in {inherit mkSystem importModule mkIfElse;}

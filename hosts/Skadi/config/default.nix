@@ -3,15 +3,12 @@ _: {
     flakeDir = "/home/heartblin/Ark";
     nvidia = {
       enable = true;
-      hybrid = {
-        enable = true;
-        id = {
-          amd = "PCI:6:0:0";
-          nvidia = "PCI:1:0:0";
-        };
-      };
+      hybrid.enable = true;
     };
+
     role = "laptop";
+    secureboot.enable = true;
+    tpm.enable = true;
   };
 
   boot.loader.systemd-boot.enable = true;

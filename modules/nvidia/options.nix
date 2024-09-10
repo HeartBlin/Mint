@@ -9,7 +9,7 @@ in {
       id = {
         amd = mkOption {
           type = str;
-          default = "";
+          default = "PCI:6:0:0";
           description = "ID of AMD GPU";
         };
 
@@ -21,7 +21,7 @@ in {
 
         nvidia = mkOption {
           type = str;
-          default = "";
+          default = "PCI:1:0:0";
           description = "ID of Nvidia GPU";
         };
       };

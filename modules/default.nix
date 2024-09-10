@@ -17,6 +17,7 @@ in {
     (importModule path "tpm")
 
     # Extras
+    [./hyprland/config.nix]
     [./nix/assertions.nix]
   ];
 

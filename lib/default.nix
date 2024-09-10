@@ -13,7 +13,7 @@
     stateVersion ? "24.11",
   }:
     withSystem system ({inputs', ...}: let
-      args = {inherit inputs inputs' lib';};
+      args = {inherit inputs inputs' lib' username;};
     in
       nixosSystem {
         specialArgs = args;

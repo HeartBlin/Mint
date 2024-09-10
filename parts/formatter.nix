@@ -1,1 +1,1 @@
-{ perSystem = { pkgs, ... }: { formatter = with pkgs; nixfmt-classic; }; }
+{perSystem = {pkgs, ...}: {formatter = with pkgs; alejandra;};}

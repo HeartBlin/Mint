@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-
+{pkgs, ...}:
 # Underclock & Undervolt
 # Until I go get my laptop fixed I'll sacrifice performance for nice temps
 # Normally pushing 98C in high loads
@@ -17,14 +16,13 @@
   in {
     description = "Underclocks & Undervolts CPU";
 
-    wantedBy = [ "multi-user.target" "post-resume.target" ];
-    after = [ "post-resume.target" ];
+    wantedBy = ["multi-user.target" "post-resume.target"];
+    after = ["post-resume.target"];
 
     serviceConfig = {
       Type = "oneshot";
       Restart = "no";
-      ExecStart =
-        "${bash} '${cpupower} frequency-set -u 4.0Ghz && ${amdctl} -m -p0 -v 60'"; # 1175 mV
+      ExecStart = "${bash} '${cpupower} frequency-set -u 4.0Ghz && ${amdctl} -m -p0 -v 60'"; # 1175 mV
     };
   };
 }

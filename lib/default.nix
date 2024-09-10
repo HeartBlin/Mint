@@ -1,16 +1,19 @@
-{ inputs, self, libx, withSystem }:
+{ inputs, self, lib', withSystem }:
 
 let
   inherit (inputs.nixpkgs.lib) nixosSystem;
 
   mkSystem =
     { hostname ? "nixos", system ? "x86_64-linux", stateVersion ? "24.11" }:
-    withSystem system ({ inputs, ... }:
+    withSystem system ({inputs', ... }:
       nixosSystem {
-        specialArgs = { inherit inputs libx; };
+        specialArgs = {
+          inherit inputs inputs' lib';
+        };
         modules = [
           # Paths
-          "${self}/hosts/${hostname}/system.nix"
+          "${self}/hosts/${hostname}/config"
+          "${self}/hosts/${hostname}/hardware"
 
           # Options
           { nixpkgs.hostPlatform.system = system; }

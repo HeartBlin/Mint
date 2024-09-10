@@ -2,7 +2,7 @@
   perSystem = { pkgs, ... }: {
     devShells = {
       bun = pkgs.mkShellNoCC {
-        nativeBuildInputs = with pkgs; [ bun fish];
+        nativeBuildInputs = with pkgs; [ bun fish ];
         shellHook = ''exec fish -C "echo Entered Bun dev shell."'';
       };
 

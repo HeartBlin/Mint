@@ -15,6 +15,7 @@ in {
     (importModule path "greeter")
     (importModule path "nix")
     (importModule path "secureboot")
+    (importModule path "steam")
     (importModule path "tpm")
 
     # Extras

@@ -9,6 +9,7 @@ _: {
 
     role = "laptop";
     secureboot.enable = true;
+    steam.enable = true;
     tpm.enable = true;
   };
 

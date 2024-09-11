@@ -12,6 +12,7 @@
 in {
   imports = concatLists [
     (importModule path "nvidia")
+    (importModule path "greeter")
     (importModule path "nix")
     (importModule path "secureboot")
     (importModule path "tpm")

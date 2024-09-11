@@ -12,6 +12,7 @@
 in {
   config = mkIf cfg.enable {
     environment.sessionVariables.NIXOS_OZONE_WL = 1;
+    xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gtk];
     programs = {
       xwayland.enable = true;
       hyprland = {
@@ -30,5 +31,8 @@ in {
       gvfs.enable = true;
       gnome.sushi.enable = true;
     };
+
+    # Configure greeter sessions
+    services.xserver.desktopManager.runXdgAutostartIfNone = true;
   };
 }

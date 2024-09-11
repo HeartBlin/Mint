@@ -1,5 +1,6 @@
 {
   config,
+  inputs',
   lib,
   pkgs,
   ...
@@ -11,6 +12,7 @@ in {
   config = mkIf cfg.foot.enable {
     programs.foot = {
       enable = true;
+      package = inputs'.nyxexprs.packages.foot-transparent;
       server.enable = true;
 
       settings = {
@@ -26,7 +28,7 @@ in {
         };
 
         colors = {
-          alpha = 1;
+          alpha = 0.5;
 
           background = "141b1e";
           foreground = "dadada";

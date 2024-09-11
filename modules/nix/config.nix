@@ -29,6 +29,7 @@ in {
         "https://numtide.cachix.org" # Unfree 2
         "https://nixpkgs-wayland.cachix.org" # Wayland
         "https://hyprland.cachix.org" # Hyprland
+        "https://nyx.cachix.org" # Foot-transparent
       ];
 
       trusted-public-keys = [
@@ -39,6 +40,7 @@ in {
         "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE="
       ];
     };
   };

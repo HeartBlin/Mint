@@ -29,6 +29,9 @@
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Get fullscreen transparency on foot
+    nyxexprs.url = "github:NotAShelf/nyxexprs";
   };
 
   outputs = inputs @ {flake-parts, ...}:

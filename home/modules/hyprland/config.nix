@@ -15,6 +15,7 @@
   cfg = config.Ark.hyprland;
 in {
   imports = [
+    ./frag/theme.nix
     ./frag/wallpaper.nix
   ];
 

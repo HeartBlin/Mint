@@ -10,6 +10,23 @@ in {
     discord.enable = true;
     hyprland = {
       enable = true;
+      theme = {
+        cursor = {
+          package = pkgs.bibata-cursors;
+          name = "Bibata-Modern-Ice";
+          size = 16;
+        };
+
+        icons = {
+          name = "Adwaita";
+          package = pkgs.adwaita-icon-theme;
+        };
+
+        gtk = {
+          name = "Adwaita-dark";
+          package = pkgs.gnome-themes-extra;
+        };
+      };
       wallpapers = {
         "eDP-1" = {
           monitor = "eDP-1";

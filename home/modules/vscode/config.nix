@@ -19,6 +19,7 @@ in {
       # Extensions
       mutableExtensionsDir = true;
       extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
         kamadorueda.alejandra
         pkief.material-icon-theme
         esbenp.prettier-vscode
@@ -64,6 +65,8 @@ in {
         };
 
         # Nix
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nixd";
         "alejandra.program" = "alejandra";
         "[nix]" = {
           "editor.defaultFormatter" = "kamadorueda.alejandra";

@@ -11,6 +11,8 @@
   roles = ["iso" "laptop" "workstation" "server"];
 in {
   imports = concatLists [
+    (importModule path "audio")
+    (importModule path "bluetooth")
     (importModule path "nvidia")
     (importModule path "greeter")
     (importModule path "nix")

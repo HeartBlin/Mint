@@ -9,6 +9,10 @@
   cfg = config.Ark.hyprland;
 in {
   config = mkIf cfg.enable {
+    wayland.windowManager.hyprland.settings.exec-once = [
+      "hyprctl setcursor ${theme.cursor.name} ${toString theme.cursor.size}"
+    ];
+
     home.pointerCursor = {
       inherit (theme.cursor) package name size;
 

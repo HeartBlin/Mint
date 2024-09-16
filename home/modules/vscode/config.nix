@@ -81,12 +81,14 @@ in {
 
         # Window
         "window.autoDetectColorScheme" = true;
+        "window.experimentalControlOverlay" = false;
         "window.dialogStyle" = "custom";
         "window.menuBarVisibility" = "toggle";
         "window.titleBarStyle" = "custom";
 
         # Workbench
         "workbench.iconTheme" = "material-icon-theme";
+        "workbench.layoutControl.enabled" = false;
         "workbench.preferredDarkColorTheme" = "Default Dark+";
         "workbench.preferredLightColorTheme" = "Default Dark+";
         "workbench.sideBar.location" = "left";

@@ -6,7 +6,11 @@
   wallpaper = "${self.packages.${pkgs.system}.arkWalls}/share/wallpapers";
 in {
   Ark = {
-    chromium.enable = true;
+    browsers = {
+      chromium.enable = true;
+      zen.enable = true;
+    };
+
     discord.enable = true;
     hyprland = {
       enable = true;

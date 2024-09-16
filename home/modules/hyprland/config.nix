@@ -8,9 +8,10 @@
 }: let
   inherit (lib) mkIf;
 
-  chromium = config.Ark.chromium.enable;
+  chromium = config.Ark.browsers.chromium.enable;
   foot = config.Ark.terminal.foot.enable;
   vscode = config.Ark.vscode.enable;
+  zen = config.Ark.browsers.zen.enable;
   nvidia = osConfig.Ark.nvidia.enable;
   cfg = config.Ark.hyprland;
 in {
@@ -114,7 +115,8 @@ in {
           # Programs
           (mkIf foot "Super, Return, exec, footclient")
           (mkIf vscode "Super, C, exec, code")
-          (mkIf chromium "Super, W, exec, chromium")
+          (mkIf zen "Super, W, exec, zen")
+          (mkIf chromium "Super Shift, W, exec, chromium")
           "Super, E, exec, nautilus"
           "Super, Space, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
 

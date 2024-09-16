@@ -32,6 +32,9 @@
 
     # Get fullscreen transparency on foot
     nyxexprs.url = "github:NotAShelf/nyxexprs";
+
+    # Zen browser
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs = inputs @ {flake-parts, ...}:

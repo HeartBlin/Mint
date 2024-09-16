@@ -7,7 +7,7 @@
 }: let
   inherit (lib) mkIf;
 
-  cfg = config.Ark.chromium;
+  cfg = config.Ark.browsers.chromium;
   hyprlandOnNvidia = osConfig.Ark.nvidia.enable && config.Ark.hyprland.enable;
 in {
   config = mkIf cfg.enable {

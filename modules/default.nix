@@ -10,7 +10,9 @@
   path = "modules";
   roles = ["iso" "laptop" "workstation" "server"];
 in {
+  # This is dumb but ehh...
   imports = concatLists [
+    (importModule path "asus")
     (importModule path "audio")
     (importModule path "bluetooth")
     (importModule path "nvidia")

@@ -15,6 +15,4 @@ _: {
     steam.enable = true;
     tpm.enable = true;
   };
-
-  boot.loader.systemd-boot.enable = true;
 }

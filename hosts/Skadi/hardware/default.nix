@@ -1,9 +1,8 @@
-{ config, inputs, lib, modulesPath, pkgs, ... }:
+{ config, lib, modulesPath, ... }:
 
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    inputs.chaotic.nixosModules.default
 
     # Files
     ./disko.nix
@@ -17,7 +16,6 @@
         [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
     };
 
-    kernelPackages = pkgs.linuxPackages_cachyos-lto;
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
 

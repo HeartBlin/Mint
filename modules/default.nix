@@ -22,6 +22,7 @@ in {
 
     # Extras
     [ ./agenix/config.nix ]
+    [ ./boot/config.nix ]
     [ ./hyprland/config.nix ]
     [ ./networking/config.nix ]
     [ ./nix/assertions.nix ]

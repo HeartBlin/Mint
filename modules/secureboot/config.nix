@@ -1,23 +1,17 @@
-{
-  config,
-  inputs,
-  lib,
-  lib',
-  pkgs,
-  ...
-}: let
+{ config, inputs, lib, lib', pkgs, ... }:
+
+let
   inherit (lib) mkForce;
   inherit (lib') mkIfElse;
 
   cfg = config.Ark.secureboot;
 in {
-  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
+  imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
 
-  config =
-    mkIfElse cfg.enable
+  config = mkIfElse cfg.enable
     # If secureboot is requested
     {
-      environment.systemPackages = with pkgs; [sbctl];
+      environment.systemPackages = with pkgs; [ sbctl ];
 
       boot = {
         loader = {

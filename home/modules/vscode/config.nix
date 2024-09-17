@@ -1,9 +1,6 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, lib, pkgs, ... }:
+
+let
   inherit (lib) mkIf;
   inherit (config.Ark.terminal) shell;
 
@@ -20,7 +17,6 @@ in {
       mutableExtensionsDir = true;
       extensions = with pkgs.vscode-extensions; [
         jnoortheen.nix-ide
-        kamadorueda.alejandra
         pkief.material-icon-theme
         esbenp.prettier-vscode
         github.vscode-github-actions
@@ -54,7 +50,7 @@ in {
         # Files
         "files.insertFinalNewline" = false;
         "files.trimTrailingWhitespace" = true;
-        "files.exclude" = {"tsconfig.json" = true;};
+        "files.exclude" = { "tsconfig.json" = true; };
 
         # Javascript/Typescript
         "[javascript]" = {
@@ -67,9 +63,9 @@ in {
         # Nix
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
-        "alejandra.program" = "alejandra";
+        "nix.serverSettings"."nixd"."formatting"."command" = [ "nixfmt" ];
         "[nix]" = {
-          "editor.defaultFormatter" = "kamadorueda.alejandra";
+          "editor.defaultFormatter" = "jnoortheen.nix-ide";
           "editor.formatOnPaste" = true;
           "editor.formatOnSave" = true;
           "editor.formatOnType" = false;
@@ -98,6 +94,6 @@ in {
       };
     };
 
-    home.packages = with pkgs; [nixd alejandra];
+    home.packages = with pkgs; [ nixd nixfmt-classic ];
   };
 }

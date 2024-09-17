@@ -1,4 +1,6 @@
-{lib, ...}: let
+{ lib, ... }:
+
+let
   inherit (lib) mkEnableOption mkOption;
   inherit (lib.types) str;
 in {

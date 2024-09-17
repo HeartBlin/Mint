@@ -1,8 +1,6 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
+{ lib, pkgs, ... }:
+
+let
   inherit (lib) mkEnableOption mkOption;
   inherit (lib.types) attrsOf int package str submodule;
 

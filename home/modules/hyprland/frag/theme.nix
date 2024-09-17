@@ -1,8 +1,6 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+
+let
   inherit (lib) mkIf;
   inherit (config.Ark.hyprland) theme;
 
@@ -23,13 +21,9 @@ in {
     gtk = {
       enable = true;
 
-      iconTheme = {
-        inherit (theme.icons) name package;
-      };
+      iconTheme = { inherit (theme.icons) name package; };
 
-      theme = {
-        inherit (theme.gtk) name package;
-      };
+      theme = { inherit (theme.gtk) name package; };
     };
   };
 }

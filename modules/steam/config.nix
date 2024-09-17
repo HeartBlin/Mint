@@ -1,9 +1,6 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, lib, pkgs, ... }:
+
+let
   inherit (lib) mkIf;
 
   cfg = config.Ark.steam;
@@ -12,7 +9,7 @@ in {
     programs = {
       steam = {
         enable = true;
-        extraCompatPackages = with pkgs; [proton-ge-bin];
+        extraCompatPackages = with pkgs; [ proton-ge-bin ];
       };
       gamemode.enable = true;
     };

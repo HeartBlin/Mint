@@ -1,14 +1,14 @@
 {
-  perSystem = {pkgs, ...}: {
+  perSystem = { pkgs, ... }: {
     checks.linterChecks = pkgs.stdenvNoCC.mkDerivation {
       name = "Linter Checks";
       src = ./.;
       doCheck = true;
-      nativeBuildInputs = with pkgs; [statix alejandra];
+      nativeBuildInputs = with pkgs; [ statix nixfmt-classic ];
 
       checkPhase = ''
         statix check
-        alejandra -c *
+        nixfmt -c *
       '';
 
       # Shitty workaround

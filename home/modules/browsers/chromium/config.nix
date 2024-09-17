@@ -1,10 +1,6 @@
-{
-  config,
-  lib,
-  osConfig,
-  pkgs,
-  ...
-}: let
+{ config, lib, osConfig, pkgs, ... }:
+
+let
   inherit (lib) mkIf;
 
   cfg = config.Ark.browsers.chromium;
@@ -16,11 +12,7 @@ in {
 
       package = pkgs.ungoogled-chromium.override {
         commandLineArgs = [
-          (
-            if hyprlandOnNvidia
-            then "--disable-gpu-compositing"
-            else " "
-          )
+          (if hyprlandOnNvidia then "--disable-gpu-compositing" else " ")
           "--force-punycode-hostnames"
           "--hide-crashed-bubble"
           "--popups-to-tabs"

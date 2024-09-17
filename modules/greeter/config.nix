@@ -1,9 +1,6 @@
-{
-  config,
-  hostname,
-  lib,
-  ...
-}: let
+{ config, hostname, lib, ... }:
+
+let
   inherit (lib) mkIf;
 
   cfg = config.Ark.gdm;

@@ -1,9 +1,6 @@
-{
-  pkgs,
-  self,
-  ...
-}: let
-  wallpaper = "${self.packages.${pkgs.system}.arkWalls}/share/wallpapers";
+{ pkgs, self, ... }:
+
+let wallpaper = "${self.packages.${pkgs.system}.arkWalls}/share/wallpapers";
 in {
   Ark = {
     browsers = {

@@ -1,14 +1,12 @@
-{
-  lib,
-  lib',
-  ...
-}: let
+{ lib, lib', ... }:
+
+let
   inherit (lib) concatLists mkOption;
   inherit (lib.types) enum;
   inherit (lib') importModule;
 
   path = "modules";
-  roles = ["iso" "laptop" "workstation" "server"];
+  roles = [ "iso" "laptop" "workstation" "server" ];
 in {
   # This is dumb but ehh...
   imports = concatLists [
@@ -23,10 +21,10 @@ in {
     (importModule path "tpm")
 
     # Extras
-    [./agenix/config.nix]
-    [./hyprland/config.nix]
-    [./networking/config.nix]
-    [./nix/assertions.nix]
+    [ ./agenix/config.nix ]
+    [ ./hyprland/config.nix ]
+    [ ./networking/config.nix ]
+    [ ./nix/assertions.nix ]
   ];
 
   options.Ark.role = mkOption {

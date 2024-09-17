@@ -1,10 +1,6 @@
-{
-  inputs,
-  self,
-  withSystem,
-  ...
-}: let
-  lib' = import ../lib {inherit inputs lib' self withSystem;};
+{ inputs, self, withSystem, ... }:
+
+let lib' = import ../lib { inherit inputs lib' self withSystem; };
 in {
   flake.nixosConfigurations = {
     Skadi = lib'.mkSystem {

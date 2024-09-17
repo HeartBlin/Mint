@@ -1,4 +1,6 @@
-{username, ...}: {
+{ username, ... }:
+
+{
   age.secrets = {
     GitHubAuth = {
       file = ../../secrets/GitHubAuth.age;

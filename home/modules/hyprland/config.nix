@@ -1,11 +1,6 @@
-{
-  config,
-  inputs',
-  lib,
-  osConfig,
-  pkgs,
-  ...
-}: let
+{ config, inputs', lib, osConfig, pkgs, ... }:
+
+let
   inherit (lib) mkIf;
 
   chromium = config.Ark.browsers.chromium.enable;
@@ -15,10 +10,7 @@
   nvidia = osConfig.Ark.nvidia.enable;
   cfg = config.Ark.hyprland;
 in {
-  imports = [
-    ./frag/theme.nix
-    ./frag/wallpaper.nix
-  ];
+  imports = [ ./frag/theme.nix ./frag/wallpaper.nix ];
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
@@ -152,7 +144,8 @@ in {
           "Super Shift, S, movetoworkspace, special"
         ];
 
-        bindm = ["Super, mouse:272, movewindow" "Super, mouse:273, resizewindow"];
+        bindm =
+          [ "Super, mouse:272, movewindow" "Super, mouse:273, resizewindow" ];
 
         bindl = [
           # Mute

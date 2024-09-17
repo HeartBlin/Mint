@@ -1,15 +1,13 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, lib, pkgs, ... }:
+
+let
   inherit (lib) attrValues concatMap concatStringsSep mkIf pipe;
   inherit (pkgs) writeShellApplication;
 
-  monitors = concatMap (wallpaper: [
-    "swww img ${wallpaper.path} -o ${wallpaper.monitor} -t wipe --transition-angle 30 --transition-step 255 --transition-fps 144 --transition-duration 1.2"
-  ]) (attrValues cfg.wallpapers);
+  monitors = concatMap (wallpaper:
+    [
+      "swww img ${wallpaper.path} -o ${wallpaper.monitor} -t wipe --transition-angle 30 --transition-step 255 --transition-fps 144 --transition-duration 1.2"
+    ]) (attrValues cfg.wallpapers);
 
   # TODO: Switch to using |> when the operator is supported by Alejandra
   socketCommands = pipe monitors [
@@ -23,7 +21,7 @@
   # In this case, the wallpapers get applied to new monitors (that are defined)
   MRoC = writeShellApplication {
     name = "monitor-reload-on-connected";
-    runtimeInputs = with pkgs; [socat];
+    runtimeInputs = with pkgs; [ socat ];
     text = ''
       handle() {
         case $1 in monitoradded*)
@@ -47,6 +45,6 @@ in {
       exec = monitors;
     };
 
-    home.packages = with pkgs; [swww];
+    home.packages = with pkgs; [ swww ];
   };
 }

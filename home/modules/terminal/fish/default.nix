@@ -1,10 +1,6 @@
-{
-  config,
-  lib,
-  osConfig,
-  pkgs,
-  ...
-}: let
+{ config, lib, osConfig, pkgs, ... }:
+
+let
   inherit (lib) mkIf;
   inherit (osConfig.Ark) flakeDir;
 

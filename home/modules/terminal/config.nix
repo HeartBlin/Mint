@@ -1,1 +1,1 @@
-_: {imports = [./foot ./fish];}
+_: { imports = [ ./foot ./fish ]; }

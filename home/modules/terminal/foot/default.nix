@@ -1,10 +1,6 @@
-{
-  config,
-  inputs',
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, inputs', lib, pkgs, ... }:
+
+let
   inherit (lib) mkIf;
 
   cfg = config.Ark.terminal;
@@ -59,6 +55,7 @@ in {
       };
     };
 
-    home.packages = with pkgs; [(nerdfonts.override {fonts = ["CascadiaCode"];})];
+    home.packages = with pkgs;
+      [ (nerdfonts.override { fonts = [ "CascadiaCode" ]; }) ];
   };
 }

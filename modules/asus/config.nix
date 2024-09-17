@@ -1,9 +1,6 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, lib, pkgs, ... }:
+
+let
   inherit (lib) mkIf;
 
   cfg = config.Ark.asus;
@@ -17,6 +14,6 @@ in {
       };
     };
 
-    systemd.services.supergfxd.path = [pkgs.pciutils];
+    systemd.services.supergfxd.path = [ pkgs.pciutils ];
   };
 }

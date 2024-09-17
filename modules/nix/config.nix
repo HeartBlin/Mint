@@ -1,9 +1,6 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, lib, pkgs, ... }:
+
+let
   inherit (lib) mkIf;
   inherit (config.Ark) flakeDir role;
 in {
@@ -16,7 +13,7 @@ in {
       sandbox-fallback = false;
 
       # Allow flakes
-      experimental-features = ["flakes" "nix-command"];
+      experimental-features = [ "flakes" "nix-command" ];
 
       warn-dirty = false; # Shut up
 
@@ -48,11 +45,11 @@ in {
   nixpkgs.config = {
     allowBroken = false;
     allowUnfree = true;
-    permittedInsecurePackages = [];
+    permittedInsecurePackages = [ ];
   };
 
-  environment.systemPackages = [pkgs.git];
-  environment.defaultPackages = [];
+  environment.systemPackages = [ pkgs.git ];
+  environment.defaultPackages = [ ];
 
   programs.nh = mkIf (role != "iso") {
     enable = true;

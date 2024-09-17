@@ -1,8 +1,6 @@
-{
-  lib,
-  lib',
-  ...
-}: let
+{ lib, lib', ... }:
+
+let
   inherit (lib) concatLists;
   inherit (lib') importModule;
   path = "home/modules";
@@ -16,6 +14,6 @@ in {
     (importModule path "vscode")
 
     # Extra
-    [./git/config.nix]
+    [ ./git/config.nix ]
   ];
 }

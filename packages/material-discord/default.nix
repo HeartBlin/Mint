@@ -1,8 +1,6 @@
-{
-  stdenvNoCC,
-  fetchFromGitHub,
-}:
-stdenvNoCC.mkDerivation rec {
+{ stdenvNoCC, fetchFromGitHub, }:
+
+stdenvNoCC.mkDerivation {
   name = "Material-Discord";
   version = 1.0;
 
@@ -13,7 +11,7 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "sha256-eepZqOlssj833VDqxzUZ4W+Xz2YZxTC2l9LKVOjBP1s=";
   };
 
-  phases = ["installPhase"];
+  phases = [ "installPhase" ];
 
   installPhase = ''
     runHook preInstall

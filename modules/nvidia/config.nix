@@ -1,9 +1,6 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, lib, pkgs, ... }:
+
+let
   inherit (lib) fakeSha256 mkDefault mkIf;
 
   bleedingEdge = config.boot.kernelPackages.nvidiaPackages.mkDriver {
@@ -26,10 +23,10 @@ in {
 
     # Set it as the active driver
     services.xserver.enable = true;
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = [ "nvidia" ];
 
     # Set the kernel up
-    boot.blacklistedKernelModules = ["nouveau"];
+    boot.blacklistedKernelModules = [ "nouveau" ];
     boot.kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
       "nvidia_drm.modeset=1"
@@ -76,8 +73,8 @@ in {
 
     # Feed it vaapi
     hardware.graphics = {
-      extraPackages = with pkgs; [nvidia-vaapi-driver];
-      extraPackages32 = with pkgs.pkgsi686Linux; [nvidia-vaapi-driver];
+      extraPackages = with pkgs; [ nvidia-vaapi-driver ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [ nvidia-vaapi-driver ];
     };
   };
 }

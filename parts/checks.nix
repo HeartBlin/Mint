@@ -4,10 +4,11 @@
       name = "Linter Checks";
       src = ./.;
       doCheck = true;
-      nativeBuildInputs = with pkgs; [ statix nixfmt-classic ];
+      nativeBuildInputs = with pkgs; [ deadnix statix nixfmt-classic ];
 
       checkPhase = ''
         statix check
+        deadnix -f
         nixfmt -c *
       '';
 

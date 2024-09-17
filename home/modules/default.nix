@@ -1,11 +1,11 @@
 { lib, lib', ... }:
 
 let
-  inherit (lib) concatLists;
+  inherit (lib) flatten;
   inherit (lib') importModule;
   path = "home/modules";
 in {
-  imports = concatLists [
+  imports = flatten [
     (importModule path "browsers/chromium")
     (importModule path "browsers/zen")
     (importModule path "discord")

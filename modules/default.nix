@@ -1,7 +1,7 @@
 { lib, lib', ... }:
 
 let
-  inherit (lib) concatLists mkOption;
+  inherit (lib) flatten mkOption;
   inherit (lib.types) enum;
   inherit (lib') importModule;
 
@@ -9,7 +9,7 @@ let
   roles = [ "iso" "laptop" "workstation" "server" ];
 in {
   # This is dumb but ehh...
-  imports = concatLists [
+  imports = flatten [
     (importModule path "asus")
     (importModule path "audio")
     (importModule path "bluetooth")

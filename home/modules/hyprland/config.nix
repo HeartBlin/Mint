@@ -12,9 +12,9 @@ let
   };
 
   changeColor = pkgs.writeShellScript "changeColor" ''
-    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bBlue} -z 1
-    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bViolet} -z 2
-    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bRed} -z 3
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bBlue} -z 1 &
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bViolet} -z 2 &
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bRed} -z 3 &
     ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bOrange} -z 4
   '';
 

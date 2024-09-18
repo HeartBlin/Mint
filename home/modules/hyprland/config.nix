@@ -15,7 +15,13 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
+      xwayland.enable = true;
       package = inputs'.hyprland.packages.default;
+
+      systemd = {
+        enable = true;
+        variables = [ "--all" ];
+      };
 
       settings = {
         monitor = [

@@ -1,7 +1,14 @@
-{ config, inputs', lib, osConfig, pkgs, ... }:
+{ config, inputs', lib, lib', osConfig, pkgs, ... }:
 
 let
   inherit (lib) mkIf;
+  c = let inherit (lib'.colors) pallete toHypr;
+  in {
+    blue = (toHypr pallete.bBlue);
+    violet = (toHypr pallete.bViolet);
+    red = (toHypr pallete.bRed);
+    orange = (toHypr pallete.bOrange);
+  };
 
   chromium = config.Ark.browsers.chromium.enable;
   foot = config.Ark.terminal.foot.enable;
@@ -56,7 +63,7 @@ in {
           border_size = 3;
 
           "col.active_border" =
-            "rgb(089AFF) rgb(C26EFC) rgb(FA5B59) rgb(FEA509) 45deg";
+            "${c.blue} ${c.violet} ${c.red} ${c.orange} 45deg";
           "col.inactive_border" = "rgb(323232)";
 
           layout = "dwindle";

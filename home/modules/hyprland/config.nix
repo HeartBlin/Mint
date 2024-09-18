@@ -2,19 +2,30 @@
 
 let
   inherit (lib) mkIf;
-  c = let inherit (lib'.colors) pallete toHypr;
-  in {
+  inherit (lib'.colors) pallete toHypr;
+
+  c = {
     blue = (toHypr pallete.bBlue);
     violet = (toHypr pallete.bViolet);
     red = (toHypr pallete.bRed);
     orange = (toHypr pallete.bOrange);
   };
 
+  changeColor = pkgs.writeShellScript "changeColor" ''
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bBlue} -z 1
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bViolet} -z 2
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bRed} -z 3
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bOrange} -z 4
+  '';
+
   chromium = config.Ark.browsers.chromium.enable;
   foot = config.Ark.terminal.foot.enable;
   vscode = config.Ark.vscode.enable;
   zen = config.Ark.browsers.zen.enable;
+
+  asus = osConfig.Ark.asus.enable;
   nvidia = osConfig.Ark.nvidia.enable;
+
   cfg = config.Ark.hyprland;
 in {
   imports = [ ./frag/theme.nix ./frag/wallpaper.nix ];
@@ -47,6 +58,9 @@ in {
         exec-once = [
           # Polkit
           "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+
+          # ASUS LED colors
+          (mkIf asus "${changeColor}")
         ];
 
         cursor.allow_dumb_copy = nvidia;

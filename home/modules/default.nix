@@ -10,6 +10,7 @@ in {
     (importModule path "browsers/zen")
     (importModule path "discord")
     (importModule path "hyprland")
+    (importModule path "obsidian")
     (importModule path "terminal")
     (importModule path "vscode")
 

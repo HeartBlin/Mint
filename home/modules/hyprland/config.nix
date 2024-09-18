@@ -28,7 +28,7 @@ let
 
   cfg = config.Ark.hyprland;
 in {
-  imports = [ ./frag/theme.nix ./frag/wallpaper.nix ];
+  imports = [ ./ags ./frag/theme.nix ./frag/wallpaper.nix ];
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {

@@ -18,6 +18,9 @@
     # Secrets management
     agenix.url = "github:ryantm/agenix";
 
+    # Widgets
+    ags.url = "github:Aylur/ags";
+
     # CachyOS kernel provider
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 

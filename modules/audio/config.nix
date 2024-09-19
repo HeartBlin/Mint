@@ -6,6 +6,7 @@ let
   cfg = config.Ark.audio;
 in {
   config = mkIf cfg.enable {
+    hardware.pulseaudio.support32Bit = true;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;

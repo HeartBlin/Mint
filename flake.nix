@@ -25,7 +25,12 @@
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     # Wayland compositor
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland = {
+      type = "git";
+      submodules = true;
+      url = "https://github.com/hyprwm/Hyprland";
+      ref = "refs/tags/v0.43.0";
+    };
 
     # SecureBoot support
     lanzaboote = {

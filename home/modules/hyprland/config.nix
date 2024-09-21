@@ -5,10 +5,10 @@ let
   inherit (lib'.colors) pallete toHypr;
 
   c = {
-    blue = (toHypr pallete.bBlue);
-    violet = (toHypr pallete.bViolet);
-    red = (toHypr pallete.bRed);
-    orange = (toHypr pallete.bOrange);
+    blue = toHypr pallete.bBlue;
+    violet = toHypr pallete.bViolet;
+    red = toHypr pallete.bRed;
+    orange = toHypr pallete.bOrange;
   };
 
   changeColor = pkgs.writeShellScript "changeColor" ''

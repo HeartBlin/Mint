@@ -9,6 +9,7 @@
 
     kernelPackages = {
       "Skadi" = pkgs.linuxPackages_cachyos-lto;
+      "Specter" = pkgs.linuxPackages_6_6;
     }."${hostname}";
 
     consoleLogLevel = 3;

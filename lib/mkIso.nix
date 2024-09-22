@@ -1,9 +1,11 @@
 { inputs, lib', self, withSystem }:
 
-let inherit (inputs.nixpkgs.lib) nixosSystem;
+let
+  inherit (inputs) nixpkgs;
+  inherit (nixpkgs.lib) nixosSystem;
 in {
-  mkSystem = { hostname ? "nixos", username ? "nixos", system ? "x86_64-linux"
-    , stateVersion ? "24.11" }:
+  mkIso = { hostname ? "nixos", username ? "nixos", system ? "x86_64-linux"
+    , stateVersion ? "24.11", initialPassword ? "1234" }:
     withSystem system ({ inputs', ... }:
       let args = { inherit hostname inputs inputs' lib' self username; };
       in nixosSystem {
@@ -11,22 +13,22 @@ in {
         modules = [
           # Module imports
           inputs.home-manager.nixosModules.home-manager
-          inputs.agenix.nixosModules.default
+          inputs.agenix.nixosModules.default # Not that it gets any secrets tho ;)
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
 
           # Paths
           "${self}/hosts/${hostname}/config"
-          "${self}/hosts/${hostname}/hardware"
           "${self}/modules"
 
           # Options
           { nixpkgs.hostPlatform.system = system; }
           { system.stateVersion = stateVersion; }
           { networking.hostName = hostname; }
-          { environment.systemPackages = [ inputs'.agenix.packages.default ]; }
-          { age.identityPaths = [ "/home/heartblin/.ssh/HeartBlin" ]; }
+          { isoImage.squashfsCompression = "gzip -Xcompression-level 9"; }
 
           { # Create user
-            users.users."${username}" = {
+            users.users.${username} = {
+              inherit initialPassword;
               isNormalUser = true;
               extraGroups = [ "wheel" "video" "networkmanager" ];
             };

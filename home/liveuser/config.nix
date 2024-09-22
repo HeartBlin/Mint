@@ -4,11 +4,11 @@ let wallpaper = "${self.packages.${pkgs.system}.arkWalls}/share/wallpapers";
 in {
   Ark = {
     browsers = {
-      chromium.enable = true;
+      chromium.enable = false;
       zen.enable = true;
     };
 
-    discord.enable = true;
+    discord.enable = false;
     hyprland = {
       enable = true;
       theme = {
@@ -41,7 +41,7 @@ in {
       };
     };
 
-    obsidian.enable = true;
+    obsidian.enable = false;
     terminal = {
       foot.enable = true;
       shell = "fish";

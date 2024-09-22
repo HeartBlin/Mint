@@ -1,7 +1,10 @@
-{ username, ... }:
+{ config, lib, username, ... }:
 
-{
-  age.secrets = {
+let
+  inherit (lib) mkIf;
+  inherit (config.Ark) role;
+in {
+  config.age.secrets = mkIf (role != "iso") {
     GitHubAuth = {
       file = ../../secrets/GitHubAuth.age;
       path = "/home/${username}/.ssh/GitHubAuth";

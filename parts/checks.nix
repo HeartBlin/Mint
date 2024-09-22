@@ -7,13 +7,10 @@
       nativeBuildInputs = with pkgs; [ deadnix statix nixfmt-classic ];
 
       checkPhase = ''
-        statix check
-        deadnix -f
-        nixfmt -c *
+        statix check >> $out
+        deadnix -f >> $out
+        nixfmt -c * >> $out
       '';
-
-      # Shitty workaround
-      installPhase = "mkdir $out";
     };
   };
 }

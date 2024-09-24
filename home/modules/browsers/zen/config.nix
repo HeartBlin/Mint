@@ -2,7 +2,7 @@
 
 let
   inherit (lib) mkIf;
-  version = "1.0.1-a.2";
+  version = "1.0.1-a.4";
 
   cfg = config.Ark.browsers.zen;
 in {
@@ -13,7 +13,7 @@ in {
         src = builtins.fetchTarball {
           url =
             "https://github.com/zen-browser/desktop/releases/download/${version}/zen.linux-specific.tar.bz2";
-          sha256 = "0an4i57736scjwlmiqj9w7fh950brkrlg82iyv86m51ycxsi58sk";
+          sha256 = "0jjfr1201gfw0cy8q1jbr504994z33sbw8ip86c6xbww8qm60bqh";
         };
       })
     ];

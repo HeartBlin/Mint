@@ -1,14 +1,21 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (lib) mkIf;
+  inherit (lib) mapAttrsToList mkIf;
   inherit (config.Ark) flakeDir role;
 in {
   nix = {
     package = pkgs.lix;
 
+    # Channels
+    nixPath = mapAttrsToList (x: _: "${x}=flake:${x}") config.nix.registry;
+
     settings = {
       auto-optimise-store = true;
+      builders-use-substitutes = true;
+
+      # Registry
+      flake-registry = "/etc/nix/registry.json";
 
       # Run sandboxed builds
       sandbox = true;
@@ -21,7 +28,7 @@ in {
 
       # Caches
       substituters = [
-        "https://cache.nixos.org" # Funny
+        "https://cache.nixos.org?priority=10" # Funny
         "https://cache.ngi0.nixos.org/" # CA nix
         "https://nix-community.cachix.org" # Community
         "https://nixpkgs-unfree.cachix.org" # Unfree 1

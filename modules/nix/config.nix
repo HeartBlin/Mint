@@ -13,6 +13,7 @@ in {
     settings = {
       auto-optimise-store = true;
       builders-use-substitutes = true;
+      trusted-users = [ "root" "@wheel" ];
 
       # Registry
       flake-registry = "/etc/nix/registry.json";

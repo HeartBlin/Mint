@@ -5,6 +5,8 @@ let
   inherit (config.Ark) flakeDir role;
 in {
   nix = {
+    package = pkgs.lix;
+
     settings = {
       auto-optimise-store = true;
 
@@ -48,8 +50,10 @@ in {
     permittedInsecurePackages = [ ];
   };
 
-  environment.systemPackages = [ pkgs.git ];
-  environment.defaultPackages = [ ];
+  environment = {
+    systemPackages = [ pkgs.git ];
+    defaultPackages = [ ];
+  };
 
   programs.nh = mkIf (role != "iso") {
     enable = true;

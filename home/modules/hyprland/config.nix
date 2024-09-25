@@ -72,14 +72,15 @@ in {
         };
 
         general = {
-          gaps_in = 10;
-          gaps_out = 10;
-          border_size = 3;
+          gaps_in = 5;
+          gaps_out = 20;
+          border_size = 2;
 
           "col.active_border" =
             "${c.blue} ${c.violet} ${c.red} ${c.orange} 45deg";
           "col.inactive_border" = "rgb(323232)";
 
+          resize_on_border = true;
           layout = "dwindle";
         };
 
@@ -88,9 +89,15 @@ in {
 
           blur = {
             enabled = true;
-            size = 4;
-            passes = 2;
-            vibrancy = 0.1696;
+            size = 5;
+            passes = 4;
+
+            vibrancy = 0.2;
+            vibrancy_darkness = 0.5;
+
+            brightness = 1.0;
+            contrast = 1.0;
+            noise = 2.0e-2;
           };
         };
 
@@ -200,6 +207,18 @@ in {
           ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
           ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl position 10-"
           ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl position 10+"
+        ];
+
+        windowrulev2 = [
+          # PiP window
+          "float, title:^(Picture-in-Picture)$"
+          "pin, title:^(Picture-in-Picture)$"
+
+          # Eye candy
+          "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
+
+          # Xwayland
+          "rounding 0, xwayland:1"
         ];
       };
     };

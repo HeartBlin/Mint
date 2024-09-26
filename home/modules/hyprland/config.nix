@@ -41,6 +41,8 @@ in {
         variables = [ "--all" ];
       };
 
+      plugins = [ inputs'.hyprscroller.packages.hyprscroller ];
+
       settings = {
         monitor = [
           "eDP-1, 1920x1080@144, 0x0, 1"
@@ -81,7 +83,7 @@ in {
           "col.inactive_border" = "rgb(323232)";
 
           resize_on_border = true;
-          layout = "dwindle";
+          layout = "scroller";
         };
 
         decoration = {

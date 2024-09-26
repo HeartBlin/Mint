@@ -72,6 +72,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprscroller = {
+      type = "git";
+      url = "https://github.com/dawsers/hyprscroller";
+      submodules = false;
+
+      inputs.hyprland.follows = "hyprland";
+    };
+
     lanzaboote = {
       type = "git";
       url = "https://github.com/nix-community/lanzaboote";

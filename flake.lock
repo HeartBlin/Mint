@@ -444,6 +444,28 @@
         "type": "github"
       }
     },
+    "hyprscroller": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1726337920,
+        "narHash": "sha256-x7JB4op1By5ZZcVjPV1w4BWWIIEWS+DFUBDRE5cxt2k=",
+        "ref": "refs/heads/master",
+        "rev": "57c0ee55af74cbfa5e0467f552a88c11994f7f0d",
+        "revCount": 98,
+        "submodules": false,
+        "type": "git",
+        "url": "https://github.com/dawsers/hyprscroller"
+      },
+      "original": {
+        "submodules": false,
+        "type": "git",
+        "url": "https://github.com/dawsers/hyprscroller"
+      }
+    },
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
@@ -667,6 +689,7 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hyprscroller": "hyprscroller",
         "lanzaboote": "lanzaboote",
         "nixpkgs": "nixpkgs",
         "nyxexprs": "nyxexprs",

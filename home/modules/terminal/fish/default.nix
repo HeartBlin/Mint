@@ -32,7 +32,7 @@ in {
         ls = "${pkgs.eza}/bin/eza -l";
         rebuild = "nh os switch";
         boot = "nh os boot";
-        update = "nix flake update ${flakeDir} && nh os switch";
+        update = "nix flake update --flake ${flakeDir} && nh os switch";
         clean = "nh clean all && nh os boot";
       };
     };

@@ -9,14 +9,30 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-/2HeSjIQiJl/ttl4o94lFNRsYaMXIEEqGsqFezLWO24=";
   };
 
+  theTower = fetchurl {
+    url =
+      "https://static.wikia.nocookie.net/nier/images/0/0f/WorldofNier_7.jpg/revision/latest?cb=20240204093404";
+    hash = "sha256-ncdgGvLljI+2zQN68ahrhNzOCT68AWRbHL/AEdCRfJ0=";
+  };
+
   phases = [ "installPhase" ];
 
-  installPhase = ''
+  installPhase = let
+    magick = "${imagemagick}/bin/magick";
+    convert = x: y:
+      "${magick} $out/share/wallpapers/${x} $out/share/wallpapers/${y}";
+    crop = x: y: z:
+      "${magick} $out/share/wallpapers/${x} -crop ${y} $out/share/wallpapers/${z}";
+  in ''
     runHook preInstall
-
     mkdir -p $out/share/wallpapers
-    cp $m3 $out/share/wallpapers/Pro\ Black.heic
-    ${imagemagick}/bin/magick $out/share/wallpapers/Pro\ Black.heic $out/share/wallpapers/ProBlack.png
+
+    cp $m3 $out/share/wallpapers/ProBlack.heic
+    ${convert "ProBlack.heic" "ProBlack.png"}
+
+    cp $theTower $out/share/wallpapers/TheTower.webp
+    ${convert "TheTower.webp" "TheTower.png"}
+    ${crop "TheTower.png" "4000x1950+0+0" "TheTowerCropped.png"}
 
     runHook postInstall
   '';

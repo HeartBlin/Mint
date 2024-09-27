@@ -41,7 +41,7 @@ in {
         variables = [ "--all" ];
       };
 
-      plugins = [ inputs'.hyprscroller.packages.hyprscroller ];
+      # plugins = [ inputs'.hyprscroller.packages.hyprscroller ];
 
       settings = {
         monitor = [
@@ -83,7 +83,7 @@ in {
           "col.inactive_border" = "rgb(323232)";
 
           resize_on_border = true;
-          layout = "scroller";
+          layout = "dwindle";
         };
 
         decoration = {

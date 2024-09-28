@@ -1,18 +1,27 @@
-{ config, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
 let
   inherit (lib) mapAttrsToList mkIf;
   inherit (config.Ark) flakeDir role;
 in {
-  nix = {
-    package = pkgs.lix;
+  imports = [ inputs.lix.nixosModules.default ];
 
+  nix = {
     # Channels
     nixPath = mapAttrsToList (x: _: "${x}=flake:${x}") config.nix.registry;
 
+    # Chill tf out
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
+    daemonIOSchedPriority = 5;
+
     settings = {
+      pure-eval = true;
+
       auto-optimise-store = true;
       builders-use-substitutes = true;
+
+      allowed-users = [ "root" "@wheel" ];
       trusted-users = [ "root" "@wheel" ];
 
       # Registry
@@ -23,7 +32,7 @@ in {
       sandbox-fallback = false;
 
       # Allow flakes
-      experimental-features = [ "flakes" "nix-command" ];
+      experimental-features = [ "flakes" "nix-command" "auto-allocate-uids" ];
 
       warn-dirty = false; # Shut up
 
@@ -52,10 +61,12 @@ in {
     };
   };
 
-  nixpkgs.config = {
-    allowBroken = false;
-    allowUnfree = true;
-    permittedInsecurePackages = [ ];
+  nixpkgs = {
+    config = {
+      allowBroken = false;
+      allowUnfree = true;
+      permittedInsecurePackages = [ ];
+    };
   };
 
   environment = {
@@ -75,5 +86,11 @@ in {
     info.enable = false;
     nixos.enable = false;
     man.enable = false;
+  };
+
+  # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/nixos/modules/system/activation/switchable-system.nix
+  system.switch = {
+    enable = false;
+    enableNg = true;
   };
 }

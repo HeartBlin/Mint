@@ -92,6 +92,14 @@
       };
     };
 
+    lix = {
+      type = "tarball";
+      url =
+        "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs = {
       type = "git";
       url = "https://github.com/NixOS/nixpkgs";

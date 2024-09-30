@@ -117,6 +117,17 @@
       };
     };
 
+    pre-commit-hooks = {
+      type = "git";
+      url = "https://github.com/cachix/git-hooks.nix";
+      submodules = false;
+
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-stable.url = "nixpkgs";
+      };
+    };
+
     zen-browser = {
       type = "git";
       url = "https://github.com/MarceColl/zen-browser-flake";

@@ -1,16 +1,38 @@
-{
-  perSystem = { pkgs, ... }: {
-    checks.linterChecks = pkgs.stdenvNoCC.mkDerivation {
-      name = "Linter Checks";
-      src = ./.;
-      doCheck = true;
-      nativeBuildInputs = with pkgs; [ deadnix statix nixfmt-classic ];
+{ inputs, ... }:
 
-      checkPhase = ''
-        statix check >> $out
-        deadnix -f >> $out
-        nixfmt -c * >> $out
-      '';
+{
+  imports = [ inputs.pre-commit-hooks.flakeModule ];
+
+  perSystem.pre-commit = {
+    settings = {
+      excludes = [ "flake.lock" ];
+      hooks = {
+        deadnix = {
+          enable = true;
+          verbose = true;
+          fail_fast = true;
+        };
+
+        nixfmt-classic = {
+          enable = true;
+          verbose = true;
+          fail_fast = true;
+        };
+
+        prettier = {
+          enable = true;
+          verbose = true;
+          fail_fast = true;
+          excludes = [ ".nix" ".lock" ];
+        };
+
+        statix = {
+          enable = true;
+          verbose = true;
+          fail_fast = true;
+        };
+
+      };
     };
   };
 }

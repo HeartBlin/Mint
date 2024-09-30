@@ -31,6 +31,9 @@ in {
       sandbox = true;
       sandbox-fallback = false;
 
+      # Don't 100% the CPU
+      cores = 12;
+
       # Allow flakes
       experimental-features = [ "flakes" "nix-command" "auto-allocate-uids" ];
 

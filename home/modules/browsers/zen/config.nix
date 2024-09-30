@@ -13,7 +13,7 @@ in {
         src = builtins.fetchTarball {
           url =
             "https://github.com/zen-browser/desktop/releases/download/${version}/zen.linux-specific.tar.bz2";
-          sha256 = "1dilh42n8rl9mhnzkwwqg09vk5jg1n3840cx177nj8880m5gihdl";
+          sha256 = "0jkzdrsd1qdw3pwdafnl5xb061vryxzgwmvp1a6ghdwgl2dm2fcz";
         };
       })
     ];

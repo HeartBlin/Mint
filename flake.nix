@@ -117,6 +117,12 @@
       };
     };
 
+    pkgs-by-name = {
+      type = "git";
+      url = "https://github.com/drupol/pkgs-by-name-for-flake-parts";
+      submodules = false;
+    };
+
     pre-commit-hooks = {
       type = "git";
       url = "https://github.com/cachix/git-hooks.nix";

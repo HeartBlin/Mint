@@ -797,6 +797,23 @@
         "url": "https://github.com/NotAShelf/nyxexprs"
       }
     },
+    "pkgs-by-name": {
+      "locked": {
+        "lastModified": 1727519927,
+        "narHash": "sha256-3SNX6BuaisoX9PKYI+fh3geZ3jBgKKkAtHcWuHRU0+o=",
+        "ref": "refs/heads/main",
+        "rev": "91debb07d81ff25b8e3b48914b6abd6f11dc26e2",
+        "revCount": 14,
+        "submodules": false,
+        "type": "git",
+        "url": "https://github.com/drupol/pkgs-by-name-for-flake-parts"
+      },
+      "original": {
+        "submodules": false,
+        "type": "git",
+        "url": "https://github.com/drupol/pkgs-by-name-for-flake-parts"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_3",
@@ -863,6 +880,7 @@
         "lix": "lix",
         "nixpkgs": "nixpkgs",
         "nyxexprs": "nyxexprs",
+        "pkgs-by-name": "pkgs-by-name",
         "pre-commit-hooks": "pre-commit-hooks",
         "zen-browser": "zen-browser"
       }

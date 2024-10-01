@@ -96,11 +96,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727620986,
-        "narHash": "sha256-4RlJt1MJmZcuP3ROlrb2YvG8WfH0BM/nGqDgNT/DAwE=",
+        "lastModified": 1727734424,
+        "narHash": "sha256-COHPdJb8goIemave9L8kBKkQKEPHuilXZqR3nIBcQsM=",
         "ref": "nyxpkgs-unstable",
-        "rev": "0eee1b2134e9aa3427081715ada883f3523a9608",
-        "revCount": 1428,
+        "rev": "fed2d39a7c4614311e25a4281d056a7a2d36a6c8",
+        "revCount": 1433,
         "submodules": false,
         "type": "git",
         "url": "https://github.com/chaotic-cx/nyx"
@@ -674,11 +674,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726631249,
-        "narHash": "sha256-b2rMO8+jKjY55d8uynX7FjV4NIPu/WzPux0kWOAzwoo=",
-        "rev": "b0e6f359500d66670cc16f521e4f62d6a0a4864e",
+        "lastModified": 1727752861,
+        "narHash": "sha256-jowmo2aEzrEpPSM96IWtajuogdJm7DjAWxFTEb7Ct0s=",
+        "rev": "fd186f535a4ac7ae35d98c1dd5d79f0a81b7976d",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/b0e6f359500d66670cc16f521e4f62d6a0a4864e.tar.gz?rev=b0e6f359500d66670cc16f521e4f62d6a0a4864e"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/fd186f535a4ac7ae35d98c1dd5d79f0a81b7976d.tar.gz?rev=fd186f535a4ac7ae35d98c1dd5d79f0a81b7976d"
       },
       "original": {
         "type": "tarball",
@@ -688,11 +688,11 @@
     "lix_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1726590994,
-        "narHash": "sha256-CrvIEzBzvvfE7jGIXBv6hSYDxv4eYeHWAwVho5WrF48=",
-        "rev": "8ab5743904a06c78153281bf61b3aa8aa451a489",
+        "lastModified": 1727712632,
+        "narHash": "sha256-7kaZRZCWG8PmxwIDTVKjJo3VtAGDun7mqfAMlucQbdQ=",
+        "rev": "a16ceb9411c57993d811c6bebb517742fe3d34e3",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/8ab5743904a06c78153281bf61b3aa8aa451a489.tar.gz?rev=8ab5743904a06c78153281bf61b3aa8aa451a489"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/a16ceb9411c57993d811c6bebb517742fe3d34e3.tar.gz?rev=a16ceb9411c57993d811c6bebb517742fe3d34e3"
       },
       "original": {
         "type": "tarball",
@@ -782,11 +782,11 @@
         "systems": "systems_6"
       },
       "locked": {
-        "lastModified": 1727660740,
-        "narHash": "sha256-/R38ao+SksOpdZQ7xpvcVIUHcykPdlA7oqzc0xJ36Yo=",
+        "lastModified": 1727747487,
+        "narHash": "sha256-2iXxHSa8HbwS6RBzZTFoV3LnqhPDilI5hlvXtO9hTyw=",
         "ref": "refs/heads/main",
-        "rev": "7035d0c27d1bf3eeb8a0d97ad40caa8673b489d6",
-        "revCount": 366,
+        "rev": "51104fb8629b273ea783b059b753b5bbdf720588",
+        "revCount": 367,
         "submodules": false,
         "type": "git",
         "url": "https://github.com/NotAShelf/nyxexprs"
@@ -1062,11 +1062,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727287465,
-        "narHash": "sha256-XQAf5M593WmxgaXagtkci/H9DA3jSVx1TJk6F3X5VQo=",
+        "lastModified": 1727721329,
+        "narHash": "sha256-QYlWZwUSwrM7BuO+dXclZIwoPvBIuJr6GpFKv9XKFPI=",
         "ref": "refs/heads/master",
-        "rev": "96f1b5d80bf7360cb77c9b521f388324f18383a0",
-        "revCount": 26,
+        "rev": "e6ab73f405e9a2896cce5956c549a9cc359e5fcc",
+        "revCount": 27,
         "submodules": false,
         "type": "git",
         "url": "https://github.com/MarceColl/zen-browser-flake"

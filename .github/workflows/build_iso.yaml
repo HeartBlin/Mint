@@ -27,9 +27,6 @@ jobs:
       - name: Build ISO
         run: nix build .#nixosConfigurations.Specter.config.system.build.isoImage
 
-      - name: Rename ISO
-        run: cp ./result/iso/*.iso ./result/iso/Specter.iso
-
       - name: Get Rev
         run: echo "$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 

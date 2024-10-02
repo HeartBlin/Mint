@@ -1,12 +1,13 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   inherit (lib) mapAttrsToList mkIf;
   inherit (config.Ark) flakeDir role;
 in {
-  imports = [ inputs.lix.nixosModules.default ];
-
   nix = {
+    # Use Lix
+    package = pkgs.lix;
+
     # Channels
     nixPath = mapAttrsToList (x: _: "${x}=flake:${x}") config.nix.registry;
 

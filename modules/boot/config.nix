@@ -8,7 +8,7 @@
     tmp.cleanOnBoot = true;
 
     kernelPackages = {
-      "Skadi" = pkgs.linuxPackages_cachyos-lto;
+      "Skadi" = pkgs.linuxPackages_latest;
       "Specter" = pkgs.linuxPackages_6_6;
     }."${hostname}";
 

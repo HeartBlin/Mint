@@ -2,143 +2,123 @@
   outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [ ./parts ];
-      systems = [
-        "x86_64-linux" # Also add "aarch64-linux" when I have the hardware
-      ];
+      systems = [ "aarch64-linux" "x86_64-linux" ];
     };
 
   inputs = {
-    agenix = {
-      type = "git";
-      url = "https://github.com/ryantm/agenix";
-      submodules = false;
+    ##### Inputs meant to be followed #####
 
-      inputs = {
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-      };
+    # Not used, followed
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
     };
 
-    ags = {
-      type = "git";
-      url = "https://github.com/Aylur/ags";
-      submodules = false;
-
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    chaotic = {
-      type = "git";
-      url = "https://github.com/chaotic-cx/nyx";
-      ref = "nyxpkgs-unstable";
-      submodules = false;
-
-      inputs = {
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
-    disko = {
-      type = "git";
-      url = "https://github.com/nix-community/disko";
-      submodules = false;
-
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    # Flake framework
     flake-parts = {
-      type = "git";
-      url = "https://github.com/hercules-ci/flake-parts";
-      submodules = false;
-
+      url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
+    # Home management
     home-manager = {
-      type = "git";
-      url = "https://github.com/nix-community/home-manager";
-      submodules = false;
-
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      submodules = true;
+    # The main NixOS repo
+    nixpkgs.url = "github:NixOS/nixpkgs";
 
+    # Not used, just followed by multiple inputs
+    systems.url = "github:nix-systems/default-linux";
+
+    ########### Everything else ###########
+
+    # Secrets management
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
+
+    # GTK powered widgets
+    ags = {
+      url = "github:Aylur/ags";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
+
+    # Bleeding edge packages
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    # Disk partitioning
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprscroller = {
-      type = "git";
-      url = "https://github.com/dawsers/hyprscroller";
-      submodules = false;
+    # Wayland Compositor
+    hyprland.url = "github:hyprwm/Hyprland";
 
-      inputs.hyprland.follows = "hyprland";
+    # Wayland lock screen
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs = {
+        hyprlang.follows = "hyprland/hyprlang";
+        hyprutils.follows = "hyprland/hyprutils";
+        nixpkgs.follows = "hyprland/nixpkgs";
+        systems.follows = "hyprland/systems";
+      };
     };
 
+    # SecureBoot support
     lanzaboote = {
-      type = "git";
-      url = "https://github.com/nix-community/lanzaboote";
-      ref = "refs/tags/v0.4.1";
-      submodules = false;
-
+      url = "github:nix-community/lanzaboote/v0.4.1";
       inputs = {
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
+        pre-commit-hooks-nix.follows = "pre-commit-hooks";
       };
     };
 
-    lix = {
-      type = "tarball";
-      url =
-        "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
-
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixpkgs = {
-      type = "git";
-      url = "https://github.com/NixOS/nixpkgs";
-      ref = "nixos-unstable";
-      submodules = false;
-    };
-
+    # foot-transparent patch
     nyxexprs = {
-      type = "git";
-      url = "https://github.com/NotAShelf/nyxexprs";
-      submodules = false;
-
+      url = "github:NotAShelf/nyxexprs";
       inputs = {
+        flake-compat.follows = "flake-compat";
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
       };
     };
 
-    pkgs-by-name = {
-      type = "git";
-      url = "https://github.com/drupol/pkgs-by-name-for-flake-parts";
-      submodules = false;
-    };
+    # Easy packages
+    pkgs-by-name.url = "github:drupol/pkgs-by-name-for-flake-parts";
 
+    # Run checks automagically
     pre-commit-hooks = {
-      type = "git";
-      url = "https://github.com/cachix/git-hooks.nix";
-      submodules = false;
-
+      url = "github:cachix/git-hooks.nix";
       inputs = {
+        flake-compat.follows = "flake-compat";
         nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.url = "nixpkgs";
       };
     };
 
+    # Zen browser
     zen-browser = {
-      type = "git";
-      url = "https://github.com/MarceColl/zen-browser-flake";
-      submodules = false;
-
+      url = "github:MarceColl/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

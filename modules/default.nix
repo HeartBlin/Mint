@@ -19,6 +19,7 @@ in {
     (importModule path "secureboot")
     (importModule path "steam")
     (importModule path "tpm")
+    (importModule path "vmware")
 
     # Extras
     [ ./agenix/config.nix ]

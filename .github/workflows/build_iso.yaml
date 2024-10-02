@@ -27,13 +27,10 @@ jobs:
       - name: Build ISO
         run: nix build .#nixosConfigurations.Specter.config.system.build.isoImage
 
-      - name: Get Rev
-        run: echo "$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-
       - name: Create GitHub Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          TAG_NAME="${{ env.REVISION }}"
-          RELEASE_NAME="NixOS ISO Release"
-          gh release create "$TAG_NAME" ./Specter.iso --title "$RELEASE_NAME" --notes "Automated release of NixOS ISO built from commit $TAG_NAME"
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          title: "NixOS ISO Release"
+          files: ./result/iso/*iso

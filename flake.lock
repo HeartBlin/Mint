@@ -162,11 +162,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727809780,
-        "narHash": "sha256-7W5HE2IRiZglMBKcn9JtC6bveE6/F7IzQyV2XDanGFA=",
+        "lastModified": 1727872461,
+        "narHash": "sha256-4Pw3fVhN6xey5+2gUBm9nQJAjBqivffr+a5ZsXYjzJ8=",
         "ref": "refs/heads/master",
-        "rev": "6c5ba9ec9d470c1ca29e7735762c9c366e28f7f5",
-        "revCount": 1031,
+        "rev": "568727a884ae7cd9f266bd19aea655def8cafd78",
+        "revCount": 1034,
         "submodules": false,
         "type": "git",
         "url": "https://github.com/nix-community/disko"
@@ -254,11 +254,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726153070,
-        "narHash": "sha256-HO4zgY0ekfwO5bX0QH/3kJ/h4KvUDFZg8YpkNwIbg1U=",
+        "lastModified": 1727826117,
+        "narHash": "sha256-K5ZLCyfO/Zj9mPFldf3iwS6oZStJcU4tSpiXTMYaaL0=",
         "ref": "refs/heads/main",
-        "rev": "bcef6817a8b2aa20a5a6dbb19b43e63c5bf8619a",
-        "revCount": 336,
+        "rev": "3d04084d54bedc3d6b8b736c70ef449225c361b1",
+        "revCount": 340,
         "submodules": false,
         "type": "git",
         "url": "https://github.com/hercules-ci/flake-parts"
@@ -384,11 +384,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727383923,
-        "narHash": "sha256-4/vacp3CwdGoPf8U4e/N8OsGYtO09WTcQK5FqYfJbKs=",
+        "lastModified": 1727817100,
+        "narHash": "sha256-dlyV9/eiWkm/Y/t2+k4CFZ29tBvCANmJogEYaHeAOTw=",
         "ref": "refs/heads/master",
-        "rev": "ffe2d07e771580a005e675108212597e5b367d2d",
-        "revCount": 3761,
+        "rev": "437ec62009fa8ceb684eb447d455ffba25911cf9",
+        "revCount": 3762,
         "submodules": false,
         "type": "git",
         "url": "https://github.com/nix-community/home-manager"
@@ -443,11 +443,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1727714556,
-        "narHash": "sha256-l4cPDA3xGtGdQmdSCAO2VyWg9xwW6//KwDYefdWtovQ=",
+        "lastModified": 1727860939,
+        "narHash": "sha256-ZRYHQ/ZduCPxthuCFDYSDjKoSReYZy95rSm6ut8l/qE=",
         "ref": "refs/heads/main",
-        "rev": "5c6c300abfea2539ffad9bcbf857325eec5ab765",
-        "revCount": 5285,
+        "rev": "e2426942e5716a742ea353d2a1de7d7760fbbb41",
+        "revCount": 5286,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -782,11 +782,11 @@
         "systems": "systems_6"
       },
       "locked": {
-        "lastModified": 1727747487,
-        "narHash": "sha256-2iXxHSa8HbwS6RBzZTFoV3LnqhPDilI5hlvXtO9hTyw=",
+        "lastModified": 1727833336,
+        "narHash": "sha256-mvdO1dLyFF5gqINxM78Y3PK6mQNwy1NQt1oXT506cWA=",
         "ref": "refs/heads/main",
-        "rev": "51104fb8629b273ea783b059b753b5bbdf720588",
-        "revCount": 367,
+        "rev": "96e5bbbd6f586381a2f6fef9778d115918409005",
+        "revCount": 368,
         "submodules": false,
         "type": "git",
         "url": "https://github.com/NotAShelf/nyxexprs"
@@ -824,11 +824,11 @@
         "nixpkgs-stable": "nixpkgs-stable_2"
       },
       "locked": {
-        "lastModified": 1727805723,
-        "narHash": "sha256-b8flytpuc4Ey/g3mcvpS/ICORcD4h56QDZeP5LogevY=",
+        "lastModified": 1727854478,
+        "narHash": "sha256-/odH2nUMAwkMgOS2nG2z0exLQNJS4S2LfMW0teqU7co=",
         "ref": "refs/heads/master",
-        "rev": "2f5ae3fc91db865eff2c5a418da85a0fbe6238a3",
-        "revCount": 891,
+        "rev": "5f58871c9657b5fc0a7f65670fe2ba99c26c1d79",
+        "revCount": 893,
         "submodules": false,
         "type": "git",
         "url": "https://github.com/cachix/git-hooks.nix"

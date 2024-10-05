@@ -18,6 +18,9 @@ let
     "nvidia/module.nix"
     "nvidia/options.nix"
 
+    "secureboot/module.nix"
+    "secureboot/options.nix"
+
     # Steam
     "steam/module.nix"
     "steam/options.nix"

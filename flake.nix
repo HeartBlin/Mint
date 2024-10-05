@@ -31,6 +31,9 @@
     # Wayland Compositor
     hyprland.url = "github:hyprwm/Hyprland";
 
+    # SecureBoot support
+    lanzaboote.url = "github:/nix-community/lanzaboote/v0.4.1";
+
     # Easy packages
     pkgs-by-name.url = "github:drupol/pkgs-by-name-for-flake-parts";
 

@@ -9,6 +9,7 @@ in {
     Skadi = libx.mkSystem {
       hostName = "Skadi";
       userName = "heartblin";
+      prettyName = "HeartBlin";
     };
   };
 }

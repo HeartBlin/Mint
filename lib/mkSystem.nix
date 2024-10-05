@@ -1,8 +1,8 @@
 { inputs, libx, self, withSystem }:
 
 {
-  mkSystem =
-    { hostName, userName, system ? "x86_64-linux", stateVersion ? "24.11" }:
+  mkSystem = { hostName, userName, prettyName ? "", system ? "x86_64-linux"
+    , stateVersion ? "24.11" }:
     withSystem system ({ inputs', ... }:
       inputs.nixpkgs.lib.nixosSystem {
         specialArgs = { inherit hostName inputs inputs' libx self userName; };
@@ -25,6 +25,7 @@
           {
             users.users."${userName}" = {
               isNormalUser = true;
+              description = prettyName;
               initialPassword = "changeme";
               extraGroups = [ "wheel" ];
             };
@@ -48,6 +49,8 @@
               };
             };
           }
+
+          # Inform the system where the flake is
           {
             options.Ark.flakeDir = let
               inherit (inputs.nixpkgs.lib) mkOption;
@@ -56,6 +59,15 @@
               type = nullOr str;
               default = "/home/${userName}/Ark";
             };
+          }
+
+          # Set pfp
+          {
+            system.activationScripts.profilePicture.text = ''
+              mkdir -p /var/lib/AccountsService/{icons,users}
+              cp /home/${userName}/Ark/hosts/${hostName}/user/pfp.png /var/lib/AccountsService/icons/${userName}
+              echo -e "[User]\nIcon=/var/lib/AccountsService/icons/${userName}\n" > /var/lib/AccountsService/users/${userName}
+            '';
           }
         ];
       });

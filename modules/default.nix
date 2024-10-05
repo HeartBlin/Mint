@@ -1,58 +1,63 @@
-{ userName, ... }:
+{ self, userName, ... }:
 
 let
-  systemModules = [
+  prefixPath = x: y: map (z: "${self}/modules/${x}/${z}") y;
+
+  systemPaths = [
     # Asus
-    ./asus/module.nix
-    ./asus/options.nix
+    "asus/module.nix"
+    "asus/options.nix"
 
     # Hyprland (system side)
-    ./hyprland/module.nix
+    "hyprland/module.nix"
 
     # Nix & related
-    ./nix/module.nix
+    "nix/module.nix"
 
     # NVidia drivers
-    ./nvidia/module.nix
-    ./nvidia/options.nix
+    "nvidia/module.nix"
+    "nvidia/options.nix"
 
     # Steam
-    ./steam/module.nix
-    ./steam/options.nix
+    "steam/module.nix"
+    "steam/options.nix"
 
     # VMware
-    ./vmware/module.nix
-    ./vmware/options.nix
+    "vmware/module.nix"
+    "vmware/options.nix"
   ];
 
-  homeModules = [
+  homePaths = [
     # Chrome
-    ./home/chrome/module.nix
-    ./home/chrome/options.nix
+    "chrome/module.nix"
+    "chrome/options.nix"
 
     # Fish
-    ./home/cli/fish/module.nix
-    ./home/cli/fish/options.nix
+    "cli/fish/module.nix"
+    "cli/fish/options.nix"
 
     # Foot
-    ./home/cli/foot/module.nix
-    ./home/cli/foot/options.nix
+    "cli/foot/module.nix"
+    "cli/foot/options.nix"
 
     # Git
-    ./home/git/module.nix
+    "git/module.nix"
 
     # Hyprland (home side)
-    ./home/hyprland/module.nix
-    ./home/hyprland/options.nix
+    "hyprland/module.nix"
+    "hyprland/options.nix"
 
     # MangoHUD
-    ./home/mangohud/module.nix
-    ./home/mangohud/options.nix
+    "mangohud/module.nix"
+    "mangohud/options.nix"
 
     # VSCode
-    ./home/vscode/module.nix
-    ./home/vscode/options.nix
+    "vscode/module.nix"
+    "vscode/options.nix"
   ];
+
+  systemModules = prefixPath "system" systemPaths;
+  homeModules = prefixPath "home" homePaths;
 in {
   imports = systemModules;
   config.home-manager.users.${userName} = { imports = homeModules; };

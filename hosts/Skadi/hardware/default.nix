@@ -1,4 +1,4 @@
-{ config, lib, modulesPath, self, ... }:
+{ config, lib, modulesPath, pkgs, self, ... }:
 
 {
   imports = [
@@ -14,6 +14,7 @@
       kernelModules = [ ];
     };
     kernelModules = [ "kvm-amd" ];
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
     extraModulePackages = [ ];
   };
 

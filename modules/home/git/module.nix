@@ -9,7 +9,7 @@
     extraConfig = {
       commit.gpgsign = true;
       gpg.format = "ssh";
-      user.signingkey = "/home/${userName}/.ssh/id_ed25519.signing.pub";
+      user.signingkey = "/home/${userName}/.ssh/id_ed25519.github_signing.pub";
     };
   };
 

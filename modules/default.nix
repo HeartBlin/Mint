@@ -1,62 +1,67 @@
 { self, userName, ... }:
 
 let
-  prefixPath = x: y: map (z: "${self}/modules/${x}/${z}") y;
+  prefixPath = x: y: map (z: "${self}/modules/${x}/${z}.nix") y;
 
   systemPaths = [
     # Asus
-    "asus/module.nix"
-    "asus/options.nix"
+    "asus/module"
+    "asus/options"
 
     # Hyprland (system side)
-    "hyprland/module.nix"
+    "hyprland/module"
 
     # Nix & related
-    "nix/module.nix"
+    "nix/module"
 
     # NVidia drivers
-    "nvidia/module.nix"
-    "nvidia/options.nix"
+    "nvidia/module"
+    "nvidia/options"
 
-    "secureboot/module.nix"
-    "secureboot/options.nix"
+    # SecureBoot suport, includes normal bootloader too
+    "secureboot/module"
+    "secureboot/options"
 
     # Steam
-    "steam/module.nix"
-    "steam/options.nix"
+    "steam/module"
+    "steam/options"
+
+    # TPM LUKS unlocking
+    "tpm/module"
+    "tpm/options"
 
     # VMware
-    "vmware/module.nix"
-    "vmware/options.nix"
+    "vmware/module"
+    "vmware/options"
   ];
 
   homePaths = [
     # Chrome
-    "chrome/module.nix"
-    "chrome/options.nix"
+    "chrome/module"
+    "chrome/options"
 
     # Fish
-    "cli/fish/module.nix"
-    "cli/fish/options.nix"
+    "cli/fish/module"
+    "cli/fish/options"
 
     # Foot
-    "cli/foot/module.nix"
-    "cli/foot/options.nix"
+    "cli/foot/module"
+    "cli/foot/options"
 
     # Git
-    "git/module.nix"
+    "git/module"
 
     # Hyprland (home side)
-    "hyprland/module.nix"
-    "hyprland/options.nix"
+    "hyprland/module"
+    "hyprland/options"
 
     # MangoHUD
-    "mangohud/module.nix"
-    "mangohud/options.nix"
+    "mangohud/module"
+    "mangohud/options"
 
     # VSCode
-    "vscode/module.nix"
-    "vscode/options.nix"
+    "vscode/module"
+    "vscode/options"
   ];
 
   systemModules = prefixPath "system" systemPaths;

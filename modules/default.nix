@@ -1,40 +1,59 @@
-{ lib, lib', ... }:
+{ userName, ... }:
 
 let
-  inherit (lib) flatten mkOption;
-  inherit (lib.types) enum;
-  inherit (lib') importModule;
+  systemModules = [
+    # Asus
+    ./asus/module.nix
+    ./asus/options.nix
 
-  path = "modules";
-  roles = [ "iso" "laptop" "workstation" "server" ];
-in {
-  # This is dumb but ehh...
-  imports = flatten [
-    (importModule path "asus")
-    (importModule path "audio")
-    (importModule path "bluetooth")
-    (importModule path "nvidia")
-    (importModule path "greeter")
-    (importModule path "nix")
-    (importModule path "secureboot")
-    (importModule path "steam")
-    (importModule path "tpm")
-    (importModule path "vmware")
+    # Hyprland (system side)
+    ./hyprland/module.nix
 
-    # Extras
-    [ ./agenix/config.nix ]
-    [ ./boot/config.nix ]
-    [ ./hyprland/config.nix ]
-    [ ./networking/config.nix ]
-    [ ./nix/assertions.nix ]
+    # Nix & related
+    ./nix/module.nix
+
+    # NVidia drivers
+    ./nvidia/module.nix
+    ./nvidia/options.nix
+
+    # Steam
+    ./steam/module.nix
+    ./steam/options.nix
+
+    # VMware
+    ./vmware/module.nix
+    ./vmware/options.nix
   ];
 
-  options.Ark.role = mkOption {
-    type = enum roles;
-    default = "workstation";
-    description = ''
-      This enables/disables various modules
-      example: ISOs don't get 'nh'
-    '';
-  };
+  homeModules = [
+    # Chrome
+    ./home/chrome/module.nix
+    ./home/chrome/options.nix
+
+    # Fish
+    ./home/cli/fish/module.nix
+    ./home/cli/fish/options.nix
+
+    # Foot
+    ./home/cli/foot/module.nix
+    ./home/cli/foot/options.nix
+
+    # Git
+    ./home/git/module.nix
+
+    # Hyprland (home side)
+    ./home/hyprland/module.nix
+    ./home/hyprland/options.nix
+
+    # MangoHUD
+    ./home/mangohud/module.nix
+    ./home/mangohud/options.nix
+
+    # VSCode
+    ./home/vscode/module.nix
+    ./home/vscode/options.nix
+  ];
+in {
+  imports = systemModules;
+  config.home-manager.users.${userName} = { imports = homeModules; };
 }

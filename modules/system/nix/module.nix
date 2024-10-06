@@ -1,11 +1,30 @@
-{ config, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
-let inherit (config.Ark) flakeDir;
+let
+  inherit (lib) filterAttrs isType mapAttrs mapAttrsToList;
+  inherit (config.Ark) flakeDir;
+
+  ##
+  ## Found this snippet of code from this repo:
+  ## https://github.com/fufexan/dotfiles/blob/main/system/nix/default.nix
+  ##
+
+  flakeInputs = filterAttrs (_: v: isType "flake" v) inputs;
+  registry = mapAttrs (_: v: { flake = v; }) flakeInputs;
+  nixPath = mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
 in {
   nix = {
+    inherit registry nixPath;
+
+    # Faster eval
     package = pkgs.lix;
+
     settings = {
+      # Allow flakes
       experimental-features = [ "flakes" "nix-command" ];
+
+      # Direnv
+      keep-outputs = true;
 
       # Caches
       substituters = [
@@ -19,6 +38,7 @@ in {
         "https://nyx.cachix.org" # Foot-transparent
       ];
 
+      # Keys for caches
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
@@ -32,15 +52,27 @@ in {
     };
   };
 
+  # Allow unfree
+  environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
   nixpkgs.config = {
     allowBroken = false;
     allowUnfree = true;
   };
 
+  # Neat Nix Helper
   programs.nh = {
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 7d --keep 3";
     flake = flakeDir;
+  };
+
+  # BLOAT
+  documentation = {
+    enable = false;
+    doc.enable = false;
+    man.enable = false;
+    info.enable = false;
+    nixos.enable = false;
   };
 }

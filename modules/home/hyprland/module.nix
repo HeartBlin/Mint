@@ -31,6 +31,7 @@ in {
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
+      inherit (osConfig.programs.hyprland) package;
       enable = true;
 
       settings = {

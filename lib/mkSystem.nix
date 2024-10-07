@@ -1,47 +1,47 @@
-{ inputs, lib', self, withSystem }:
+{ inputs, libx, self, withSystem }:
 
-let inherit (inputs.nixpkgs.lib) nixosSystem;
-in {
-  mkSystem = { hostname ? "nixos", username ? "nixos", system ? "x86_64-linux"
+{
+  mkSystem = { hostName, userName, prettyName ? "", system ? "x86_64-linux"
     , stateVersion ? "24.11" }:
     withSystem system ({ inputs', ... }:
-      let args = { inherit hostname inputs inputs' lib' self username; };
-      in nixosSystem {
-        specialArgs = args;
+      inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit hostName inputs inputs' libx self userName; };
+
         modules = [
           # Module imports
-          inputs.home-manager.nixosModules.home-manager
-          inputs.agenix.nixosModules.default
+          inputs.disko.nixosModules.disko
+          inputs.home-manager.nixosModules.default
+          inputs.lanzaboote.nixosModules.lanzaboote
+          inputs.lix.nixosModules.default
 
           # Paths
-          "${self}/hosts/${hostname}/config"
-          "${self}/hosts/${hostname}/hardware"
+          "${self}/hosts/${hostName}/config.nix"
+          "${self}/hosts/${hostName}/hardware"
           "${self}/modules"
 
           # Options
           { nixpkgs.hostPlatform.system = system; }
           { system.stateVersion = stateVersion; }
-          { networking.hostName = hostname; }
-          { environment.systemPackages = [ inputs'.agenix.packages.default ]; }
-          { age.identityPaths = [ "/home/heartblin/.ssh/HeartBlin" ]; }
-
-          { # Create user
-            users.users."${username}" = {
+          { networking.hostName = hostName; }
+          {
+            users.users."${userName}" = {
               isNormalUser = true;
-              extraGroups = [ "wheel" "video" "networkmanager" ];
+              description = prettyName;
+              initialPassword = "changeme";
+              extraGroups = [ "wheel" ];
             };
 
-            # Home-Manager setup
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = args;
+              extraSpecialArgs = {
+                inherit hostName inputs inputs' libx self userName;
+              };
 
-              users.${username} = {
+              users.${userName} = {
                 imports = [
                   # Paths
-                  "${self}/home/${username}/config.nix"
-                  "${self}/home/modules"
+                  "${self}/hosts/${hostName}/user/config.nix"
 
                   # Options
                   { programs.home-manager.enable = true; }
@@ -49,6 +49,26 @@ in {
                 ];
               };
             };
+          }
+
+          # Inform the system where the flake is
+          {
+            options.Ark.flakeDir = let
+              inherit (inputs.nixpkgs.lib) mkOption;
+              inherit (inputs.nixpkgs.lib.types) nullOr str;
+            in mkOption {
+              type = nullOr str;
+              default = "/home/${userName}/Ark";
+            };
+          }
+
+          # Set pfp
+          {
+            system.activationScripts.profilePicture.text = ''
+              mkdir -p /var/lib/AccountsService/{icons,users}
+              cp /home/${userName}/Ark/hosts/${hostName}/user/pfp.png /var/lib/AccountsService/icons/${userName}
+              echo -e "[User]\nIcon=/var/lib/AccountsService/icons/${userName}\n" > /var/lib/AccountsService/users/${userName}
+            '';
           }
         ];
       });

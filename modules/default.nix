@@ -1,40 +1,82 @@
-{ lib, lib', ... }:
+{ self, userName, ... }:
 
 let
-  inherit (lib) flatten mkOption;
-  inherit (lib.types) enum;
-  inherit (lib') importModule;
+  prefixPath = x: y: map (z: "${self}/modules/${x}/${z}.nix") y;
 
-  path = "modules";
-  roles = [ "iso" "laptop" "workstation" "server" ];
-in {
-  # This is dumb but ehh...
-  imports = flatten [
-    (importModule path "asus")
-    (importModule path "audio")
-    (importModule path "bluetooth")
-    (importModule path "nvidia")
-    (importModule path "greeter")
-    (importModule path "nix")
-    (importModule path "secureboot")
-    (importModule path "steam")
-    (importModule path "tpm")
-    (importModule path "vmware")
+  systemPaths = [
+    # Asus
+    "asus/module"
+    "asus/options"
 
-    # Extras
-    [ ./agenix/config.nix ]
-    [ ./boot/config.nix ]
-    [ ./hyprland/config.nix ]
-    [ ./networking/config.nix ]
-    [ ./nix/assertions.nix ]
+    # Audio (via Pipewire)
+    "audio/module"
+
+    # GDM Greeter
+    "gdm/module"
+    "gdm/options"
+
+    # Hyprland (system side)
+    "hyprland/module"
+
+    # Network
+    "network/module"
+
+    # Nix & related
+    "nix/module"
+
+    # NVidia drivers
+    "nvidia/module"
+    "nvidia/options"
+
+    # SecureBoot suport, includes normal bootloader too
+    "secureboot/module"
+    "secureboot/options"
+
+    # Steam
+    "steam/module"
+    "steam/options"
+
+    # TPM LUKS unlocking
+    "tpm/module"
+    "tpm/options"
+
+    # VMware
+    "vmware/module"
+    "vmware/options"
   ];
 
-  options.Ark.role = mkOption {
-    type = enum roles;
-    default = "workstation";
-    description = ''
-      This enables/disables various modules
-      example: ISOs don't get 'nh'
-    '';
-  };
+  homePaths = [
+    # Chrome
+    "chrome/module"
+    "chrome/options"
+
+    # Fish
+    "cli/fish/module"
+    "cli/fish/options"
+
+    # Foot
+    "cli/foot/module"
+    "cli/foot/options"
+
+    # Git
+    "git/module"
+
+    # Hyprland (home side)
+    "hyprland/module"
+    "hyprland/options"
+
+    # MangoHUD
+    "mangohud/module"
+    "mangohud/options"
+
+    # VSCode
+    "vscode/module"
+    "vscode/options"
+  ];
+
+  systemModules = prefixPath "system" systemPaths;
+  homeModules = prefixPath "home" homePaths;
+in {
+  imports = systemModules;
+  config.home-manager.users.${userName} = { imports = homeModules; };
 }

@@ -91,6 +91,7 @@ in {
         "workbench.preferredDarkColorTheme" = "Default Dark+";
         "workbench.preferredLightColorTheme" = "Default Dark+";
         "workbench.sideBar.location" = "left";
+        "workbench.startupEditor" = "none";
       };
     };
 

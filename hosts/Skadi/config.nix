@@ -1,6 +1,7 @@
 _: {
   Ark = {
     asus.enable = true;
+    gdm.enable = true;
     nvidia = {
       enable = true;
       hybrid.enable = true;
@@ -11,8 +12,5 @@ _: {
     tpm.enable = true;
     vmware.enable = true;
   };
-
-  networking.networkmanager.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
 }
 

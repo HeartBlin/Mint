@@ -11,6 +11,10 @@ let
     # Audio (via Pipewire)
     "audio/module"
 
+    # GDM Greeter
+    "gdm/module"
+    "gdm/options"
+
     # Hyprland (system side)
     "hyprland/module"
 

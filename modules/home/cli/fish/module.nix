@@ -32,10 +32,18 @@ in {
 
         shellAliases = {
           ls = "${pkgs.eza}/bin/eza -l";
+
+          # Nix Flake Management
           rebuild = "nh os switch";
           boot = "nh os boot";
           update = "nix flake update --flake ${flakeDir} && nh os switch";
           clean = "nh clean all && nh os boot";
+
+          # Git commands
+          ga = "git add .";
+          gc = "git commit -m";
+          gp = "git push";
+          gs = "git status";
         };
       };
 

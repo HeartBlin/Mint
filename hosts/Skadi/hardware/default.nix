@@ -1,4 +1,4 @@
-{ lib, modulesPath, pkgs, self, ... }:
+{ modulesPath, pkgs, self, ... }:
 
 {
   imports = [
@@ -14,6 +14,5 @@
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
   };
 
-  networking.useDHCP = lib.mkDefault true;
   hardware.cpu.amd.updateMicrocode = true;
 }

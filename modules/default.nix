@@ -11,6 +11,9 @@ let
     # Hyprland (system side)
     "hyprland/module"
 
+    # Network
+    "network/module"
+
     # Nix & related
     "nix/module"
 

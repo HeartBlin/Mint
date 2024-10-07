@@ -12,6 +12,7 @@
           inputs.disko.nixosModules.disko
           inputs.home-manager.nixosModules.default
           inputs.lanzaboote.nixosModules.lanzaboote
+          inputs.lix.nixosModules.default
 
           # Paths
           "${self}/hosts/${hostName}/config.nix"

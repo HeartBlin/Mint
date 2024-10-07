@@ -47,6 +47,11 @@
       pre-commit-hooks-nix.follows = "pre-commit-hooks";
     };
 
+    # Faster eval Nix fork
+    lix.url =
+      "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+    lix.inputs.nixpkgs.follows = "nixpkgs";
+
     # Easy packages
     pkgs-by-name.url = "github:drupol/pkgs-by-name-for-flake-parts";
 

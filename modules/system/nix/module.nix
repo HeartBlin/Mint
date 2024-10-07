@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config, inputs, lib, ... }:
 
 let
   inherit (lib) filterAttrs isType mapAttrs mapAttrsToList;
@@ -16,15 +16,16 @@ in {
   nix = {
     inherit registry nixPath;
 
-    # Faster eval
-    package = pkgs.lix;
-
     settings = {
       # Allow flakes
       experimental-features = [ "flakes" "nix-command" ];
 
       # Direnv
+      keep-derivations = true;
       keep-outputs = true;
+
+      # Shut up
+      warn-dirty = false;
 
       # Caches
       substituters = [

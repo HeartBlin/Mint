@@ -8,6 +8,9 @@ let
     "asus/module"
     "asus/options"
 
+    # Audio (via Pipewire)
+    "audio/module"
+
     # Hyprland (system side)
     "hyprland/module"
 

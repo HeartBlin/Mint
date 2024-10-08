@@ -17,12 +17,28 @@ in {
     inherit registry nixPath;
 
     settings = {
-      # Allow flakes
-      experimental-features = [ "flakes" "nix-command" ];
+      # Allow flakes & other experimental features
+      experimental-features = [
+        "flakes"
+        "nix-command"
+        "auto-allocate-uids"
+        "cgroups"
+        "no-url-literals"
+      ];
+
+      # Trusted users
+      allowed-users = [ "root" "@wheel" ];
+      trusted-users = [ "root" "@wheel" ];
 
       # Direnv
       keep-derivations = true;
       keep-outputs = true;
+
+      # Keep it pure
+      pure-eval = true;
+
+      # Enable cgroups
+      use-cgroups = true;
 
       # Shut up
       warn-dirty = false;
@@ -58,6 +74,7 @@ in {
   nixpkgs.config = {
     allowBroken = false;
     allowUnfree = true;
+    enableParallelBuildingByDefault = true;
   };
 
   # Neat Nix Helper

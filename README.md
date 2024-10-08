@@ -9,6 +9,7 @@ Configurations where I got inspired _(read: steal)_ from:
 - [TheMaxMur](https://github.com/TheMaxMur/NixOS-Configuration)
 - [fufexan](https://github.com/fufexan/dotfiles)
 - [rxyhn](https://github.com/rxyhn/yuki)
+- [NotAShelf](https://github.com/NotAShelf/nyx) _<sub>archive</sub>_
 
 Thanks! **^\_\_^**
 

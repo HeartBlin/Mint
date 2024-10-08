@@ -15,7 +15,10 @@ in {
       };
     };
 
-    environment.systemPackages = with pkgs; [ nautilus ];
+    environment = {
+      systemPackages = with pkgs; [ nautilus ];
+      sessionVariables.NIXOS_OZONE_WL = "1";
+    };
     programs.nautilus-open-any-terminal.enable = true;
 
     services = {

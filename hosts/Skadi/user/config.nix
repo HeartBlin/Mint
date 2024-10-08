@@ -9,6 +9,7 @@ in {
       shell = "fish";
     };
 
+    discord.enable = true;
     hyprland = {
       enable = true;
       theme = {

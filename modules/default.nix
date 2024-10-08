@@ -50,6 +50,10 @@ let
     "chrome/module"
     "chrome/options"
 
+    # Discord
+    "discord/module"
+    "discord/options"
+
     # Fish
     "cli/fish/module"
     "cli/fish/options"

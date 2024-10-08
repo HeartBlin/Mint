@@ -1,12 +1,8 @@
-{ config, lib, libx, osConfig, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   inherit (lib) mkIf;
-  inherit (libx) ifCond;
   inherit (config.Ark.cli) shell;
-
-  nvidia = osConfig.Ark.nvidia.enable;
-  hyprland = config.Ark.hyprland.enable;
 
   cfg = config.Ark.vscode;
 in {
@@ -16,14 +12,6 @@ in {
       enable = true;
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
-
-      package = pkgs.vscode.override {
-        commandLineArgs = [
-          (ifCond nvidia "--disable-gpu")
-          (ifCond hyprland "--enable-features=UseOzonePlatform")
-          (ifCond hyprland "--ozone-platform=wayland")
-        ];
-      };
 
       # Extensions
       mutableExtensionsDir = true;

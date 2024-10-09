@@ -5,6 +5,9 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   lint-and-check:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        command: ['statix check', 'deadnix -f', 'nix fmt', 'typos', 'nix flake check --no-build']
 
     steps:
       - name: Checkout repository
@@ -16,5 +19,8 @@ jobs:
       - name: Setup Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v8
 
+      - name: Enter devShell
+        run: nix develop
+
       - name: Run Checks
-        run: nix flake check --all-systems
+        run: ${{ matrix.command }}

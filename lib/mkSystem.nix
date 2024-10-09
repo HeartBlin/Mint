@@ -4,21 +4,30 @@
   mkSystem = { hostName, userName, prettyName ? "", system ? "x86_64-linux"
     , stateVersion ? "24.11" }:
     withSystem system ({ inputs', ... }:
-      inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit hostName inputs inputs' libx self userName; };
+      let
+        inherit (inputs.nixpkgs.lib) nixosSystem;
+        inherit (inputs.nixpkgs.lib) mkOption;
+        inherit (inputs.nixpkgs.lib.types) nullOr str;
 
-        modules = [
-          # Module imports
+        commonArgs = { inherit hostName inputs inputs' libx self userName; };
+
+        inputModules = [
           inputs.disko.nixosModules.disko
           inputs.home-manager.nixosModules.default
           inputs.lanzaboote.nixosModules.lanzaboote
           inputs.lix.nixosModules.default
+        ];
 
-          # Paths
+        pathModules = [
           "${self}/hosts/${hostName}/config.nix"
           "${self}/hosts/${hostName}/hardware"
           "${self}/modules"
+        ];
 
+      in nixosSystem {
+        specialArgs = commonArgs;
+
+        modules = inputModules ++ pathModules ++ [
           # Options
           { nixpkgs.hostPlatform.system = system; }
           { system.stateVersion = stateVersion; }
@@ -34,9 +43,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {
-                inherit hostName inputs inputs' libx self userName;
-              };
+              extraSpecialArgs = commonArgs;
 
               users.${userName} = {
                 imports = [
@@ -53,10 +60,7 @@
 
           # Inform the system where the flake is
           {
-            options.Ark.flakeDir = let
-              inherit (inputs.nixpkgs.lib) mkOption;
-              inherit (inputs.nixpkgs.lib.types) nullOr str;
-            in mkOption {
+            options.Ark.flakeDir = mkOption {
               type = nullOr str;
               default = "/home/${userName}/Ark";
             };

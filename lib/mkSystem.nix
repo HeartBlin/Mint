@@ -32,6 +32,7 @@
           { nixpkgs.hostPlatform.system = system; }
           { system.stateVersion = stateVersion; }
           { networking.hostName = hostName; }
+          { services.automatic-timezoned.enable = true; }
           {
             users.users."${userName}" = {
               isNormalUser = true;

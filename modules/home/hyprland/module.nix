@@ -2,20 +2,20 @@
 
 let
   inherit (lib) mkIf;
-  inherit (libx.colors) pallete toHypr;
+  inherit (libx.colors) palette toHypr;
 
   c = {
-    blue = toHypr pallete.bBlue;
-    violet = toHypr pallete.bViolet;
-    red = toHypr pallete.bRed;
-    orange = toHypr pallete.bOrange;
+    blue = toHypr palette.bBlue;
+    violet = toHypr palette.bViolet;
+    red = toHypr palette.bRed;
+    orange = toHypr palette.bOrange;
   };
 
   changeColor = pkgs.writeShellScript "changeColor" ''
-    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bBlue} -z 1 &
-    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bViolet} -z 2 &
-    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bRed} -z 3 &
-    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bOrange} -z 4
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${palette.bBlue} -z 1 &
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${palette.bViolet} -z 2 &
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${palette.bRed} -z 3 &
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${palette.bOrange} -z 4
   '';
 
   chrome = config.Ark.chrome.enable;

@@ -24,6 +24,12 @@
           verbose = true;
           fail_fast = true;
         };
+
+        typos = {
+          enable = true;
+          verbose = true;
+          fail_fast = true;
+        };
       };
     };
   };

@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        command: ['statix check', 'deadnix -f', 'nix fmt', 'typos']
+        command: [ 'statix check', 'deadnix -f', 'nix fmt', 'typos', 'nix flake check --no-build --all-systems' ]
 
     steps:
       - name: Checkout repository
@@ -21,8 +21,14 @@ jobs:
 
       - name: Run Checks
         run: |
-          if [ "${{ matrix.command}}" == "nix fmt" ]; then
-            nix fmt
-          else
-            nix develop --command ${{ matrix.command }}
-          fi
+          case "${{ matrix.command }}" in
+            "nix fmt")
+              ${{ matrix.command }}
+              ;;
+            "nix flake check --no-build --all-systems")
+              ${{ matrix.command }}
+              ;;
+            *)
+              nix develop --command ${{ matrix.command }}
+              ;;
+          esac

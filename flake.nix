@@ -19,7 +19,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs";
 
     # Provides 'systems'
-    systems.url = "github:nix-systems/default-linux";
+    systems.url = "github:nix-systems/x86_64-linux";
 
     ########### Everything else ###########
 

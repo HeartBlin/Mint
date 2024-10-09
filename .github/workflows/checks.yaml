@@ -20,4 +20,9 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@v8
 
       - name: Run Checks
-        run: nix develop --command ${{ matrix.command }}
+        run: |
+          if [ "${{ matrix.command}}" == "nix fmt" ]; then
+            nix fmt
+          else
+            nix develop --command ${{ matrix.command }}
+          fi

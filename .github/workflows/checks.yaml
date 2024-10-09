@@ -23,12 +23,15 @@ jobs:
         run: |
           case "${{ matrix.command }}" in
             "nix fmt")
+              echo "Running nix fmt"
               ${{ matrix.command }}
               ;;
             "nix flake check --no-build --all-systems")
+              echo "Running nix flake check"
               ${{ matrix.command }}
               ;;
             *)
+              echo "Running ${{ matrix.command }}"
               nix develop --command ${{ matrix.command }}
               ;;
           esac

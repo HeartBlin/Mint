@@ -2,7 +2,7 @@
 
 {
   colors = {
-    palette = {
+    pallete = {
       bBlue = "089AFF";
       bViolet = "C26EFC";
       bRed = "FA5B59";

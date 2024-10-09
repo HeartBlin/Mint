@@ -1,86 +1,16 @@
-{ self, userName, ... }:
+{ lib, userName, ... }:
 
 let
-  prefixPath = x: y: map (z: "${self}/modules/${x}/${z}.nix") y;
+  inherit (builtins) concatLists;
+  inherit (lib.fileset) fileFilter toList;
 
-  systemPaths = [
-    # Asus
-    "asus/module"
-    "asus/options"
-
-    # Audio (via Pipewire)
-    "audio/module"
-
-    # GDM Greeter
-    "gdm/module"
-    "gdm/options"
-
-    # Hyprland (system side)
-    "hyprland/module"
-
-    # Network
-    "network/module"
-
-    # Nix & related
-    "nix/module"
-
-    # NVidia drivers
-    "nvidia/module"
-    "nvidia/options"
-
-    # SecureBoot suport, includes normal bootloader too
-    "secureboot/module"
-    "secureboot/options"
-
-    # Steam
-    "steam/module"
-    "steam/options"
-
-    # TPM LUKS unlocking
-    "tpm/module"
-    "tpm/options"
-
-    # VMware
-    "vmware/module"
-    "vmware/options"
-  ];
-
-  homePaths = [
-    # Chrome
-    "chrome/module"
-    "chrome/options"
-
-    # Discord
-    "discord/module"
-    "discord/options"
-
-    # Fish
-    "cli/fish/module"
-    "cli/fish/options"
-
-    # Foot
-    "cli/foot/module"
-    "cli/foot/options"
-
-    # Git
-    "git/module"
-
-    # Hyprland (home side)
-    "hyprland/module"
-    "hyprland/options"
-
-    # MangoHUD
-    "mangohud/module"
-    "mangohud/options"
-
-    # VSCode
-    "vscode/module"
-    "vscode/options"
-  ];
-
-  systemModules = prefixPath "system" systemPaths;
-  homeModules = prefixPath "home" homePaths;
+  importModules = y: (toList (fileFilter (x: x.name == "module.nix") y));
 in {
-  imports = systemModules;
-  config.home-manager.users.${userName} = { imports = homeModules; };
+  # System Modules & Options
+  imports = concatLists [ (importModules ./system) [ ./system/options ] ];
+
+  # Home Modules & Options
+  home-manager.users.${userName} = {
+    imports = concatLists [ (importModules ./home) [ ./home/options ] ];
+  };
 }

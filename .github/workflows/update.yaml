@@ -20,8 +20,8 @@ jobs:
       - name: Update flake.lock
         run: nix flake update
 
-      - name: Run Check Build
-        run: nix build .#nixosConfigurations.Skadi.config.system.build.toplevel
+      - name: Run Checks
+        run: nix flake check --all-systems
 
       - name: Submit PR
         uses: DeterminateSystems/update-flake-lock@main

@@ -33,11 +33,11 @@ in {
       wallpapers = {
         "eDP-1" = {
           monitor = "eDP-1";
-          path = "${wallpaper}/TheTowerCropped.png";
+          path = "${wallpaper}/Abstract.png";
         };
         "HDMI-A-1" = {
           monitor = "HDMI-A-1";
-          path = "${wallpaper}/TheTowerCropped.png";
+          path = "${wallpaper}/Abstract.png";
         };
       };
     };

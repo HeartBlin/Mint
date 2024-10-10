@@ -15,6 +15,11 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-ncdgGvLljI+2zQN68ahrhNzOCT68AWRbHL/AEdCRfJ0=";
   };
 
+  abstract = fetchurl {
+    url = "https://i.imgur.com/Q8ZTZCH.png";
+    hash = "sha256-HL3mJOeF6UKXL3ymj9ZynzgZTUJgw/lsxq9Xhpe3A8A=";
+  };
+
   phases = [ "installPhase" ];
 
   installPhase = let
@@ -33,6 +38,8 @@ stdenvNoCC.mkDerivation {
     cp $theTower $out/share/wallpapers/TheTower.webp
     ${convert "TheTower.webp" "TheTower.png"}
     ${crop "TheTower.png" "4000x1950+0+0" "TheTowerCropped.png"}
+
+    cp $abstract $out/share/wallpapers/Abstract.png
 
     runHook postInstall
   '';

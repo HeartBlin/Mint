@@ -17,12 +17,6 @@ jobs:
       - name: Setup Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v8
 
-      - name: Update flake.lock
-        run: nix flake update
-
-      - name: Run Checks
-        run: nix flake check --all-systems
-
       - name: Submit PR
         uses: DeterminateSystems/update-flake-lock@main
         with:
@@ -30,4 +24,3 @@ jobs:
           pr-labels: |
             dependencies
             automated
-

@@ -69,6 +69,7 @@ in {
           "nixos"."expr" = ''
             (builtins.getFlake \"${flakeDir}\").nixosConfigurations.${hostName}.options'';
         };
+        "nix.hiddenLanguageServerErrors" = [ "textDocument/definition" ];
 
         "[nix]" = {
           "editor.defaultFormatter" = "jnoortheen.nix-ide";

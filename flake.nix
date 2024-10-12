@@ -31,11 +31,29 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Idle daemon
+    hypridle.url = "github:hyprwm/hypridle";
+    hypridle.inputs = {
+      hyprlang.follows = "hyprland/hyprlang";
+      hyprutils.follows = "hyprland/hyprutils";
+      nixpkgs.follows = "hyprland/nixpkgs";
+      systems.follows = "hyprland/systems";
+    };
+
     # Wayland Compositor
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs = {
       nixpkgs.follows = "nixpkgs";
       systems.follows = "systems";
+    };
+
+    # Lockscreen
+    hyprlock.url = "github:hyprwm/hyprlock";
+    hyprlock.inputs = {
+      hyprlang.follows = "hyprland/hyprlang";
+      hyprutils.follows = "hyprland/hyprutils";
+      nixpkgs.follows = "hyprland/nixpkgs";
+      systems.follows = "hyprland/systems";
     };
 
     # SecureBoot support

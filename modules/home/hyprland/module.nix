@@ -27,7 +27,8 @@ let
 
   cfg = config.Ark.hyprland;
 in {
-  imports = [ ./frag/theme.nix ./frag/wallpaper.nix ];
+  imports =
+    [ ./frag/idle.nix ./frag/lock.nix ./frag/theme.nix ./frag/wallpaper.nix ];
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
@@ -112,7 +113,6 @@ in {
         };
 
         dwindle = {
-          no_gaps_when_only = 0;
           force_split = 0;
           preserve_split = true;
         };

@@ -9,7 +9,9 @@
         inherit (inputs.nixpkgs.lib) mkOption;
         inherit (inputs.nixpkgs.lib.types) nullOr str;
 
-        commonArgs = { inherit hostName inputs inputs' libx self userName; };
+        commonArgs = {
+          inherit hostName inputs inputs' libx prettyName self userName;
+        };
 
         inputModules = [
           inputs.disko.nixosModules.disko

@@ -1,6 +1,8 @@
-{ inputs', pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
+  mintWalls.wallpaper = "BetterSonoma";
+
   Ark = {
     chrome.enable = true;
     cli = {
@@ -32,11 +34,11 @@
       wallpapers = {
         "eDP-1" = {
           monitor = "eDP-1";
-          path = "${inputs'.mintwalls.packages.Abstract}";
+          path = "${config.mintWalls.wallpaperPkg}";
         };
         "HDMI-A-1" = {
           monitor = "HDMI-A-1";
-          path = "${inputs'.mintwalls.packages.Abstract}";
+          path = "${config.mintWalls.wallpaperPkg}";
         };
       };
     };

@@ -71,6 +71,7 @@
     lix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Personal Wallpapers
+    # mintwalls.url = "git+file:///home/heartblin/MintWalls";
     mintwalls.url = "github:HeartBlin/MintWalls";
     mintwalls.inputs = {
       flake-parts.follows = "flake-parts";
@@ -80,9 +81,6 @@
 
     # Declarative Discord plugins
     nixcord.url = "github:KaylorBen/nixcord";
-
-    # Easy packages
-    pkgs-by-name.url = "github:drupol/pkgs-by-name-for-flake-parts";
 
     # Run checks automagically
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";

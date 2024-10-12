@@ -61,11 +61,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728687662,
-        "narHash": "sha256-D9TChzb00eTG1YWBx8eN2s6lJJnBjB5Y7RpxkAzGvyQ=",
+        "lastModified": 1728763831,
+        "narHash": "sha256-KOp33tls7jRAhcmu77aVxKpSMou8QgK0BC+Y3sYLuGo=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "bdbdb725d632863bdedb80baabf21327614dd237",
+        "rev": "b6215392ec3bd05e9ebfbb2f7945c414096fce8f",
         "type": "github"
       },
       "original": {
@@ -597,18 +597,17 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "systems": [
           "systems"
         ]
       },
       "locked": {
-        "lastModified": 1728759074,
-        "narHash": "sha256-EFqnFOHds91HirLp70g0Z/KDo+Xa0CM1bTjuPDUeYOc=",
+        "lastModified": 1728771975,
+        "narHash": "sha256-UXxa9aWy0zbMgW2FqKBAjb4I5Bohig+s/qUbLNanERM=",
         "owner": "HeartBlin",
         "repo": "MintWalls",
-        "rev": "5c566ae498f00f7ec37ab63f143de571fe8d18d3",
+        "rev": "40c442e79a1d40a89ae0001445ca54d17dc19e9b",
         "type": "github"
       },
       "original": {
@@ -681,36 +680,6 @@
         "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "pkgs-by-name": {
-      "locked": {
-        "lastModified": 1727519927,
-        "narHash": "sha256-3SNX6BuaisoX9PKYI+fh3geZ3jBgKKkAtHcWuHRU0+o=",
-        "owner": "drupol",
-        "repo": "pkgs-by-name-for-flake-parts",
-        "rev": "91debb07d81ff25b8e3b48914b6abd6f11dc26e2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "drupol",
-        "repo": "pkgs-by-name-for-flake-parts",
-        "type": "github"
-      }
-    },
-    "pkgs-by-name-for-flake-parts": {
-      "locked": {
-        "lastModified": 1727519927,
-        "narHash": "sha256-3SNX6BuaisoX9PKYI+fh3geZ3jBgKKkAtHcWuHRU0+o=",
-        "owner": "drupol",
-        "repo": "pkgs-by-name-for-flake-parts",
-        "rev": "91debb07d81ff25b8e3b48914b6abd6f11dc26e2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "drupol",
-        "repo": "pkgs-by-name-for-flake-parts",
         "type": "github"
       }
     },
@@ -806,7 +775,6 @@
         "mintwalls": "mintwalls",
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_2",
-        "pkgs-by-name": "pkgs-by-name",
         "pre-commit-hooks": "pre-commit-hooks_3",
         "systems": "systems_3"
       }

@@ -1,12 +1,22 @@
-{ config, inputs', lib, pkgs, prettyName, ... }:
+{ config, inputs', lib, libx, pkgs, prettyName, ... }:
 
 let
   inherit (lib) attrValues getExe mkIf;
   inherit (config.Ark.hyprland) wallpapers;
+  inherit (libx.colors) toHypr;
+
+  colors = {
+    error = toHypr config.mintWalls.palette.error;
+    onSurface = toHypr config.mintWalls.palette.onSurface;
+    primary = toHypr config.mintWalls.palette.primary;
+    primary' = config.mintWalls.palette.primary;
+    surface = toHypr config.mintWalls.palette.surface;
+    tertiary = toHypr config.mintWalls.palette.tertiary;
+  };
 
   time-hl = pkgs.writeShellScriptBin "time-hl" ''
     current_hour=$(date +"%H")
-    user_string="<span color='#BBC3FF'>${prettyName}</span>"
+    user_string="<span color='#${colors.primary'}'>${prettyName}</span>"
 
     if [ "$current_hour" -ge 5 ] && [ "$current_hour" -lt 12 ]; then
       echo "Good morning, $user_string"
@@ -50,11 +60,11 @@ in {
           dots_size = 0.2;
           dots_spacing = 0.2;
           dots_center = true;
-          outer_color = "rgb(121318)";
-          inner_color = "rgb(121318)";
-          font_color = "rgb(E4E1E9)";
-          check_color = "rgb(121318)";
-          fail_color = "rgb(FFB4AB)";
+          outer_color = "${colors.surface}";
+          inner_color = "${colors.surface}";
+          font_color = "${colors.onSurface}";
+          #check_color = "${colors.tertiary}";
+          #fail_color = "${colors.error}";
           fade_on_empty = true;
           placeholder_text = "";
           hide_input = false;
@@ -67,7 +77,7 @@ in {
           {
             monitor = "";
             text = ''cmd[update:1000] echo -e "$(date +"%H")"'';
-            color = "rgb(BBC3FF)";
+            color = "${colors.primary}";
             font_family = "JetBrains Mono Bold";
             font_size = 180;
             position = "0, 150";
@@ -77,7 +87,7 @@ in {
           {
             monitor = "";
             text = ''cmd[update:1000] echo -e "$(date +"%M")"'';
-            color = "rgb(E4E1E9)";
+            color = "${colors.onSurface}";
             font_family = "JetBrains Mono Bold";
             font_size = 180;
             position = "0, -75";
@@ -87,7 +97,7 @@ in {
           {
             monitor = "";
             text = ''cmd[update:1000] echo -e "$(date +"%A, %b %d")"'';
-            color = "rgb(E4E1E9)";
+            color = "${colors.onSurface}";
             font_family = "JetBrains Mono Bold";
             position = "70, -70";
             halign = "left";
@@ -96,7 +106,7 @@ in {
           {
             monitor = "";
             text = "cmd[update:1000] bash ${getExe time-hl}";
-            color = "rgb(E4E1E9)";
+            color = "${colors.onSurface}";
             font_family = "JetBrains Mono Bold";
             position = "70, -100";
             halign = "left";

@@ -50,6 +50,9 @@
 
               users.${userName} = {
                 imports = [
+                  # Modules
+                  inputs.mintwalls.homeManagerModules.mintWalls
+
                   # Paths
                   "${self}/hosts/${hostName}/user/config.nix"
 

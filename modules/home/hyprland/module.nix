@@ -71,7 +71,7 @@ in {
 
           "col.active_border" =
             "${c.blue} ${c.violet} ${c.red} ${c.orange} 45deg";
-          "col.inactive_border" = "rgb(323232)";
+          "col.inactive_border" = "rgb(333333)";
 
           resize_on_border = true;
           layout = "dwindle";

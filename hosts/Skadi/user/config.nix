@@ -1,6 +1,6 @@
-{ pkgs, self, ... }:
+{ pkgs, self', ... }:
 
-let wallpaper = "${self.packages.${pkgs.system}.wallpapers}/share/wallpapers";
+let wallpaper = "${self'.packages.wallpapers}/share/wallpapers";
 in {
   Ark = {
     chrome.enable = true;

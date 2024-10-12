@@ -1,7 +1,8 @@
-{ config, inputs', lib, pkgs, prettyName, self, ... }:
+{ config, inputs', lib, pkgs, prettyName, ... }:
 
 let
-  inherit (lib) getExe mkIf;
+  inherit (lib) attrValues getExe mkIf;
+  inherit (config.Ark.hyprland) wallpapers;
 
   time-hl = pkgs.writeShellScriptBin "time-hl" ''
     current_hour=$(date +"%H")
@@ -18,7 +19,15 @@ let
     fi
   '';
 
-  wallpaper = "${self.packages.${pkgs.system}.wallpapers}/share/wallpapers";
+  backgrounds = map (wallpaper: {
+    inherit (wallpaper) monitor path;
+    blur_passes = 2;
+    contrast = 0.9;
+    brightness = 0.7;
+    vibrancy = 0.17;
+    vibrancy_darkness = 0;
+  }) (attrValues wallpapers);
+
   cfg = config.Ark.hyprland;
 in {
   config = mkIf cfg.enable {
@@ -32,15 +41,7 @@ in {
           hide_cursor = true;
         };
 
-        background = {
-          monitor = "";
-          path = "${wallpaper}/Abstract.png";
-          blur_passes = 2;
-          contrast = 0.9;
-          brightness = 0.7;
-          vibrancy = 0.17;
-          vibrancy_darkness = 0;
-        };
+        background = backgrounds;
 
         input-field = [{
           monitor = "eDP-1";

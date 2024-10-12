@@ -3,14 +3,14 @@
 {
   mkSystem = { hostName, userName, prettyName ? "", system ? "x86_64-linux"
     , stateVersion ? "24.11" }:
-    withSystem system ({ inputs', ... }:
+    withSystem system ({ inputs', self', ... }:
       let
         inherit (inputs.nixpkgs.lib) nixosSystem;
         inherit (inputs.nixpkgs.lib) mkOption;
         inherit (inputs.nixpkgs.lib.types) nullOr str;
 
         commonArgs = {
-          inherit hostName inputs inputs' libx prettyName self userName;
+          inherit hostName inputs inputs' libx prettyName self self' userName;
         };
 
         inputModules = [

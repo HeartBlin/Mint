@@ -70,6 +70,14 @@
       "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
     lix.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Personal Wallpapers
+    mintwalls.url = "github:HeartBlin/MintWalls";
+    mintwalls.inputs = {
+      flake-parts.follows = "flake-parts";
+      nixpkgs.follows = "nixpkgs";
+      systems.follows = "systems";
+    };
+
     # Declarative Discord plugins
     nixcord.url = "github:KaylorBen/nixcord";
 

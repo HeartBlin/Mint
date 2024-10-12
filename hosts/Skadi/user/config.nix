@@ -1,7 +1,6 @@
-{ pkgs, self', ... }:
+{ inputs', pkgs, ... }:
 
-let wallpaper = "${self'.packages.wallpapers}/share/wallpapers";
-in {
+{
   Ark = {
     chrome.enable = true;
     cli = {
@@ -33,11 +32,11 @@ in {
       wallpapers = {
         "eDP-1" = {
           monitor = "eDP-1";
-          path = "${wallpaper}/Abstract.png";
+          path = "${inputs'.mintwalls.packages.Abstract}";
         };
         "HDMI-A-1" = {
           monitor = "HDMI-A-1";
-          path = "${wallpaper}/Abstract.png";
+          path = "${inputs'.mintwalls.packages.Abstract}";
         };
       };
     };

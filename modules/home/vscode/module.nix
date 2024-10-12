@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, hostName, lib, osConfig, pkgs, ... }:
 
 let
   inherit (lib) mkIf;
   inherit (config.Ark.cli) shell;
+  inherit (osConfig.Ark) flakeDir;
 
   cfg = config.Ark.vscode;
 in {
@@ -63,7 +64,12 @@ in {
         # Nix
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
-        "nix.serverSettings"."nixd"."formatting"."command" = [ "nixfmt" ];
+        "nix.serverSettings"."nixd" = {
+          "formatting"."command" = [ "nixfmt" ];
+          "nixos"."expr" = ''
+            (builtins.getFlake \"${flakeDir}\").nixosConfigurations.${hostName}.options'';
+        };
+
         "[nix]" = {
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
           "editor.formatOnPaste" = true;

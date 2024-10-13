@@ -25,15 +25,15 @@ in {
 
         listener = [
           {
-            timeout = 150;
-            on-timeout = "${brightnessctl} -s set 10";
-            on-resume = "${brightnessctl} -r";
+            timeout = 60;
+            on-timeout = "${brightnessctl} -sd ${ledDevice} set 0";
+            on-resume = "${brightnessctl} -rd ${ledDevice}";
           }
 
           {
-            timeout = 150;
-            on-timeout = "${brightnessctl} -sd ${ledDevice} set 0";
-            on-resume = "${brightnessctl} -rd ${ledDevice}";
+            timeout = 240;
+            on-timeout = "${brightnessctl} -s set 10";
+            on-resume = "${brightnessctl} -r";
           }
 
           {

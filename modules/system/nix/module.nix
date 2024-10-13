@@ -74,6 +74,7 @@ in {
   nixpkgs.config = {
     allowBroken = false;
     allowUnfree = true;
+    enableParallelBuilding = true;
   };
 
   # Neat Nix Helper

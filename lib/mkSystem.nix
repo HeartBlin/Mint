@@ -2,7 +2,7 @@
 
 {
   mkSystem = { hostName, userName, prettyName ? "", system ? "x86_64-linux"
-    , stateVersion ? "24.11" }:
+    , stateVersion ? "24.11", timeZone ? "Europe/Bucharest" }:
     withSystem system ({ inputs', self', ... }:
       let
         inherit (inputs.nixpkgs.lib) nixosSystem;
@@ -35,6 +35,7 @@
           { system.stateVersion = stateVersion; }
           { networking.hostName = hostName; }
           { services.automatic-timezoned.enable = true; }
+          { time.timeZone = timeZone; } # Override this if needed
           { time.hardwareClockInLocalTime = true; } # DualBoot lmao
           {
             users.users."${userName}" = {

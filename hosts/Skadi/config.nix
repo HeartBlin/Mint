@@ -1,5 +1,5 @@
 _: {
-  Ark = {
+  Mint = {
     asus.enable = true;
     gdm.enable = true;
     nvidia = {

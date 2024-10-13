@@ -3,7 +3,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.home-manager.users.${userName}.Ark.hyprland;
+  cfg = config.home-manager.users.${userName}.Mint.hyprland;
 in {
   config = mkIf cfg.enable {
     programs = {

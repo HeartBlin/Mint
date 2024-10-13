@@ -4,7 +4,7 @@ let
   inherit (lib) mkEnableOption mkOption;
   inherit (lib.types) str;
 in {
-  options.Ark = {
+  options.Mint = {
     asus.enable = mkEnableOption "Enables asusd & supergfxd";
     gdm.enable = mkEnableOption "Enables GDM display manager";
     nvidia = {

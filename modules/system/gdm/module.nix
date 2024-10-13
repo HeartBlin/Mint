@@ -3,7 +3,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.Ark.gdm;
+  cfg = config.Mint.gdm;
 in {
   config =
     mkIf cfg.enable { services.xserver.displayManager.gdm.enable = true; };

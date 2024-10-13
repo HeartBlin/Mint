@@ -2,9 +2,9 @@
 
 let
   inherit (lib) mkIf;
-  inherit (osConfig.Ark) flakeDir;
+  inherit (osConfig.Mint) flakeDir;
 
-  cfg = config.Ark.cli;
+  cfg = config.Mint.cli;
 in {
   config = mkIf (cfg.shell == "fish") {
     programs = {

@@ -2,7 +2,7 @@
 
 let
   inherit (lib) attrValues getExe mkIf;
-  inherit (config.Ark.hyprland) wallpapers;
+  inherit (config.Mint.hyprland) wallpapers;
   inherit (libx.colors) toHypr;
 
   colors = {
@@ -38,7 +38,7 @@ let
     vibrancy_darkness = 0;
   }) (attrValues wallpapers);
 
-  cfg = config.Ark.hyprland;
+  cfg = config.Mint.hyprland;
 in {
   config = mkIf cfg.enable {
     programs.hyprlock = {

@@ -2,10 +2,10 @@
 
 let
   inherit (lib) mkIf;
-  inherit (config.Ark.cli) shell;
-  inherit (osConfig.Ark) flakeDir;
+  inherit (config.Mint.cli) shell;
+  inherit (osConfig.Mint) flakeDir;
 
-  cfg = config.Ark.vscode;
+  cfg = config.Mint.vscode;
 in {
   config = mkIf cfg.enable {
     programs.vscode = {

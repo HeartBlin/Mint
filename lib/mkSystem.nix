@@ -66,9 +66,9 @@
 
           # Inform the system where the flake is
           {
-            options.Ark.flakeDir = mkOption {
+            options.Mint.flakeDir = mkOption {
               type = nullOr str;
-              default = "/home/${userName}/Ark";
+              default = "/home/${userName}/Mint";
             };
           }
 
@@ -76,7 +76,7 @@
           {
             system.activationScripts.profilePicture.text = ''
               mkdir -p /var/lib/AccountsService/{icons,users}
-              cp /home/${userName}/Ark/hosts/${hostName}/user/pfp.png /var/lib/AccountsService/icons/${userName}
+              cp /home/${userName}/Mint/hosts/${hostName}/user/pfp.png /var/lib/AccountsService/icons/${userName}
               echo -e "[User]\nIcon=/var/lib/AccountsService/icons/${userName}\n" > /var/lib/AccountsService/users/${userName}
             '';
           }

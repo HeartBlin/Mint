@@ -2,7 +2,7 @@
 
 let
   inherit (lib) mkDefault mkIf;
-  cfg = config.Ark.nvidia;
+  cfg = config.Mint.nvidia;
 in {
   config = mkIf cfg.enable {
     nixpkgs.config = {

@@ -3,7 +3,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.Ark.steam;
+  cfg = config.Mint.steam;
 in {
   config = mkIf cfg.enable {
     programs = {

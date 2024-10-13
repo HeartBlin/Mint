@@ -3,9 +3,10 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.Ark.chrome;
+  cfg = config.Mint.discord;
 in {
   imports = [ inputs.nixcord.homeManagerModules.nixcord ];
+
   config = mkIf cfg.enable {
     programs.nixcord = {
       enable = true;

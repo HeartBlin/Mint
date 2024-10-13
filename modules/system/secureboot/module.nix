@@ -3,7 +3,7 @@
 let
   inherit (lib) mkForce mkIf mkMerge;
 
-  cfg = config.Ark.secureboot;
+  cfg = config.Mint.secureboot;
 in {
   config = mkMerge [
     (mkIf cfg.enable {

@@ -1,4 +1,4 @@
 { lib, ... }:
 
 let inherit (lib) mkEnableOption;
-in { options.Ark.discord.enable = mkEnableOption "Enable Discord"; }
+in { options.Mint.discord.enable = mkEnableOption "Enable Discord"; }

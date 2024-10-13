@@ -3,7 +3,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.Ark.asus;
+  cfg = config.Mint.asus;
 in {
   config = mkIf cfg.enable {
     services = {

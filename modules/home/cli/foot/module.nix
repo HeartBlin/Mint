@@ -3,7 +3,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.Ark.cli;
+  cfg = config.Mint.cli;
 in {
   config = mkIf cfg.foot.enable {
     programs.foot = {

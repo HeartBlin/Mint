@@ -18,14 +18,14 @@ let
     ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bOrange} -z 4
   '';
 
-  chrome = config.Ark.chrome.enable;
-  foot = config.Ark.cli.foot.enable;
-  vscode = config.Ark.vscode.enable;
+  chrome = config.Mint.chrome.enable;
+  foot = config.Mint.cli.foot.enable;
+  vscode = config.Mint.vscode.enable;
 
-  asus = osConfig.Ark.asus.enable;
-  nvidia = osConfig.Ark.nvidia.enable;
+  asus = osConfig.Mint.asus.enable;
+  nvidia = osConfig.Mint.nvidia.enable;
 
-  cfg = config.Ark.hyprland;
+  cfg = config.Mint.hyprland;
 in {
   imports =
     [ ./frag/idle.nix ./frag/lock.nix ./frag/theme.nix ./frag/wallpaper.nix ];

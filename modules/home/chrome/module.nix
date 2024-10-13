@@ -3,7 +3,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.Ark.chrome;
+  cfg = config.Mint.chrome;
 
 in {
   config = mkIf cfg.enable {

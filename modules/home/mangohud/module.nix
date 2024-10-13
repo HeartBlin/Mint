@@ -3,7 +3,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.Ark.vscode;
+  cfg = config.Mint.vscode;
 in {
   config = mkIf cfg.enable {
     programs.mangohud = {

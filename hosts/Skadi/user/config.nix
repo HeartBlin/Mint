@@ -3,7 +3,7 @@
 {
   mintWalls.wallpaper = "BetterSonoma";
 
-  Ark = {
+  Mint = {
     chrome.enable = true;
     cli = {
       foot.enable = true;

@@ -2,7 +2,7 @@
 
 let
   inherit (lib) filterAttrs isType mapAttrs mapAttrsToList;
-  inherit (config.Ark) flakeDir;
+  inherit (config.Mint) flakeDir;
 
   ##
   ## Found this snippet of code from this repo:

@@ -3,7 +3,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.Ark.tpm;
+  cfg = config.Mint.tpm;
 in {
   config = mkIf cfg.enable {
     security.tpm2.enable = true;

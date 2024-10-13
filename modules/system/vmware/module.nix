@@ -3,7 +3,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.Ark.vmware;
+  cfg = config.Mint.vmware;
 in {
   config = mkIf cfg.enable {
     virtualisation.vmware.host = {

@@ -18,7 +18,7 @@ let
     };
   });
 in {
-  options.Ark = {
+  options.Mint = {
     chrome.enable = mkEnableOption "Enable Google Chrome";
     cli = {
       foot.enable = mkEnableOption "Enable foot";

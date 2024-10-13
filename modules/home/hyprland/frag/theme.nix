@@ -2,9 +2,9 @@
 
 let
   inherit (lib) mkIf;
-  inherit (config.Ark.hyprland) theme;
+  inherit (config.Mint.hyprland) theme;
 
-  cfg = config.Ark.hyprland;
+  cfg = config.Mint.hyprland;
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings.exec-once = [

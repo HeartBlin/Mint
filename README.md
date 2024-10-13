@@ -1,6 +1,6 @@
-<h1 align="center"> 🏰 Ark 🏯 </h1>
+<h1> 🌿 Mint </h1>
 
-<h5 align="center"> 🚧 !!! Under Construction !!! 🚧 </h5>
+<h5> 🚧 !!! Under Construction !!! 🚧 </h5>
 
 ## 👥 / 📄 People & Projects
 

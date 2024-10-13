@@ -2,12 +2,12 @@
 
 let
   inherit (lib) getExe mkIf;
-  inherit (osConfig.Ark) asus;
+  inherit (osConfig.Mint) asus;
 
   ledDevice =
     if asus.enable then "asus::kbd_backlight" else "rgb:kbd_backlight";
   brightnessctl = getExe pkgs.brightnessctl;
-  cfg = config.Ark.hyprland;
+  cfg = config.Mint.hyprland;
 in {
   config = mkIf cfg.enable {
     services.hypridle = {

@@ -35,6 +35,7 @@
           { system.stateVersion = stateVersion; }
           { networking.hostName = hostName; }
           { services.automatic-timezoned.enable = true; }
+          { time.hardwareClockInLocalTime = true; } # DualBoot lmao
           {
             users.users."${userName}" = {
               isNormalUser = true;

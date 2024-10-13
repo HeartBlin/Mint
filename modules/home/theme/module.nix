@@ -2,12 +2,12 @@
 
 let
   inherit (lib) mkIf;
-  inherit (config.Mint.hyprland) theme;
+  inherit (config.Mint) theme;
 
   cfg = config.Mint.hyprland;
 in {
-  config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.exec-once = [
+  config = {
+    wayland.windowManager.hyprland.settings.exec-once = mkIf cfg.enable [
       "hyprctl setcursor ${theme.cursor.name} ${toString theme.cursor.size}"
     ];
 

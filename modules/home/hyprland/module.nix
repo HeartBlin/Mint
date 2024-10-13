@@ -27,8 +27,7 @@ let
 
   cfg = config.Mint.hyprland;
 in {
-  imports =
-    [ ./frag/idle.nix ./frag/lock.nix ./frag/theme.nix ./frag/wallpaper.nix ];
+  imports = [ ./frag/idle.nix ./frag/lock.nix ./frag/wallpaper.nix ];
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {

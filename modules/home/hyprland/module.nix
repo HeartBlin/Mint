@@ -2,20 +2,26 @@
 
 let
   inherit (lib) mkIf;
-  inherit (libx.colors) pallete toHypr;
+  inherit (libx.colors) toHypr;
+  inherit (config.mintWalls) defaultPalette;
 
-  c = {
-    blue = toHypr pallete.bBlue;
-    violet = toHypr pallete.bViolet;
-    red = toHypr pallete.bRed;
-    orange = toHypr pallete.bOrange;
+  colors = {
+    bB = toHypr defaultPalette.borderBlue;
+    bV = toHypr defaultPalette.borderViolet;
+    bR = toHypr defaultPalette.borderRed;
+    bO = toHypr defaultPalette.borderOrange;
+
+    bB' = defaultPalette.borderBlue;
+    bV' = defaultPalette.borderViolet;
+    bR' = defaultPalette.borderRed;
+    bO' = defaultPalette.borderOrange;
   };
 
   changeColor = pkgs.writeShellScript "changeColor" ''
-    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bBlue} -z 1 &
-    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bViolet} -z 2 &
-    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bRed} -z 3 &
-    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${pallete.bOrange} -z 4
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${colors.bB'} -z 1 &
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${colors.bV'} -z 2 &
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${colors.bR'} -z 3 &
+    ${pkgs.asusctl}/bin/asusctl led-mode static -c ${colors.bO'} -z 4
   '';
 
   chrome = config.Mint.chrome.enable;
@@ -69,7 +75,7 @@ in {
           border_size = 2;
 
           "col.active_border" =
-            "${c.blue} ${c.violet} ${c.red} ${c.orange} 45deg";
+            "${colors.bB} ${colors.bV} ${colors.bR} ${colors.bO} 45deg";
           "col.inactive_border" = "rgb(333333)";
 
           resize_on_border = true;
@@ -136,6 +142,7 @@ in {
           (mkIf chrome "Super, W, exec, google-chrome-stable")
           "Super, E, exec, nautilus"
           "Super, Space, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
+          "Super, L, exec, hyprlock"
 
           # Actions
           "Super, Q, killactive"
@@ -200,15 +207,15 @@ in {
         ];
 
         windowrulev2 = [
-          # PiP window
-          "float, title:^(Picture-in-Picture)$"
-          "pin, title:^(Picture-in-Picture)$"
-
           # Eye candy
           "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
 
           # Xwayland
           "rounding 0, xwayland:1"
+
+          # Idle Inhibit
+          "idleinhibit always, class:^(Vmware)$"
+          "idleinhibit always, class:^(steam_app_230410)$" # Warframe
         ];
       };
     };

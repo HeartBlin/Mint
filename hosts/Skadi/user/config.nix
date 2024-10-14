@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  mintWalls.wallpaper = "BetterSonoma";
+  mintWalls.wallpaper = "Abstract";
 
   Mint = {
     chrome.enable = true;

@@ -1,6 +1,7 @@
 _: {
   Mint = {
     asus.enable = true;
+    bluetooth.enable = true;
     gdm.enable = true;
     nvidia = {
       enable = true;

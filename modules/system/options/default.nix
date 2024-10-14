@@ -6,7 +6,8 @@ let
 in {
   options.Mint = {
     asus.enable = mkEnableOption "Enables asusd & supergfxd";
-    gdm.enable = mkEnableOption "Enables GDM display manager";
+    bluetooth.enable = mkEnableOption "Enable Bluetooth";
+    gdm.enable = mkEnableOption "Enable GDM display manager";
     nvidia = {
       enable = mkEnableOption "Enable Nvidia drivers";
       hybrid = {

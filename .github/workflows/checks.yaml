@@ -16,5 +16,8 @@ jobs:
       - name: Setup Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v8
 
+      - name: Check flake health
+        uses: DeterminateSystems/flake-checker-action@v9
+
       - name: Run Checks
         run: nix flake check --all-systems

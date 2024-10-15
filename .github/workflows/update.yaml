@@ -22,6 +22,3 @@ jobs:
 
       - name: Run checks
         run: nix flake check --all-systems
-
-      - name: Check if system evals
-        run: nix eval .#nixosConfigurations.Skadi.config.system.build.toplevel

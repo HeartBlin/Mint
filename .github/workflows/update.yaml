@@ -17,10 +17,11 @@ jobs:
       - name: Setup Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v8
 
-      - name: Submit PR
-        uses: DeterminateSystems/update-flake-lock@main
-        with:
-          pr-title: "Update flake.lock"
-          pr-labels: |
-            dependencies
-            automated
+      - name: Update flake.lock
+        run: nix flake update
+
+      - name: Run checks
+        run: nix flake check --all-systems
+
+      - name: Check if system evals
+        run: nix eval .#nixosConfigurations.Skadi.config.system.build.toplevel

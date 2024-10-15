@@ -605,15 +605,15 @@
       "locked": {
         "lastModified": 1728909871,
         "narHash": "sha256-3Wre37SYtV0VkIKC1SbmzsJuF1COvGk3L0pbLAiwUjU=",
-        "ref": "refs/heads/master",
+        "owner": "HeartBlin",
+        "repo": "MintWalls",
         "rev": "f65c39f334de37f22837ab753d0cd74deb4a733c",
-        "revCount": 14,
-        "type": "git",
-        "url": "file:///home/heartblin/MintWalls"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/heartblin/MintWalls"
+        "owner": "HeartBlin",
+        "repo": "MintWalls",
+        "type": "github"
       }
     },
     "nixcord": {

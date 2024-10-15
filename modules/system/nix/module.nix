@@ -1,7 +1,7 @@
 { config, inputs, lib, ... }:
 
 let
-  inherit (lib) filterAttrs isType mapAttrs mapAttrsToList;
+  inherit (lib) filterAttrs isType mapAttrs mapAttrsToList mkForce;
   inherit (config.Mint) flakeDir;
 
   ##
@@ -86,6 +86,7 @@ in {
   };
 
   # BLOAT
+  environment.defaultPackages = mkForce [ ];
   documentation = {
     enable = false;
     doc.enable = false;

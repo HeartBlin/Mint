@@ -1,30 +1,31 @@
 { pkgs, ... }:
 
-# Underclock & Undervolt
-# Until I go get my laptop fixed I'll sacrifice performance for nice temps
-# Normally pushing 98C in high loads
 {
-  hardware.cpu.x86.msr.enable = true;
-  environment.systemPackages = with pkgs; [
-    linuxKernel.packages.linux_6_6.cpupower
-    amdctl
-  ];
+  specialisation.undervolt.configuration = {
+    system.nixos.tags = [ "Undervolt" ];
 
-  systemd.services.underclockAndUndervolt = let
-    cpupower = "${pkgs.linuxKernel.packages.linux_6_6.cpupower}/bin/cpupower";
-    amdctl = "${pkgs.amdctl}/bin/amdctl";
-    bash = "${pkgs.bash}/bin/bash -c";
-  in {
-    description = "Underclocks & Undervolts CPU";
+    hardware.cpu.x86.msr.enable = true;
+    environment.systemPackages = with pkgs; [
+      linuxKernel.packages.linux_6_6.cpupower
+      amdctl
+    ];
 
-    wantedBy = [ "multi-user.target" "post-resume.target" ];
-    after = [ "post-resume.target" ];
+    systemd.services.underclockAndUndervolt = let
+      cpupower = "${pkgs.linuxKernel.packages.linux_6_6.cpupower}/bin/cpupower";
+      amdctl = "${pkgs.amdctl}/bin/amdctl";
+      bash = "${pkgs.bash}/bin/bash -c";
+    in {
+      description = "Underclocks & Undervolts CPU";
 
-    serviceConfig = {
-      Type = "oneshot";
-      Restart = "no";
-      ExecStart =
-        "${bash} '${cpupower} frequency-set -u 4.0Ghz && ${amdctl} -m -p0 -v 60'"; # 1175 mV
+      wantedBy = [ "multi-user.target" "post-resume.target" ];
+      after = [ "post-resume.target" ];
+
+      serviceConfig = {
+        Type = "oneshot";
+        Restart = "no";
+        ExecStart =
+          "${bash} '${cpupower} frequency-set -u 4.0Ghz && ${amdctl} -m -p0 -v 60'"; # 1175 mV
+      };
     };
   };
 }

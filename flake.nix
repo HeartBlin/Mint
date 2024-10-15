@@ -81,6 +81,10 @@
 
     # Declarative Discord plugins
     nixcord.url = "github:KaylorBen/nixcord";
+    nixcord.inputs = {
+      flake-compat.follows = "flake-compat";
+      nixpkgs.follows = "nixpkgs";
+    };
 
     # Run checks automagically
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";

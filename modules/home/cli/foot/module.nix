@@ -3,7 +3,7 @@
 let cfg = config.Mint.cli;
 in {
   programs.foot = {
-    inherit (cfg) enable;
+    inherit (cfg.foot) enable;
     server.enable = true;
 
     settings = {

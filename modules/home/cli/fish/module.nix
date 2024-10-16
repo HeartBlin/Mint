@@ -25,7 +25,13 @@ in {
 
         functions = {
           ".".body = ''nix shell nixpkgs#$argv[1] --command "fish"'';
-          ",".body = ''nix develop ${flakeDir}/.#$argv[1] --command "fish"'';
+          ",".body = ''
+            if not set -q argv[1]
+              nix flake init --template ${flakeDir}/.#moduleNix
+            else
+              nix flake init --template ${flakeDir}/.#$argv[1]
+            end
+          '';
           "fish_command_not_found".body = "echo Did not find command: $argv[1]";
           "mkcd".body = "mkdir -p $argv && cd $argv";
         };

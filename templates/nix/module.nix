@@ -1,11 +1,4 @@
-{ config, lib, ... }:
+{ config, ... }:
 
-let
-  inherit (lib) mkIf;
-
-  cfg = config.Mint."";
-in {
-  config = mkIf cfg.enable {
-
-  };
-}
+let cfg = config.Mint."";
+in { programs."" = { inherit (cfg) enable; }; }

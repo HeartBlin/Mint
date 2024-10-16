@@ -6,8 +6,9 @@ let
   cfg = config.Mint.tpm;
 in {
   config = mkIf cfg.enable {
-    security.tpm2.enable = true;
-    boot.initrd.systemd.enable = true;
-    environment.systemPackages = with pkgs; [ tpm2-tss tpm2-tools ];
+    security.tpm2.enable = cfg.enable;
+    boot.initrd.systemd.enable = cfg.enable;
+    environment.systemPackages = with pkgs;
+      (if cfg.enable then [ tpm2-tss tpm2-tools ] else [ ]);
   };
 }

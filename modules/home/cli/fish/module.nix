@@ -1,80 +1,76 @@
-{ config, lib, osConfig, pkgs, ... }:
+{ config, osConfig, pkgs, ... }:
 
 let
-  inherit (lib) mkIf;
   inherit (osConfig.Mint) flakeDir;
-
   cfg = config.Mint.cli;
 in {
-  config = mkIf (cfg.shell == "fish") {
-    programs = {
-      fish = {
-        enable = true;
+  programs = {
+    fish = {
+      enable = cfg.shell == "fish";
 
-        interactiveShellInit = ''
-          set fish_greeting
-          set -gx FLAKE ${flakeDir}
+      interactiveShellInit = ''
+        set fish_greeting
+        set -gx FLAKE ${flakeDir}
 
-          function starship_transient_prompt_func
-            starship module character
+        function starship_transient_prompt_func
+          starship module character
+        end
+
+        starship init fish | source
+        enable_transience
+      '';
+
+      functions = {
+        ".".body = ''nix shell nixpkgs#$argv[1] --command "fish"'';
+        ",".body = ''
+          if not set -q argv[1]
+            nix flake init --template ${flakeDir}/.#moduleNix
+          else
+            nix flake init --template ${flakeDir}/.#$argv[1]
           end
-
-          starship init fish | source
-          enable_transience
         '';
-
-        functions = {
-          ".".body = ''nix shell nixpkgs#$argv[1] --command "fish"'';
-          ",".body = ''
-            if not set -q argv[1]
-              nix flake init --template ${flakeDir}/.#moduleNix
-            else
-              nix flake init --template ${flakeDir}/.#$argv[1]
-            end
-          '';
-          "fish_command_not_found".body = "echo Did not find command: $argv[1]";
-          "mkcd".body = "mkdir -p $argv && cd $argv";
-        };
-
-        shellAliases = {
-          ls = "${pkgs.eza}/bin/eza -l";
-
-          # Nix Flake Management
-          rebuild = "nh os switch";
-          boot = "nh os boot";
-          update = "nix flake update --flake ${flakeDir} && nh os switch";
-          clean = "nh clean all && nh os boot";
-
-          # Git commands
-          ga = "git add .";
-          gc = "git commit -m";
-          gp = "git push";
-          gs = "git status";
-        };
+        "fish_command_not_found".body = "echo Did not find command: $argv[1]";
+        "mkcd".body = "mkdir -p $argv && cd $argv";
       };
 
-      starship = {
-        enable = true;
-        enableFishIntegration = false; # I do it manually
+      shellAliases = {
+        ls = "${pkgs.eza}/bin/eza -l";
 
-        settings = {
-          add_newline = false;
+        # Nix Flake Management
+        rebuild = "nh os switch";
+        boot = "nh os boot";
+        update = "nix flake update --flake ${flakeDir} && nh os switch";
+        clean = "nh clean all && nh os boot";
 
-          character = {
-            disabled = false;
-            success_symbol = "[λ](bold purple)";
-            error_symbol = "[λ](bold red)";
-          };
+        # Git commands
+        ga = "git add .";
+        gc = "git commit -m";
+        gp = "git push";
+        gs = "git status";
+      };
+    };
 
-          directory.disabled = false;
+    starship = {
+      enable = cfg.shell == "fish";
+      enableFishIntegration = false; # I do it manually
+
+      settings = {
+        add_newline = false;
+
+        character = {
+          disabled = false;
+          success_symbol = "[λ](bold purple)";
+          error_symbol = "[λ](bold red)";
         };
-      };
 
-      direnv = {
-        enable = true;
-        nix-direnv.enable = true;
-        silent = true;
+        directory.disabled = false;
       };
+    };
+
+    direnv = {
+      enable = cfg.shell == "fish";
+      nix-direnv.enable = true;
+      silent = true;
     };
   };
 }

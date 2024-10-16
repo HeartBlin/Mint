@@ -1,7 +1,7 @@
 { config, inputs', lib, libx, pkgs, prettyName, ... }:
 
 let
-  inherit (lib) attrValues getExe mkIf;
+  inherit (lib) attrValues getExe;
   inherit (config.Mint.hyprland) wallpapers;
   inherit (libx.colors) toHypr;
 
@@ -40,82 +40,81 @@ let
 
   cfg = config.Mint.hyprland;
 in {
-  config = mkIf cfg.enable {
-    programs.hyprlock = {
-      enable = true;
-      package = inputs'.hyprlock.packages.hyprlock;
+  programs.hyprlock = {
+    inherit (cfg) enable;
+    package = inputs'.hyprlock.packages.hyprlock;
 
-      settings = {
-        general = {
-          disable_loading_bar = true;
-          hide_cursor = true;
-        };
+    settings = {
+      general = {
+        disable_loading_bar = true;
+        hide_cursor = true;
+      };
 
-        background = backgrounds;
+      background = backgrounds;
 
-        input-field = [{
-          monitor = "eDP-1";
-          size = "300, 40";
-          outline_thickness = 2;
-          dots_size = 0.2;
-          dots_spacing = 0.2;
-          dots_center = true;
-          outer_color = "${colors.surface}";
-          inner_color = "${colors.surface}";
-          font_color = "${colors.onSurface}";
-          #check_color = "${colors.tertiary}";
-          #fail_color = "${colors.error}";
-          fade_on_empty = true;
-          placeholder_text = "";
-          hide_input = false;
+      input-field = [{
+        monitor = "eDP-1";
+        size = "300, 40";
+        outline_thickness = 2;
+        dots_size = 0.2;
+        dots_spacing = 0.2;
+        dots_center = true;
+        outer_color = "${colors.surface}";
+        inner_color = "${colors.surface}";
+        font_color = "${colors.onSurface}";
+        #check_color = "${colors.tertiary}";
+        #fail_color = "${colors.error}";
+        fade_on_empty = true;
+        placeholder_text = "";
+        hide_input = false;
+        position = "0, 150";
+        halign = "center";
+        valign = "bottom";
+      }];
+
+      label = [
+        {
+          monitor = "";
+          text = ''cmd[update:1000] echo -e "$(date +"%H")"'';
+          color = "${colors.primary}";
+          font_family = "JetBrains Mono Bold";
+          font_size = 180;
           position = "0, 150";
           halign = "center";
-          valign = "bottom";
-        }];
-
-        label = [
-          {
-            monitor = "";
-            text = ''cmd[update:1000] echo -e "$(date +"%H")"'';
-            color = "${colors.primary}";
-            font_family = "JetBrains Mono Bold";
-            font_size = 180;
-            position = "0, 150";
-            halign = "center";
-            valign = "center";
-          }
-          {
-            monitor = "";
-            text = ''cmd[update:1000] echo -e "$(date +"%M")"'';
-            color = "${colors.onSurface}";
-            font_family = "JetBrains Mono Bold";
-            font_size = 180;
-            position = "0, -75";
-            halign = "center";
-            valign = "center";
-          }
-          {
-            monitor = "";
-            text = ''cmd[update:1000] echo -e "$(date +"%A, %b %d")"'';
-            color = "${colors.onSurface}";
-            font_family = "JetBrains Mono Bold";
-            position = "70, -70";
-            halign = "left";
-            valign = "top";
-          }
-          {
-            monitor = "";
-            text = "cmd[update:1000] bash ${getExe time-hl}";
-            color = "${colors.onSurface}";
-            font_family = "JetBrains Mono Bold";
-            position = "70, -100";
-            halign = "left";
-            valign = "top";
-          }
-        ];
-      };
+          valign = "center";
+        }
+        {
+          monitor = "";
+          text = ''cmd[update:1000] echo -e "$(date +"%M")"'';
+          color = "${colors.onSurface}";
+          font_family = "JetBrains Mono Bold";
+          font_size = 180;
+          position = "0, -75";
+          halign = "center";
+          valign = "center";
+        }
+        {
+          monitor = "";
+          text = ''cmd[update:1000] echo -e "$(date +"%A, %b %d")"'';
+          color = "${colors.onSurface}";
+          font_family = "JetBrains Mono Bold";
+          position = "70, -70";
+          halign = "left";
+          valign = "top";
+        }
+        {
+          monitor = "";
+          text = "cmd[update:1000] bash ${getExe time-hl}";
+          color = "${colors.onSurface}";
+          font_family = "JetBrains Mono Bold";
+          position = "70, -100";
+          halign = "left";
+          valign = "top";
+        }
+      ];
     };
-
-    home.packages = [ pkgs.jetbrains-mono ];
   };
+
+  home.packages = if cfg.enable then [ pkgs.jetbrains-mono ] else [ ];
+
 }

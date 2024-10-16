@@ -13,11 +13,12 @@
           inherit hostName inputs inputs' libx prettyName self self' userName;
         };
 
-        inputModules = [
-          inputs.disko.nixosModules.disko
-          inputs.home-manager.nixosModules.default
-          inputs.lanzaboote.nixosModules.lanzaboote
-          inputs.lix.nixosModules.default
+        inputModules = with inputs; [
+          chaotic.nixosModules.default
+          disko.nixosModules.disko
+          home-manager.nixosModules.default
+          lanzaboote.nixosModules.lanzaboote
+          lix.nixosModules.default
         ];
 
         pathModules = [

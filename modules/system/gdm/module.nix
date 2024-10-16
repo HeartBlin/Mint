@@ -1,10 +1,4 @@
-{ config, lib, ... }:
+{ config, ... }:
 
-let
-  inherit (lib) mkIf;
-
-  cfg = config.Mint.gdm;
-in {
-  config =
-    mkIf cfg.enable { services.xserver.displayManager.gdm.enable = true; };
-}
+let cfg = config.Mint.gdm;
+in { services.xserver.displayManager.gdm.enable = cfg.enable; }

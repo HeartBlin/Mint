@@ -1,17 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
-let
-  inherit (lib) mkIf;
-
-  cfg = config.Mint.steam;
+let cfg = config.Mint.steam;
 in {
-  config = mkIf cfg.enable {
-    programs = {
-      steam = {
-        enable = true;
-        extraCompatPackages = with pkgs; [ proton-ge-bin ];
-      };
-      gamemode.enable = true;
+  programs = {
+    steam = {
+      inherit (cfg) enable;
+      extraCompatPackages = with pkgs; [ proton-ge-bin ];
     };
+    gamemode = { inherit (cfg) enable; };
   };
 }

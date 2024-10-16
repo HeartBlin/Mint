@@ -1,19 +1,14 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
-let
-  inherit (lib) mkIf;
-
-  cfg = config.Mint.asus;
+let cfg = config.Mint.asus;
 in {
-  config = mkIf cfg.enable {
-    services = {
-      supergfxd.enable = true;
-      asusd = {
-        enable = true;
-        enableUserService = true;
-      };
+  services = {
+    supergfxd = { inherit (cfg) enable; };
+    asusd = {
+      inherit (cfg) enable;
+      enableUserService = true;
     };
-
-    systemd.services.supergfxd.path = [ pkgs.pciutils ];
   };
+
+  systemd.services.supergfxd.path = [ pkgs.pciutils ];
 }

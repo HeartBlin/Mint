@@ -397,11 +397,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1729072891,
-        "narHash": "sha256-R9RbsnYaHD9k+8+mxYpg0uz6mPuV0i2BuhR2jls0vTg=",
+        "lastModified": 1729113795,
+        "narHash": "sha256-aklQ8mtp6xFtLHLZ3x5RXCyCdtme/Rt7T/YQspIxG58=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "0baf166d39260c6d1d422cf528fb5fedc3010cdb",
+        "rev": "b57086aa4362117c1f1025246f618d760e44b026",
         "type": "github"
       },
       "original": {
@@ -645,22 +645,24 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "pkgs-by-name": "pkgs-by-name",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "systems": [
           "systems"
         ]
       },
       "locked": {
-        "dirtyRev": "f65c39f334de37f22837ab753d0cd74deb4a733c-dirty",
-        "dirtyShortRev": "f65c39f-dirty",
-        "lastModified": 1728909871,
-        "narHash": "sha256-Bl38BEUwukHCl5VNlU94Z3RwbUHCbmAdABWHZP1b0dg=",
-        "type": "git",
-        "url": "file:///home/heartblin/MintWalls"
+        "lastModified": 1729154008,
+        "narHash": "sha256-stfvfdCZKhQ3E/6gr9IHnJdquDCo0jan2LZhpEqAi4A=",
+        "owner": "HeartBlin",
+        "repo": "MintWalls",
+        "rev": "80bdeafb2dee9edda5652351aec4fcab89d1290f",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/heartblin/MintWalls"
+        "owner": "HeartBlin",
+        "repo": "MintWalls",
+        "type": "github"
       }
     },
     "nix-github-actions": {
@@ -738,6 +740,21 @@
         "owner": "NixOS",
         "ref": "nixos-24.05",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pkgs-by-name": {
+      "locked": {
+        "lastModified": 1727519927,
+        "narHash": "sha256-3SNX6BuaisoX9PKYI+fh3geZ3jBgKKkAtHcWuHRU0+o=",
+        "owner": "drupol",
+        "repo": "pkgs-by-name-for-flake-parts",
+        "rev": "91debb07d81ff25b8e3b48914b6abd6f11dc26e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "drupol",
+        "repo": "pkgs-by-name-for-flake-parts",
         "type": "github"
       }
     },

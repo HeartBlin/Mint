@@ -70,6 +70,7 @@
           {
             options.Mint.flakeDir = mkOption {
               type = nullOr str;
+              readOnly = true;
               default = "/home/${userName}/Mint";
             };
           }

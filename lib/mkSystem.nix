@@ -2,7 +2,8 @@
 
 {
   mkSystem = { hostName, userName, prettyName ? "", system ? "x86_64-linux"
-    , stateVersion ? "24.11", timeZone ? "Europe/Bucharest" }:
+    , stateVersion ? "24.11", timeZone ? "Europe/Bucharest"
+    , flakeDir ? "/home/${userName}/Mint" }:
     withSystem system ({ inputs', self', ... }:
       let
         inherit (inputs.nixpkgs.lib) nixosSystem;
@@ -71,7 +72,7 @@
             options.Mint.flakeDir = mkOption {
               type = nullOr str;
               readOnly = true;
-              default = "/home/${userName}/Mint";
+              default = flakeDir;
             };
           }
 

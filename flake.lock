@@ -565,9 +565,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "pre-commit-hooks-nix": [
-          "pre-commit-hooks"
-        ],
+        "pre-commit-hooks-nix": [],
         "rust-overlay": "rust-overlay"
       },
       "locked": {
@@ -589,9 +587,7 @@
       "inputs": {
         "flake-utils": "flake-utils_2",
         "flakey-profile": "flakey-profile",
-        "lix": [
-          "lixsrc"
-        ],
+        "lix": "lix_2",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -608,7 +604,7 @@
         "url": "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz"
       }
     },
-    "lixsrc": {
+    "lix_2": {
       "flake": false,
       "locked": {
         "lastModified": 1729251604,
@@ -799,9 +795,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nixpkgs-stable": [
-          "nixpkgs"
-        ]
+        "nixpkgs-stable": []
       },
       "locked": {
         "lastModified": 1729104314,
@@ -828,7 +822,6 @@
         "hyprlock": "hyprlock",
         "lanzaboote": "lanzaboote",
         "lix": "lix",
-        "lixsrc": "lixsrc",
         "mintwalls": "mintwalls",
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs",

@@ -66,21 +66,13 @@
       flake-compat.follows = "";
       flake-parts.follows = "flake-parts";
       nixpkgs.follows = "nixpkgs";
-      pre-commit-hooks-nix.follows = "pre-commit-hooks";
+      pre-commit-hooks-nix.follows = "";
     };
 
     # Faster eval Nix fork
-    lixsrc = {
-      url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
-      flake = false;
-    };
-
     lix.url =
       "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
-    lix.inputs = {
-      lix.follows = "lixsrc";
-      nixpkgs.follows = "nixpkgs";
-    };
+    lix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Personal Wallpapers
     # mintwalls.url = "git+file:///home/heartblin/MintWalls";
@@ -103,7 +95,7 @@
     pre-commit-hooks.inputs = {
       flake-compat.follows = "";
       nixpkgs.follows = "nixpkgs";
-      nixpkgs-stable.follows = "nixpkgs";
+      nixpkgs-stable.follows = "";
     };
   };
 }

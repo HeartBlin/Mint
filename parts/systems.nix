@@ -6,10 +6,14 @@ let
   libx = import "${self}/lib" { inherit inputs lib libx self withSystem; };
 in {
   flake.nixosConfigurations = {
-    Skadi = libx.mkSystem {
+    Skadi = libx.mkSystem rec {
+      flakeDir = "/home/${userName}/Mint";
       hostName = "Skadi";
-      userName = "heartblin";
       prettyName = "HeartBlin";
+      stateVersion = "24.11";
+      system = "x86_64-linux";
+      timeZone = "Europe/Bucharest";
+      userName = "heartblin";
     };
   };
 }

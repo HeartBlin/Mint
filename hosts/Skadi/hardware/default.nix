@@ -4,7 +4,6 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     "${self}/hosts/Skadi/hardware/disko.nix"
-    "${self}/hosts/Skadi/hardware/undervolt.nix"
   ];
 
   boot = {

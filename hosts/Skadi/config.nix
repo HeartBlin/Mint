@@ -11,6 +11,7 @@ _: {
     secureboot.enable = true;
     steam.enable = true;
     tpm.enable = true;
+    underclock.enable = false;
     vmware.enable = false;
   };
 }

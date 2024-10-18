@@ -1,7 +1,7 @@
 { config, lib, libx, osConfig, pkgs, ... }:
 
 let
-  inherit (lib) mkIf;
+  inherit (lib) getExe mkIf;
   inherit (libx.colors) toHypr;
   inherit (config.mintWalls) defaultPalette;
 
@@ -146,6 +146,14 @@ in {
         "Super Shift, Q, exec, pkill Hyprland"
         "Super, F, fullscreen"
         "Super, T, togglefloating"
+
+        # Screenshot
+        ", Print,  exec, ${
+          getExe pkgs.hyprshot
+        } -m region -o ~/Pictures/Screenshots"
+        "Shift , Print,  exec, ${
+          getExe pkgs.hyprshot
+        } -m output -o ~/Pictures/Screenshots"
 
         # Workspaces
         "Super, 1, workspace, 1"

@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-{
-  specialisation.undervolt.configuration = {
-    system.nixos.tags = [ "Undervolt" ];
-
+let
+  inherit (lib) mkIf;
+  cfg = config.Mint.underclock;
+in {
+  config = mkIf cfg.enable {
     hardware.cpu.x86.msr.enable = true;
     environment.systemPackages = with pkgs; [
       linuxKernel.packages.linux_6_6.cpupower
@@ -24,7 +25,7 @@
         Type = "oneshot";
         Restart = "no";
         ExecStart =
-          "${bash} '${cpupower} frequency-set -u 4.0Ghz && ${amdctl} -m -p0 -v 60'"; # 1175 mV
+          "${bash} '${cpupower} frequency-set -u ${cfg.clock} && ${amdctl} -m -p0 -v ${cfg.voltage}"; # 1175 mV
       };
     };
   };

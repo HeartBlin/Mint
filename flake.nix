@@ -8,9 +8,6 @@
   inputs = {
     ##### Inputs meant to be followed #####
 
-    # Input for non-flake systems
-    flake-compat.url = "github:edolstra/flake-compat";
-
     # Flake framework
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -66,16 +63,24 @@
     # SecureBoot support
     lanzaboote.url = "github:/nix-community/lanzaboote/v0.4.1";
     lanzaboote.inputs = {
-      flake-compat.follows = "flake-compat";
+      flake-compat.follows = "";
       flake-parts.follows = "flake-parts";
       nixpkgs.follows = "nixpkgs";
       pre-commit-hooks-nix.follows = "pre-commit-hooks";
     };
 
     # Faster eval Nix fork
+    lixsrc = {
+      url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
+      flake = false;
+    };
+
     lix.url =
-      "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-    lix.inputs.nixpkgs.follows = "nixpkgs";
+      "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+    lix.inputs = {
+      lix.follows = "lixsrc";
+      nixpkgs.follows = "nixpkgs";
+    };
 
     # Personal Wallpapers
     # mintwalls.url = "git+file:///home/heartblin/MintWalls";
@@ -89,14 +94,14 @@
     # Declarative Discord plugins
     nixcord.url = "github:KaylorBen/nixcord";
     nixcord.inputs = {
-      flake-compat.follows = "flake-compat";
+      flake-compat.follows = "";
       nixpkgs.follows = "nixpkgs";
     };
 
     # Run checks automagically
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     pre-commit-hooks.inputs = {
-      flake-compat.follows = "flake-compat";
+      flake-compat.follows = "";
       nixpkgs.follows = "nixpkgs";
       nixpkgs-stable.follows = "nixpkgs";
     };

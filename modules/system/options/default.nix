@@ -31,6 +31,22 @@ in {
     secureboot.enable = mkEnableOption "Enable SecureBoot";
     steam.enable = mkEnableOption "Enable Steam";
     tpm.enable = mkEnableOption "Enable TPM";
+    underclock = {
+      enable = mkEnableOption "Enable Underclocking";
+      clock = mkOption {
+        type = str;
+        default = "4.0GHz";
+        description = "Clock speed to underclock to";
+      };
+
+      voltage = mkOption {
+        type = str;
+        default = "60";
+        description =
+          "Voltage to undervolt to, consult amdctl for correct values";
+      };
+    };
+
     vmware.enable = mkEnableOption "Enable VMware";
   };
 }

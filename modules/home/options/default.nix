@@ -46,6 +46,7 @@ in {
     };
 
     mangohud.enable = mkEnableOption "Enable MangoHUD";
+    mpv.enable = mkEnableOption "Enable mpv";
     shell = mkOption {
       type = str;
       default = "${pkgs.bash}/bin/bash";

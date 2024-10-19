@@ -633,11 +633,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729154008,
-        "narHash": "sha256-stfvfdCZKhQ3E/6gr9IHnJdquDCo0jan2LZhpEqAi4A=",
+        "lastModified": 1729283011,
+        "narHash": "sha256-WIzf1i5sbEal2Ale1y1nfLXpemJXCo5Hk6TEjduFHys=",
         "owner": "HeartBlin",
         "repo": "MintWalls",
-        "rev": "80bdeafb2dee9edda5652351aec4fcab89d1290f",
+        "rev": "71aa3d4ea370ffbe2941fcafb36cd1c92b23c66e",
         "type": "github"
       },
       "original": {

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  mintWalls.wallpaper = "Abstract";
+  mintWalls.wallpaper = "Black";
 
   Mint = {
     chrome.enable = true;
@@ -27,7 +27,7 @@
     };
 
     mangohud.enable = true;
-
+    mpv.enable = true;
     theme = {
       cursor = {
         package = pkgs.bibata-cursors;

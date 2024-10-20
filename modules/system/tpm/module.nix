@@ -7,7 +7,6 @@ let
 in {
   config = mkIf cfg.enable {
     security.tpm2.enable = cfg.enable;
-    boot.initrd.systemd.enable = cfg.enable;
     environment.systemPackages = with pkgs;
       (if cfg.enable then [ tpm2-tss tpm2-tools ] else [ ]);
   };

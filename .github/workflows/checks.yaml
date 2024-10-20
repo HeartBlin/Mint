@@ -22,4 +22,4 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@v9
 
       - name: Run Checks
-        run: nix flake check --all-systems
+        run: nix flake check --all-systems --extra-experimental-features "pipe-operator"

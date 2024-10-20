@@ -19,7 +19,6 @@ in {
       pkief.material-icon-theme
       esbenp.prettier-vscode
       github.vscode-github-actions
-      eamodio.gitlens
     ];
 
     # General settings

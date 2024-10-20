@@ -7,14 +7,23 @@ let
   ##
   ## Found this snippet of code from this repo:
   ## https://github.com/fufexan/dotfiles/blob/main/system/nix/default.nix
+  ## Adapted it with the new pipe operators
+  ## nix fmt won't work in this file however
   ##
 
-  flakeInputs = filterAttrs (_: v: isType "flake" v) inputs;
-  registry = mapAttrs (_: v: { flake = v; }) flakeInputs;
+  registry = inputs |> filterAttrs (_: isType "flake") |> mapAttrs (_: flake: { inherit flake; }) |> (x: x // { nixpkgs.flake = inputs.nixpkgs; });
   nixPath = mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
 in {
   nix = {
     inherit registry nixPath;
+
+    # Optimise store
+    optimise.automatic = true;
+
+    # Don't eat the CPU please
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
+    daemonIOSchedPriority = 5;
 
     settings = {
       # Allow flakes & other experimental features
@@ -24,11 +33,16 @@ in {
         "auto-allocate-uids"
         "cgroups"
         "no-url-literals"
+        "pipe-operator"
       ];
 
       # Trusted users
       allowed-users = [ "root" "@wheel" ];
       trusted-users = [ "root" "@wheel" ];
+
+      # Build in sandboxes
+      sandbox = true;
+      sandbox-fallback = false;
 
       # Direnv
       keep-derivations = true;
@@ -43,7 +57,11 @@ in {
       # Shut up
       warn-dirty = false;
 
+      # Optimise again
+      auto-optimise-store = true;
+
       # Caches
+      builders-use-substitutes = true;
       substituters = [
         "https://cache.nixos.org?priority=10" # Funny
         "https://cache.ngi0.nixos.org/" # CA nix
@@ -89,9 +107,6 @@ in {
   environment.defaultPackages = mkForce [ ];
   documentation = {
     enable = false;
-    doc.enable = false;
-    man.enable = false;
-    info.enable = false;
-    nixos.enable = false;
+    man.enable = false; # Don't need this personally
   };
 }

@@ -5,7 +5,7 @@
     isNormalUser = true;
     description = prettyName;
     initialPassword = "changeme";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
 
   home-manager = {

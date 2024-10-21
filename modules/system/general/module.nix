@@ -1,4 +1,6 @@
 _: {
+  imports = [ ./laptop.nix ];
+
   boot = {
     initrd.systemd.enable = true;
     consoleLogLevel = 3;

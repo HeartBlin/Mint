@@ -3,16 +3,7 @@
 {
   imports = [ inputs.pre-commit-hooks.flakeModule ];
 
-  perSystem.pre-commit = let
-    excludes = [
-      ".envrc"
-      ".gitignore"
-      "LICENSE"
-      "README.md"
-      "flake.lock"
-      "modules/system/nix/module.nix"
-    ];
-  in {
+  perSystem.pre-commit = {
     settings = {
       excludes = [ "flake.lock" ];
       hooks = {
@@ -20,14 +11,13 @@
           enable = true;
           verbose = true;
           fail_fast = true;
-          inherit excludes;
         };
 
         nixfmt-classic = {
           enable = true;
           verbose = true;
           fail_fast = true;
-          inherit excludes;
+          excludes = [ "flake.lock" "modules/system/nix/module.nix" ];
         };
 
         statix = {

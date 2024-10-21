@@ -13,8 +13,7 @@ jobs:
       - name: Install Lix
         uses: DeterminateSystems/nix-installer-action@v14
         with:
-          source-url: https://install.lix.systems/lix/lix-installer-x86_64-linux
-          extra-conf: extra-experimental-features = nix-command flakes pipe-operator
+          source-url: "https://install.lix.systems/lix/lix-installer-x86_64-linux"
 
       - name: Setup Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v8
@@ -23,4 +22,4 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@v9
 
       - name: Run Checks
-        run: nix flake check --all-systems
+        run: nix flake check --all-systems --extra-experimental-features "pipe-operator"

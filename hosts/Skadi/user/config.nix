@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  mintWalls.wallpaper = "Black";
+  mintWalls.wallpaper = "Flow";
 
   Mint = {
+    ags.enable = true;
     chrome.enable = true;
     cli = {
       foot.enable = true;

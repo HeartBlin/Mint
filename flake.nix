@@ -20,6 +20,10 @@
 
     ########### Everything else ###########
 
+    # GTK Bar
+    ags.url = "github:aylur/ags/v2";
+    ags.inputs = { nixpkgs.follows = "nixpkgs"; };
+
     # Bleeding edge kernel
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     chaotic.inputs = {
@@ -75,8 +79,8 @@
     lix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Personal Wallpapers
-    # mintwalls.url = "git+file:///home/heartblin/MintWalls";
-    mintwalls.url = "github:HeartBlin/MintWalls";
+    mintwalls.url = "git+file:///home/heartblin/MintWalls";
+    #mintwalls.url = "github:HeartBlin/MintWalls";
     mintwalls.inputs = {
       flake-parts.follows = "flake-parts";
       nixpkgs.follows = "nixpkgs";

@@ -19,6 +19,7 @@ let
   });
 in {
   options.Mint = {
+    ags.enable = mkEnableOption "Enable AGS";
     chrome.enable = mkEnableOption "Enable Google Chrome";
     cli = {
       foot.enable = mkEnableOption "Enable foot";

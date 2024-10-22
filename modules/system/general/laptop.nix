@@ -23,7 +23,7 @@ in {
         RemainAfterExit = false;
       };
 
-      unitConfig.RequiresMountsFor = "/sys";
+      unitConfig.RequiresMountsFor = [ "/sys" ];
       script = ''
         echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
         echo 0 > /proc/sys/kernel/nmi_watchdog
@@ -37,7 +37,6 @@ in {
           /sys/bus/pci/devices/0000:00:00.0/power/control \
           /sys/bus/pci/devices/0000:00:00.2/power/control \
           /sys/bus/pci/devices/0000:00:01.0/power/control \
-          /sys/bus/pci/devices/0000:00:02.0/power/control \
           /sys/bus/pci/devices/0000:00:14.3/power/control \
           /sys/bus/pci/devices/0000:00:18.0/power/control \
           /sys/bus/pci/devices/0000:00:18.1/power/control \
@@ -55,8 +54,7 @@ in {
           /sys/bus/pci/devices/0000:06:00.4/power/control \
           /sys/bus/pci/devices/0000:06:00.5/power/control \
           /sys/bus/pci/devices/0000:00:08.0/power/control \
-          /sys/bus/usb/devices/1-3/power/control \
-        ; do echo auto > $mod; done
+        ; do echo auto > $mod 2>/dev/null | printf ""; done
       '';
     };
 

@@ -1,17 +1,23 @@
 { config, inputs, lib, ... }:
 
 let
-  inherit (lib) filterAttrs isType mapAttrs mapAttrsToList mkForce;
+  inherit (lib) filterAttrs isType mapAttrs mapAttrsToList mkForce pipe;
   inherit (config.Mint) flakeDir;
 
   ##
   ## Found this snippet of code from this repo:
   ## https://github.com/fufexan/dotfiles/blob/main/system/nix/default.nix
-  ## Adapted it with the new pipe operators
-  ## nix fmt won't work in this file however
+  ## I tried to do it with the pipe operator but both nix and lix dont
+  ## really like it that much. Neither the nix flake check command
+  ## for that matter
   ##
 
-  registry = inputs |> filterAttrs (_: isType "flake") |> mapAttrs (_: flake: { inherit flake; }) |> (x: x // { nixpkgs.flake = inputs.nixpkgs; });
+  registry = pipe inputs [
+    (filterAttrs (_: isType "flake"))
+    (mapAttrs (_: flake: { inherit flake; }))
+    (x: x // { nixpkgs.flake = inputs.nixpkgs; })
+  ];
+
   nixPath = mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
 in {
   nix = {

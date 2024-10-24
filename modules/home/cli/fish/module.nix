@@ -1,8 +1,6 @@
-{ config, osConfig, pkgs, ... }:
+{ config, flakeDir, pkgs, ... }:
 
-let
-  inherit (osConfig.Mint) flakeDir;
-  cfg = config.Mint.cli;
+let cfg = config.Mint.cli;
 in {
   programs = {
     fish = {

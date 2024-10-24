@@ -28,7 +28,6 @@
     };
 
     mangohud.enable = true;
-    mpv.enable = true;
     theme = {
       cursor = {
         package = pkgs.bibata-cursors;

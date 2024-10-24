@@ -11,7 +11,8 @@
         inherit (inputs.nixpkgs.lib.types) enum nullOr str;
 
         commonArgs = {
-          inherit hostName inputs inputs' libx prettyName self self' userName;
+          inherit flakeDir hostName inputs inputs' libx prettyName self self'
+            userName;
         };
 
         allArgs = {
@@ -40,7 +41,6 @@
           (import ./role.nix allArgs) # Define roles
           (import ./system.nix allArgs) # Define system config
           (import ./user.nix allArgs) # Define a user
-          (import ./flakeDir.nix allArgs) # Define the location of the flake
         ];
       });
 }

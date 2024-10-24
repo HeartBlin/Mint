@@ -1,9 +1,1 @@
-_: {
-  imports = [
-    ./checks.nix
-    ./devShells.nix
-    ./formatter.nix
-    ./systems.nix
-    ./templates.nix
-  ];
-}
+_: { imports = [ ./checks.nix ./devShells.nix ./formatter.nix ./systems.nix ]; }

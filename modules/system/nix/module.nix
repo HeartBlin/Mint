@@ -1,28 +1,8 @@
-{ config, inputs, lib, ... }:
+{ flakeDir, lib, ... }:
 
-let
-  inherit (lib) filterAttrs isType mapAttrs mapAttrsToList mkForce pipe;
-  inherit (config.Mint) flakeDir;
-
-  ##
-  ## Found this snippet of code from this repo:
-  ## https://github.com/fufexan/dotfiles/blob/main/system/nix/default.nix
-  ## I tried to do it with the pipe operator but both nix and lix dont
-  ## really like it that much. Neither the nix flake check command
-  ## for that matter
-  ##
-
-  registry = pipe inputs [
-    (filterAttrs (_: isType "flake"))
-    (mapAttrs (_: flake: { inherit flake; }))
-    (x: x // { nixpkgs.flake = inputs.nixpkgs; })
-  ];
-
-  nixPath = mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
+let inherit (lib) mkForce;
 in {
   nix = {
-    inherit registry nixPath;
-
     # Optimise store
     optimise.automatic = true;
 
@@ -39,7 +19,6 @@ in {
         "auto-allocate-uids"
         "cgroups"
         "no-url-literals"
-        "pipe-operator"
       ];
 
       # Trusted users
@@ -84,7 +63,11 @@ in {
   };
 
   # Allow unfree
-  environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
+  environment.sessionVariables = {
+    NIXPKGS_ALLOW_UNFREE = "1";
+    FLAKE = flakeDir;
+  };
+
   nixpkgs.config = {
     allowBroken = false;
     allowUnfree = true;
@@ -95,7 +78,6 @@ in {
   programs.nh = {
     enable = true;
     clean.enable = true;
-    clean.extraArgs = "--keep-since 7d --keep 3";
     flake = flakeDir;
   };
 

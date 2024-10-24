@@ -1,9 +1,7 @@
-{ config, hostName, osConfig, pkgs, ... }:
+{ config, flakeDir, hostName, pkgs, ... }:
 
 let
   inherit (config.Mint.cli) shell;
-  inherit (osConfig.Mint) flakeDir;
-
   cfg = config.Mint.vscode;
 in {
   programs.vscode = {

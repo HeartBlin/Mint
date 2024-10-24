@@ -22,7 +22,7 @@
 
     # GTK Bar
     ags.url = "github:aylur/ags/v2";
-    ags.inputs = { nixpkgs.follows = "nixpkgs"; };
+    ags.inputs.nixpkgs.follows = "nixpkgs";
 
     # Bleeding edge kernel
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -67,10 +67,9 @@
     # SecureBoot support
     lanzaboote.url = "github:/nix-community/lanzaboote/v0.4.1";
     lanzaboote.inputs = {
-      flake-compat.follows = "";
       flake-parts.follows = "flake-parts";
       nixpkgs.follows = "nixpkgs";
-      pre-commit-hooks-nix.follows = "";
+      pre-commit-hooks-nix.follows = "pre-commit-hooks";
     };
 
     # Faster eval Nix fork
@@ -89,17 +88,13 @@
 
     # Declarative Discord plugins
     nixcord.url = "github:KaylorBen/nixcord";
-    nixcord.inputs = {
-      flake-compat.follows = "";
-      nixpkgs.follows = "nixpkgs";
-    };
+    nixcord.inputs.nixpkgs.follows = "nixpkgs";
 
     # Run checks automagically
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     pre-commit-hooks.inputs = {
-      flake-compat.follows = "";
       nixpkgs.follows = "nixpkgs";
-      nixpkgs-stable.follows = "";
+      nixpkgs-stable.follows = "nixpkgs";
     };
   };
 }

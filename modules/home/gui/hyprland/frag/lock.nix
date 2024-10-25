@@ -1,17 +1,17 @@
-{ config, inputs', lib, libx, pkgs, prettyName, ... }:
+{ config, inputs, inputs', lib, pkgs, prettyName, ... }:
 
 let
   inherit (lib) attrValues getExe;
   inherit (config.Mint.gui.hyprland) wallpapers;
-  inherit (libx.colors) toHypr;
+  inherit (inputs.mintwalls.lib) toHyprRGB;
 
   colors = {
-    error = toHypr config.mintWalls.palette.error;
-    onSurface = toHypr config.mintWalls.palette.onSurface;
-    primary = toHypr config.mintWalls.palette.primary;
+    error = toHyprRGB config.mintWalls.palette.error;
+    onSurface = toHyprRGB config.mintWalls.palette.onSurface;
+    primary = toHyprRGB config.mintWalls.palette.primary;
     primary' = config.mintWalls.palette.primary;
-    surface = toHypr config.mintWalls.palette.surface;
-    tertiary = toHypr config.mintWalls.palette.tertiary;
+    surface = toHyprRGB config.mintWalls.palette.surface;
+    tertiary = toHyprRGB config.mintWalls.palette.tertiary;
   };
 
   time-hl = pkgs.writeShellScriptBin "time-hl" ''

@@ -454,11 +454,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1729852008,
-        "narHash": "sha256-h9pvIoeWrwyWSIgGO3bEaX9VG8vduH5hBKci9ecHbPs=",
+        "lastModified": 1729888739,
+        "narHash": "sha256-8NDcNhRm7cokjGezlvBxwUPgUcWf9/sN67ITILGqWoo=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "f0e023bff2f2a25ffe5ed3166f55f7274d17c6bc",
+        "rev": "e5384774a8258e44cc7f7b690ce4f6ad1f92b562",
         "type": "github"
       },
       "original": {
@@ -707,17 +707,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1729626597,
-        "narHash": "sha256-iuizlNvolzsRmhkIK8Ch69R4O8p5XOwiRUQ7zWkbHVY=",
-        "owner": "HeartBlin",
-        "repo": "MintWalls",
-        "rev": "2e2ea1a29326dafa1b0c5d69e28ae57c9b74ff2f",
-        "type": "github"
+        "dirtyRev": "a49e85ebd56a2ee59c2b8286b2675d488bee1ecb-dirty",
+        "dirtyShortRev": "a49e85e-dirty",
+        "lastModified": 1729889180,
+        "narHash": "sha256-fzSSNRpHGe00UfpFVxRLN3j2DQ+ueDL0ciKbBAWCjjM=",
+        "type": "git",
+        "url": "file:///home/heartblin/MintWalls"
       },
       "original": {
-        "owner": "HeartBlin",
-        "repo": "MintWalls",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/heartblin/MintWalls"
       }
     },
     "nix-github-actions": {

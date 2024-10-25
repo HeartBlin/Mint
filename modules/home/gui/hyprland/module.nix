@@ -1,15 +1,15 @@
-{ config, lib, libx, osConfig, pkgs, ... }:
+{ config, inputs, lib, osConfig, pkgs, ... }:
 
 let
   inherit (lib) getExe mkIf;
-  inherit (libx.colors) toHypr;
+  inherit (inputs.mintwalls.lib) toHyprRGB;
   inherit (config.mintWalls) defaultPalette;
 
   colors = {
-    bB = toHypr defaultPalette.borderBlue;
-    bV = toHypr defaultPalette.borderViolet;
-    bR = toHypr defaultPalette.borderRed;
-    bO = toHypr defaultPalette.borderOrange;
+    bB = toHyprRGB defaultPalette.borderBlue;
+    bV = toHyprRGB defaultPalette.borderViolet;
+    bR = toHyprRGB defaultPalette.borderRed;
+    bO = toHyprRGB defaultPalette.borderOrange;
 
     bB' = defaultPalette.borderBlue;
     bV' = defaultPalette.borderViolet;

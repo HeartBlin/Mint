@@ -78,8 +78,8 @@
     lix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Personal Wallpapers
-    # mintwalls.url = "git+file:///home/heartblin/MintWalls";
-    mintwalls.url = "github:HeartBlin/MintWalls";
+    mintwalls.url = "git+file:///home/heartblin/MintWalls";
+    # mintwalls.url = "github:HeartBlin/MintWalls";
     mintwalls.inputs = {
       flake-parts.follows = "flake-parts";
       nixpkgs.follows = "nixpkgs";

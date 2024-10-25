@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-let cfg = config.Mint.chrome;
+let cfg = config.Mint.gui.chrome;
 in {
   programs.chromium = {
     inherit (cfg) enable;

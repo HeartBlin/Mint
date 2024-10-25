@@ -24,14 +24,14 @@ let
     ${pkgs.asusctl}/bin/asusctl led-mode static -c ${colors.bO'} -z 4
   '';
 
-  chrome = config.Mint.chrome.enable;
+  chrome = config.Mint.gui.chrome.enable;
   foot = config.Mint.cli.foot.enable;
-  vscode = config.Mint.vscode.enable;
+  vscode = config.Mint.gui.vscode.enable;
 
   asus = osConfig.Mint.asus.enable;
   nvidia = osConfig.Mint.nvidia.enable;
 
-  cfg = config.Mint.hyprland;
+  cfg = config.Mint.gui.hyprland;
 in {
   imports = [ ./frag/idle.nix ./frag/lock.nix ./frag/wallpaper.nix ];
 

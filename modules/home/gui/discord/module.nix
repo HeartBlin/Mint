@@ -1,6 +1,6 @@
 { config, inputs, ... }:
 
-let cfg = config.Mint.discord;
+let cfg = config.Mint.gui.discord;
 in {
   imports = [ inputs.nixcord.homeManagerModules.nixcord ];
 

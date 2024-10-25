@@ -2,7 +2,7 @@
 
 let
   inherit (lib) attrValues getExe;
-  inherit (config.Mint.hyprland) wallpapers;
+  inherit (config.Mint.gui.hyprland) wallpapers;
   inherit (libx.colors) toHypr;
 
   colors = {
@@ -38,7 +38,7 @@ let
     vibrancy_darkness = 0;
   }) (attrValues wallpapers);
 
-  cfg = config.Mint.hyprland;
+  cfg = config.Mint.gui.hyprland;
 in {
   programs.hyprlock = {
     inherit (cfg) enable;

@@ -2,7 +2,7 @@
 
 let
   inherit (config.Mint.cli) shell;
-  cfg = config.Mint.vscode;
+  cfg = config.Mint.gui.vscode;
 in {
   programs.vscode = {
     # The 'enable hell'

@@ -1,6 +1,6 @@
 { config, inputs, inputs', ... }:
 
-let cfg = config.Mint.ags;
+let cfg = config.Mint.gui.ags;
 in {
   imports = [ inputs.ags.homeManagerModules.default ];
 

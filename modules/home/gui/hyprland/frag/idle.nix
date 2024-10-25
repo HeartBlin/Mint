@@ -7,7 +7,7 @@ let
   ledDevice =
     if asus.enable then "asus::kbd_backlight" else "rgb:kbd_backlight";
   brightnessctl = getExe pkgs.brightnessctl;
-  cfg = config.Mint.hyprland;
+  cfg = config.Mint.gui.hyprland;
 in {
   services.hypridle = {
     inherit (cfg) enable;

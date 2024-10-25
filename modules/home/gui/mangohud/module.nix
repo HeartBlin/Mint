@@ -1,6 +1,6 @@
 { config, ... }:
 
-let cfg = config.Mint.vscode;
+let cfg = config.Mint.gui.mangohud;
 in {
   programs.mangohud = {
     inherit (cfg) enable;

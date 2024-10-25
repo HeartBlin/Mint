@@ -2,9 +2,9 @@
 
 let
   inherit (lib) mkIf;
-  inherit (config.Mint) theme;
+  inherit (config.Mint.gui) theme;
 
-  cfg = config.Mint.hyprland;
+  cfg = config.Mint.gui.hyprland;
 in {
   config = {
     wayland.windowManager.hyprland.settings.exec-once = mkIf cfg.enable [

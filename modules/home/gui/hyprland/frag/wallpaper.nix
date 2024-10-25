@@ -33,7 +33,7 @@ let
     '';
   };
 
-  cfg = config.Mint.hyprland;
+  cfg = config.Mint.gui.hyprland;
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {

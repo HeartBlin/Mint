@@ -86,10 +86,6 @@
       systems.follows = "systems";
     };
 
-    # Declarative Discord plugins
-    nixcord.url = "github:KaylorBen/nixcord";
-    nixcord.inputs.nixpkgs.follows = "nixpkgs";
-
     # Run checks automagically
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     pre-commit-hooks.inputs = {

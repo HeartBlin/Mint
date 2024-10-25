@@ -11,8 +11,6 @@ in {
       hostName = "Skadi";
       prettyName = "HeartBlin";
       role = "laptop";
-      stateVersion = "24.11";
-      system = "x86_64-linux";
       timeZone = "Europe/Bucharest";
       userName = "heartblin";
     };

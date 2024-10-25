@@ -12,7 +12,7 @@
     gui = {
       ags.enable = true;
       chrome.enable = true;
-      discord.enable = false;
+      discord.enable = true;
       hyprland = {
         enable = true;
         wallpapers = {

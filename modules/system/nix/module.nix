@@ -1,4 +1,4 @@
-{ flakeDir, lib, ... }:
+{ flakedir, lib, system, ... }:
 
 let inherit (lib) mkForce;
 in {
@@ -65,20 +65,23 @@ in {
   # Allow unfree
   environment.sessionVariables = {
     NIXPKGS_ALLOW_UNFREE = "1";
-    FLAKE = flakeDir;
+    FLAKE = flakedir;
   };
 
-  nixpkgs.config = {
-    allowBroken = false;
-    allowUnfree = true;
-    enableParallelBuilding = true;
+  nixpkgs = {
+    hostPlatform.system = system;
+    config = {
+      allowBroken = false;
+      allowUnfree = true;
+      enableParallelBuilding = true;
+    };
   };
 
   # Neat Nix Helper
   programs.nh = {
     enable = true;
     clean.enable = true;
-    flake = flakeDir;
+    flake = flakedir;
   };
 
   # BLOAT

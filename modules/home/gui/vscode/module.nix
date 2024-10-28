@@ -1,4 +1,4 @@
-{ config, flakeDir, hostName, pkgs, ... }:
+{ config, flakedir, hostname, pkgs, ... }:
 
 let
   inherit (config.Mint.cli) shell;
@@ -62,7 +62,7 @@ in {
       "nix.serverSettings"."nixd" = {
         "formatting"."command" = [ "nixfmt" ];
         "nixos"."expr" = ''
-          (builtins.getFlake \"${flakeDir}\").nixosConfigurations.${hostName}.options'';
+          (builtins.getFlake \"${flakedir}\").nixosConfigurations.${hostname}.options'';
       };
       "nix.hiddenLanguageServerErrors" = [ "textDocument/definition" ];
 

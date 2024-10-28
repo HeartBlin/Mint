@@ -1,4 +1,4 @@
-{ lib, userName, ... }:
+{ lib, username, ... }:
 
 let
   inherit (builtins) concatLists;
@@ -10,7 +10,7 @@ in {
   imports = concatLists [ (importModules ./system) [ ./system/options ] ];
 
   # Home Modules & Options
-  home-manager.users.${userName} = {
+  home-manager.users.${username} = {
     imports = concatLists [ (importModules ./home) [ ./home/options ] ];
   };
 }

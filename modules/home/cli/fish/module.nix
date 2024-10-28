@@ -1,4 +1,4 @@
-{ config, flakeDir, pkgs, ... }:
+{ config, flakedir, pkgs, ... }:
 
 let cfg = config.Mint.cli;
 in {
@@ -8,7 +8,7 @@ in {
 
       interactiveShellInit = ''
         set fish_greeting
-        set -gx FLAKE ${flakeDir}
+        set -gx FLAKE ${flakedir}
 
         function starship_transient_prompt_func
           starship module character
@@ -22,9 +22,9 @@ in {
         ".".body = ''nix shell nixpkgs#$argv[1] --command "fish"'';
         ",".body = ''
           if not set -q argv[1]
-            nix flake init --template ${flakeDir}/.#moduleNix
+            nix flake init --template ${flakedir}/.#moduleNix
           else
-            nix flake init --template ${flakeDir}/.#$argv[1]
+            nix flake init --template ${flakedir}/.#$argv[1]
           end
         '';
         "fish_command_not_found".body = "echo Did not find command: $argv[1]";
@@ -37,7 +37,7 @@ in {
         # Nix Flake Management
         rebuild = "nh os switch";
         boot = "nh os boot";
-        update = "nix flake update --flake ${flakeDir} && nh os switch";
+        update = "nix flake update --flake ${flakedir} && nh os switch";
         clean = "nh clean all && nh os boot";
 
         # Git commands

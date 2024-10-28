@@ -1,15 +1,26 @@
-{ inputs, self, withSystem, ... }:
+{ inputs, self, ... }:
 
-let libx = import "${self}/lib" { inherit inputs libx self withSystem; };
+let
+  commonModules = {
+    nix = [
+      inputs.chaotic.nixosModules.default
+      inputs.disko.nixosModules.disko
+      inputs.lanzaboote.nixosModules.lanzaboote
+      inputs.lix.nixosModules.default
+    ];
+
+    hm = [ inputs.mintwalls.homeManagerModules.mintWalls ];
+  };
 in {
   flake.nixosConfigurations = {
-    Skadi = libx.mkSystem rec {
-      flakeDir = "/home/${userName}/Mint";
-      hostName = "Skadi";
-      prettyName = "HeartBlin";
+    Skadi = self.lib.mkSystem {
+      hostname = "Skadi";
+      username = "heartblin";
+      prettyname = "HeartBlin";
       role = "laptop";
-      timeZone = "Europe/Bucharest";
-      userName = "heartblin";
+      extraModules = commonModules.nix;
+      extraHMModules = commonModules.hm;
+      extraGroups = [ "networkmanager" ];
     };
   };
 }

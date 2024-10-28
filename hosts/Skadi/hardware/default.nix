@@ -1,10 +1,7 @@
-{ modulesPath, pkgs, self, ... }:
+{ modulesPath, pkgs, ... }:
 
 {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-    "${self}/hosts/Skadi/hardware/disko.nix"
-  ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ./disko.nix ];
 
   boot = {
     initrd.availableKernelModules =

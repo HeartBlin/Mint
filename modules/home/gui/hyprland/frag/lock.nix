@@ -1,4 +1,4 @@
-{ config, inputs, inputs', lib, pkgs, prettyName, ... }:
+{ config, inputs, inputs', lib, pkgs, prettyname, ... }:
 
 let
   inherit (lib) attrValues getExe;
@@ -16,7 +16,7 @@ let
 
   time-hl = pkgs.writeShellScriptBin "time-hl" ''
     current_hour=$(date +"%H")
-    user_string="<span color='#${colors.primary'}'>${prettyName}</span>"
+    user_string="<span color='#${colors.primary'}'>${prettyname}</span>"
 
     if [ "$current_hour" -ge 5 ] && [ "$current_hour" -lt 12 ]; then
       echo "Good morning, $user_string"

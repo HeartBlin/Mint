@@ -1,4 +1,4 @@
-{ userName, ... }:
+{ username, ... }:
 
 {
   programs.git = {
@@ -9,7 +9,7 @@
     extraConfig = {
       commit.gpgsign = true;
       gpg.format = "ssh";
-      user.signingkey = "/home/${userName}/.ssh/id_ed25519.github_signing.pub";
+      user.signingkey = "/home/${username}/.ssh/id_ed25519.github_signing.pub";
     };
   };
 
@@ -19,7 +19,7 @@
       Host github.com
         HostName github.com
         PreferredAuthentications publickey
-        IdentityFile /home/${userName}/.ssh/id_ed25519.github_auth
+        IdentityFile /home/${username}/.ssh/id_ed25519.github_auth
     '';
   };
 }

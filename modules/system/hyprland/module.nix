@@ -1,9 +1,9 @@
-{ config, inputs', lib, pkgs, userName, ... }:
+{ config, inputs', lib, pkgs, username, ... }:
 
 let
   inherit (lib) mkIf;
 
-  cfg = config.home-manager.users.${userName}.Mint.gui.hyprland;
+  cfg = config.home-manager.users.${username}.Mint.gui.hyprland;
 in {
   config = mkIf cfg.enable {
     programs = {

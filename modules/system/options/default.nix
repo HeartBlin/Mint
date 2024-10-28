@@ -7,6 +7,7 @@ in {
   options.Mint = {
     gui = {
       chrome.enable = mkEnableOption "Enable Google Chrome";
+      discord.enable = mkEnableOption "Enable Discord";
       vscode.enable = mkEnableOption "Enable Visual Studio Code";
     };
 

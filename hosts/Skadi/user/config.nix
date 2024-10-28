@@ -11,7 +11,6 @@
 
     gui = {
       ags.enable = true;
-      discord.enable = true;
       hyprland = {
         enable = true;
         wallpapers = {

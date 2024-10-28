@@ -2,6 +2,7 @@ _: {
   Mint = {
     gui = {
       chrome.enable = true;
+      discord.enable = true;
       vscode.enable = true;
     };
 

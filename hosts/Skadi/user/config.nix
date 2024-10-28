@@ -39,8 +39,6 @@
           package = pkgs.adw-gtk3;
         };
       };
-
-      vscode.enable = true;
     };
   };
 }

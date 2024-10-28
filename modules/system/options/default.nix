@@ -5,6 +5,7 @@ let
   inherit (lib.types) str;
 in {
   options.Mint = {
+    gui = { vscode.enable = mkEnableOption "Enable Visual Studio Code"; };
     asus.enable = mkEnableOption "Enables asusd & supergfxd";
     bluetooth.enable = mkEnableOption "Enable Bluetooth";
     gdm.enable = mkEnableOption "Enable GDM display manager";

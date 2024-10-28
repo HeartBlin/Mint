@@ -91,8 +91,6 @@ in {
           };
         };
       };
-
-      vscode.enable = mkEnableOption "Enable VSCode";
     };
   };
 }

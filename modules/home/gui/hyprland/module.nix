@@ -24,9 +24,9 @@ let
     ${pkgs.asusctl}/bin/asusctl led-mode static -c ${colors.bO'} -z 4
   '';
 
-  chrome = config.Mint.gui.chrome.enable;
   foot = config.Mint.cli.foot.enable;
 
+  chrome = osConfig.Mint.gui.chrome.enable;
   vscode = osConfig.Mint.gui.vscode.enable;
   asus = osConfig.Mint.asus.enable;
   nvidia = osConfig.Mint.nvidia.enable;
@@ -136,7 +136,7 @@ in {
         # Programs
         (mkIf foot "Super, Return, exec, footclient")
         (mkIf vscode "Super, C, exec, code")
-        (mkIf chrome "Super, W, exec, google-chrome-stable")
+        (mkIf chrome "Super, W, exec, chromium")
         "Super, E, exec, nautilus"
         "Super, Space, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
         "Super, L, exec, hyprlock"

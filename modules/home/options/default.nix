@@ -31,7 +31,6 @@ in {
 
     gui = {
       ags.enable = mkEnableOption "Enable AGS";
-      chrome.enable = mkEnableOption "Enable Google Chrome";
       discord.enable = mkEnableOption "Enable Discord";
       hyprland = {
         enable = mkEnableOption "Enable Hyprland";

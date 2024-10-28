@@ -1,6 +1,10 @@
 _: {
   Mint = {
-    gui = { vscode.enable = true; };
+    gui = {
+      chrome.enable = true;
+      vscode.enable = true;
+    };
+
     asus.enable = true;
     bluetooth.enable = true;
     gdm.enable = true;

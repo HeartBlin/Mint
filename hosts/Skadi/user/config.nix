@@ -6,7 +6,7 @@
   Mint = {
     cli = {
       foot.enable = true;
-      shell = "fish";
+      shell = "";
     };
 
     gui = {

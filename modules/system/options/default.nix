@@ -5,6 +5,7 @@ let
   inherit (lib.types) str;
 in {
   options.Mint = {
+    cli.fish.enable = mkEnableOption "Enable Fish shell";
     gui = {
       chrome.enable = mkEnableOption "Enable Google Chrome";
       discord.enable = mkEnableOption "Enable Discord";

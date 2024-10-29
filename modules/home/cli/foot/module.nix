@@ -8,7 +8,7 @@ in {
 
     settings = {
       main = {
-        shell = "${cfg.shell}";
+        shell = "fish";
 
         font = "CaskaydiaCove NF:style=Italic:size=12";
         font-bold = "CaskaydiaCove NF:style=Bold Italic:size=12";

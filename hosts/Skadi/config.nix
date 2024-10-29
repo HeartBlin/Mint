@@ -1,5 +1,6 @@
 _: {
   Mint = {
+    cli.fish.enable = true;
     gui = {
       chrome.enable = true;
       discord.enable = true;

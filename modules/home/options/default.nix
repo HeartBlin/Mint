@@ -20,15 +20,6 @@ let
   });
 in {
   options.Mint = {
-    cli = {
-      foot.enable = mkEnableOption "Enable foot";
-      shell = mkOption {
-        type = str;
-        default = "${pkgs.bash}/bin/bash";
-        description = "What shell to use";
-      };
-    };
-
     gui = {
       ags.enable = mkEnableOption "Enable AGS";
       hyprland = {

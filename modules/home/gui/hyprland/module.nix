@@ -24,8 +24,7 @@ let
     ${pkgs.asusctl}/bin/asusctl led-mode static -c ${colors.bO'} -z 4
   '';
 
-  foot = config.Mint.cli.foot.enable;
-
+  foot = osConfig.Mint.cli.foot.enable;
   chrome = osConfig.Mint.gui.chrome.enable;
   vscode = osConfig.Mint.gui.vscode.enable;
   asus = osConfig.Mint.asus.enable;
@@ -134,7 +133,7 @@ in {
 
       bind = [
         # Programs
-        (mkIf foot "Super, Return, exec, footclient")
+        (mkIf foot "Super, Return, exec, foot")
         (mkIf vscode "Super, C, exec, code")
         (mkIf chrome "Super, W, exec, chromium")
         "Super, E, exec, nautilus"

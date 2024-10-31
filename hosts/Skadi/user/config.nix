@@ -4,11 +4,6 @@
   mintWalls.wallpaper = "Flow";
 
   Mint = {
-    cli = {
-      foot.enable = true;
-      shell = "";
-    };
-
     gui = {
       ags.enable = true;
       hyprland = {

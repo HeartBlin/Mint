@@ -5,7 +5,11 @@ let
   inherit (lib.types) str;
 in {
   options.Mint = {
-    cli.fish.enable = mkEnableOption "Enable Fish shell";
+    cli = {
+      fish.enable = mkEnableOption "Enable Fish shell";
+      foot.enable = mkEnableOption "Enable Foot terminal";
+    };
+
     gui = {
       chrome.enable = mkEnableOption "Enable Google Chrome";
       discord.enable = mkEnableOption "Enable Discord";

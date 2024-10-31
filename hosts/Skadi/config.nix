@@ -4,6 +4,7 @@ _: {
     gui = {
       chrome.enable = true;
       discord.enable = true;
+      minecraft.enable = true;
       vscode.enable = true;
     };
 

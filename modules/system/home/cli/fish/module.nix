@@ -8,6 +8,12 @@ let
       nix shell nixpkgs#$argv[1]
     end
   '';
+
+  mcserver = pkgs.writeText "openServer.fish" ''
+    function openServer
+      env -C ~/MinecraftServer java -Xmx4096M -Xms4096M -jar ~/MinecraftServer/spigot.jar
+    end
+  '';
 in {
   config = mkIf cfg.enable {
     users.users."${username}".shell = pkgs.fish;
@@ -64,6 +70,7 @@ in {
       script = ''
         mkdir -p /home/${username}/.config/fish/functions
         ln -sf ${dot} /home/${username}/.config/fish/functions/..fish
+        ln -sf ${mcserver} /home/${username}/.config/fish/functions/openServer.fish
       '';
     };
 

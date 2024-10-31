@@ -9,6 +9,7 @@ in {
     gui = {
       chrome.enable = mkEnableOption "Enable Google Chrome";
       discord.enable = mkEnableOption "Enable Discord";
+      minecraft.enable = mkEnableOption "Enable Prism Launcher";
       vscode.enable = mkEnableOption "Enable Visual Studio Code";
     };
 

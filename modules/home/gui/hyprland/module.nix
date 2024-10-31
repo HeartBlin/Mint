@@ -221,6 +221,7 @@ in {
         # Idle Inhibit
         "idleinhibit always, class:^(Vmware)$"
         "idleinhibit always, class:^(steam_app_230410)$" # Warframe
+        "idleinhibit always, title:^(Minecraft server)$"
       ];
     };
   };

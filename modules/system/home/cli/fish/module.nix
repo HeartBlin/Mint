@@ -1,7 +1,7 @@
 { config, flakedir, lib, pkgs, username, ... }:
 
 let
-  inherit (lib) mkIf;
+  inherit (lib) getExe mkIf;
   cfg = config.Mint.cli.fish;
   dot = pkgs.writeText "..fish" ''
     function .
@@ -12,6 +12,12 @@ let
   mcserver = pkgs.writeText "openServer.fish" ''
     function openServer
       env -C ~/MinecraftServer java -Xmx4096M -Xms4096M -jar ~/MinecraftServer/spigot.jar
+    end
+  '';
+
+  fcnf = pkgs.writeText "fish_command_not_found.fish" ''
+    function fish_command_not_found
+      echo Did not find command: $argv[1]
     end
   '';
 in {
@@ -39,6 +45,12 @@ in {
         interactiveShellInit = ''
           set fish_greeting
           set -gx FLAKE ${flakedir}
+
+          function starship_transient_prompt_func
+            ${getExe pkgs.starship} module character
+          end
+
+          enable_transience
         '';
       };
 
@@ -67,10 +79,12 @@ in {
     systemd.user.services.fish-provisioning = {
       description = "Adds the config for Fish";
       wantedBy = [ "multi-user.target" ];
-      script = ''
-        mkdir -p /home/${username}/.config/fish/functions
-        ln -sf ${dot} /home/${username}/.config/fish/functions/..fish
-        ln -sf ${mcserver} /home/${username}/.config/fish/functions/openServer.fish
+      script = let path = "/home/${username}/.config/fish";
+      in ''
+        mkdir -p ${path}/functions
+        ln -sf ${dot} ${path}/functions/..fish
+        ln -sf ${mcserver} ${path}/functions/openServer.fish
+        ln -sf ${fcnf} ${path}/functions/fish_command_not_found.fish
       '';
     };
 

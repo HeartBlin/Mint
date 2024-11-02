@@ -27,8 +27,8 @@ let
   foot = osConfig.Mint.cli.foot.enable;
   chrome = osConfig.Mint.gui.chrome.enable;
   vscode = osConfig.Mint.gui.vscode.enable;
-  asus = osConfig.Mint.asus.enable;
-  nvidia = osConfig.Mint.nvidia.enable;
+  asus = osConfig.Mint.system.asus.enable;
+  nvidia = osConfig.Mint.system.nvidia.enable;
 
   cfg = config.Mint.gui.hyprland;
 in {

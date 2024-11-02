@@ -2,7 +2,7 @@
 
 let
   inherit (lib) getExe;
-  inherit (osConfig.Mint) asus;
+  inherit (osConfig.Mint.system) asus;
 
   ledDevice =
     if asus.enable then "asus::kbd_backlight" else "rgb:kbd_backlight";

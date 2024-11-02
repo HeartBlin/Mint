@@ -7,7 +7,7 @@ let
   importModules = y: (toList (fileFilter (x: x.name == "module.nix") y));
 in {
   # System Modules & Options
-  imports = concatLists [ (importModules ./system) [ ./system/options ] ];
+  imports = importModules ./tbr;
 
   # Home Modules & Options
   home-manager.users.${username} = {

@@ -90,4 +90,6 @@ in {
     enable = false;
     man.enable = false; # Don't need this personally
   };
+
+  system.stateVersion = "24.11";
 }

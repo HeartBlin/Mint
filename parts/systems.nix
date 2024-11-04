@@ -1,25 +1,57 @@
-{ inputs, self, ... }:
+{ inputs, self, withSystem, ... }:
 
 let
-  commonModules = {
-    nix = [
-      inputs.chaotic.nixosModules.default
-      inputs.disko.nixosModules.disko
-      inputs.lanzaboote.nixosModules.lanzaboote
-    ];
+  inherit (inputs.nixpkgs.lib) nixosSystem;
 
-    hm = [ inputs.mintwalls.homeManagerModules.mintWalls ];
-  };
+  mkSystem = { hostname, username, prettyname, role, flakedir, system }:
+    withSystem system ({ inputs', self', ... }:
+      let
+        args = {
+          inherit hostname username prettyname role flakedir inputs inputs'
+            self' system;
+        };
+      in nixosSystem {
+        specialArgs = args;
+        modules = [
+          # From flakes
+          inputs.chaotic.nixosModules.default
+          inputs.disko.nixosModules.disko
+          inputs.home-manager.nixosModules.home-manager
+          inputs.homix.nixosModules.default
+          inputs.lanzaboote.nixosModules.lanzaboote
+
+          # Paths
+          "${self}/hosts/${hostname}/config.nix"
+          "${self}/hosts/${hostname}/hardware"
+          "${self}/modules"
+
+          { # TODO: Deprecate HM
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = args;
+
+              users.${username}.imports = [
+                inputs.mintwalls.homeManagerModules.mintWalls
+                "${self}/hosts/${hostname}/user/config.nix"
+                {
+                  programs.home-manager.enable = true;
+                  home.stateVersion = "24.11";
+                }
+              ];
+            };
+          }
+        ];
+      });
 in {
   flake.nixosConfigurations = {
-    Skadi = self.lib.mkSystem {
+    Skadi = mkSystem rec {
       hostname = "Skadi";
+      flakedir = "/home/${username}/Mint";
       username = "heartblin";
       prettyname = "HeartBlin";
       role = "laptop";
-      extraModules = commonModules.nix;
-      extraHMModules = commonModules.hm;
-      extraGroups = [ "networkmanager" ];
+      system = "x86_64-linux";
     };
   };
 }

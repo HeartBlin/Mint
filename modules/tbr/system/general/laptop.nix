@@ -1,8 +1,6 @@
-{ config, lib, ... }:
+{ lib, role, ... }:
 
-let
-  inherit (config.Mint) role;
-  inherit (lib) mkForce mkIf;
+let inherit (lib) mkForce mkIf;
 in {
   config = mkIf (role == "laptop") {
     services.upower = {

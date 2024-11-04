@@ -1,24 +1,13 @@
-{ lib, ... }:
+{ hostname, lib, ... }:
 
 let inherit (lib) mkForce;
 in {
-  networking = {
-    networkmanager = {
-      enable = true;
-      dns = "systemd-resolved";
-    };
 
+  networking = {
+    hostName = hostname;
+    networkmanager.enable = true;
     useDHCP = mkForce true;
     wireless.enable = mkForce false;
-  };
-
-  services.resolved = {
-    enable = true;
-    fallbackDns = [
-      # Quad9
-      "9.9.9.9"
-      "2620:fe::fe"
-    ];
   };
 
   systemd = {

@@ -21,7 +21,6 @@ let
 in {
   options.Mint = {
     gui = {
-      ags.enable = mkEnableOption "Enable AGS";
       hyprland = {
         enable = mkEnableOption "Enable Hyprland";
         wallpapers = mkOption {
@@ -30,7 +29,6 @@ in {
         };
       };
 
-      mangohud.enable = mkEnableOption "Enable MangoHUD";
       theme = {
         cursor = {
           package = mkOption {

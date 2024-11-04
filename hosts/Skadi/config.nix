@@ -8,6 +8,7 @@ _: {
     gui = {
       chrome.enable = true;
       discord.enable = true;
+      mangohud.enable = true;
       minecraft.enable = true;
       steam.enable = true;
       vmware.enable = false;

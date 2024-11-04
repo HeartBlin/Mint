@@ -5,7 +5,6 @@
 
   Mint = {
     gui = {
-      ags.enable = true;
       hyprland = {
         enable = true;
         wallpapers = {
@@ -14,7 +13,6 @@
         };
       };
 
-      mangohud.enable = true;
       theme = {
         cursor = {
           package = pkgs.bibata-cursors;

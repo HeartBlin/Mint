@@ -12,7 +12,11 @@ let
       let
         # Modules that every system should have
         defaultModules = {
-          nix = [ inputs.home-manager.nixosModules.home-manager ];
+          nix = [
+            inputs.home-manager.nixosModules.home-manager
+            inputs.homix.nixosModules.default
+          ];
+
           hm = [ ];
         };
 
@@ -56,6 +60,7 @@ let
                 isNormalUser = true;
                 description = prettyname;
                 extraGroups = [ "wheel" ] ++ extraGroups;
+                homix = true;
               };
 
               # Set up home-manager

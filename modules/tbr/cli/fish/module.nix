@@ -4,7 +4,6 @@ let
   inherit (lib) getExe mkEnableOption mkIf;
   cfg = config.Mint.cli.fish;
 in {
-  #
   options.Mint.cli.fish.enable = mkEnableOption "Enable Fish shell";
 
   config = mkIf cfg.enable {

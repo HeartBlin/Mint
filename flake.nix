@@ -20,10 +20,6 @@
 
     ########### Everything else ###########
 
-    # GTK Bar
-    ags.url = "github:aylur/ags/v2";
-    ags.inputs.nixpkgs.follows = "nixpkgs";
-
     # Bleeding edge kernel
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     chaotic.inputs = {
@@ -38,6 +34,12 @@
     # Home management
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Home management, to replace home-manager
+    homix = {
+      url = "github:sioodmy/homix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Idle daemon
     hypridle.url = "github:hyprwm/hypridle";

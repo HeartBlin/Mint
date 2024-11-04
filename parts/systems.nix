@@ -6,7 +6,6 @@ let
       inputs.chaotic.nixosModules.default
       inputs.disko.nixosModules.disko
       inputs.lanzaboote.nixosModules.lanzaboote
-      inputs.lix.nixosModules.default
     ];
 
     hm = [ inputs.mintwalls.homeManagerModules.mintWalls ];

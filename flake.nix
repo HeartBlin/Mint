@@ -74,11 +74,6 @@
       pre-commit-hooks-nix.follows = "pre-commit-hooks";
     };
 
-    # Faster eval Nix fork
-    lix.url =
-      "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
-    lix.inputs.nixpkgs.follows = "nixpkgs";
-
     # Personal Wallpapers
     # mintwalls.url = "git+file:///home/heartblin/MintWalls";
     mintwalls.url = "github:HeartBlin/MintWalls";

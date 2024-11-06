@@ -70,13 +70,11 @@
       pre-commit-hooks-nix.follows = "pre-commit-hooks";
     };
 
-    # Personal Wallpapers
-    # mintwalls.url = "git+file:///home/heartblin/MintWalls";
-    mintwalls.url = "github:HeartBlin/MintWalls";
-    mintwalls.inputs = {
-      flake-parts.follows = "flake-parts";
-      nixpkgs.follows = "nixpkgs";
-      systems.follows = "systems";
+    # Fork of Nix
+    lix = {
+      url =
+        "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Import all packages

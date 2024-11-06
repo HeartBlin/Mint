@@ -18,6 +18,7 @@ let
           inputs.disko.nixosModules.disko
           inputs.homix.nixosModules.default
           inputs.lanzaboote.nixosModules.lanzaboote
+          inputs.lix.nixosModules.default
           self.nixosModules.mintWalls
 
           # Paths

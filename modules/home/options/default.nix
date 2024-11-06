@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ osConfig, lib, ... }:
 
 let
   inherit (lib) mkEnableOption mkOption;
@@ -14,7 +14,7 @@ let
       path = mkOption {
         type = str;
         description = "Path to the image";
-        default = "${config.mintWalls.wallpaperPkg}";
+        default = "${osConfig.mintWalls.wallpaperPkg}";
       };
     };
   });

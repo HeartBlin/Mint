@@ -1,4 +1,4 @@
-{ config, inputs, inputs', lib, pkgs, prettyname, ... }:
+{ config, osConfig, inputs, inputs', lib, pkgs, prettyname, ... }:
 
 let
   inherit (lib) attrValues getExe;
@@ -6,12 +6,12 @@ let
   inherit (inputs.mintwalls.lib) toHyprRGB;
 
   colors = {
-    error = toHyprRGB config.mintWalls.palette.error;
-    onSurface = toHyprRGB config.mintWalls.palette.onSurface;
-    primary = toHyprRGB config.mintWalls.palette.primary;
-    primary' = config.mintWalls.palette.primary;
-    surface = toHyprRGB config.mintWalls.palette.surface;
-    tertiary = toHyprRGB config.mintWalls.palette.tertiary;
+    error = toHyprRGB osConfig.mintWalls.palette.error;
+    onSurface = toHyprRGB osConfig.mintWalls.palette.onSurface;
+    primary = toHyprRGB osConfig.mintWalls.palette.primary;
+    primary' = osConfig.mintWalls.palette.primary;
+    surface = toHyprRGB osConfig.mintWalls.palette.surface;
+    tertiary = toHyprRGB osConfig.mintWalls.palette.tertiary;
   };
 
   time-hl = pkgs.writeShellScriptBin "time-hl" ''

@@ -1,4 +1,6 @@
 _: {
+  mintWalls.wallpaper = "Abstract";
+
   Mint = {
     cli = {
       fish.enable = true;
@@ -8,6 +10,7 @@ _: {
     gui = {
       chrome.enable = true;
       discord.enable = true;
+      hyprland.enable = true;
       mangohud.enable = true;
       minecraft.enable = true;
       steam.enable = true;

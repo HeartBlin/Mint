@@ -83,6 +83,9 @@
       systems.follows = "systems";
     };
 
+    # Import all packages
+    pkgs-by-name.url = "github:drupol/pkgs-by-name-for-flake-parts";
+
     # Run checks automagically
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     pre-commit-hooks.inputs = {

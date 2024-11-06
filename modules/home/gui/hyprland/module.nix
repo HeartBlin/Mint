@@ -3,7 +3,7 @@
 let
   inherit (lib) getExe mkIf;
   inherit (inputs.mintwalls.lib) toHyprRGB;
-  inherit (config.mintWalls) defaultPalette;
+  inherit (osConfig.mintWalls) defaultPalette;
 
   colors = {
     bB = toHyprRGB defaultPalette.borderBlue;
@@ -32,7 +32,7 @@ let
 
   cfg = config.Mint.gui.hyprland;
 in {
-  imports = [ ./frag/idle.nix ./frag/lock.nix ./frag/wallpaper.nix ];
+  imports = [ ./frag/idle.nix ./frag/wallpaper.nix ];
 
   wayland.windowManager.hyprland = {
     inherit (osConfig.programs.hyprland) package;

@@ -10,6 +10,10 @@
           enable = true;
           verbose = true;
           fail_fast = true;
+          settings = {
+            noLambdaPatternNames = true;
+            noLambdaArg = true;
+          };
         };
 
         nixfmt-classic = {

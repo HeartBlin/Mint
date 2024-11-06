@@ -1,6 +1,4 @@
 _: {
-  mintWalls.wallpaper = "Flow";
-
   Mint.gui.hyprland = {
     enable = true;
     wallpapers = {

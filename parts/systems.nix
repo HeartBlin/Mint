@@ -7,7 +7,7 @@ let
     withSystem system ({ inputs', self', ... }:
       let
         args = {
-          inherit hostname username prettyname role flakedir inputs inputs'
+          inherit hostname username prettyname role flakedir inputs inputs' self
             self' system;
         };
       in nixosSystem {
@@ -19,6 +19,7 @@ let
           inputs.home-manager.nixosModules.home-manager
           inputs.homix.nixosModules.default
           inputs.lanzaboote.nixosModules.lanzaboote
+          self.nixosModules.mintWalls
 
           # Paths
           "${self}/hosts/${hostname}/config.nix"
@@ -32,7 +33,6 @@ let
               extraSpecialArgs = args;
 
               users.${username}.imports = [
-                inputs.mintwalls.homeManagerModules.mintWalls
                 "${self}/hosts/${hostname}/user/config.nix"
                 {
                   programs.home-manager.enable = true;

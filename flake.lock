@@ -702,6 +702,21 @@
         "type": "github"
       }
     },
+    "pkgs-by-name_2": {
+      "locked": {
+        "lastModified": 1727519927,
+        "narHash": "sha256-3SNX6BuaisoX9PKYI+fh3geZ3jBgKKkAtHcWuHRU0+o=",
+        "owner": "drupol",
+        "repo": "pkgs-by-name-for-flake-parts",
+        "rev": "91debb07d81ff25b8e3b48914b6abd6f11dc26e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "drupol",
+        "repo": "pkgs-by-name-for-flake-parts",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -791,6 +806,7 @@
         "lanzaboote": "lanzaboote",
         "mintwalls": "mintwalls",
         "nixpkgs": "nixpkgs",
+        "pkgs-by-name": "pkgs-by-name_2",
         "pre-commit-hooks": "pre-commit-hooks_3",
         "systems": "systems_2"
       }

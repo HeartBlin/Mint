@@ -10,9 +10,17 @@ _: {
     gui = {
       chrome.enable = true;
       discord.enable = true;
-      hyprland.enable = true;
+      hyprland = {
+        enable = true;
+        wallpapers = {
+          "eDP-1".monitor = "eDP-1";
+          "HDMI-A-1".monitor = "HDMI-A-1";
+        };
+      };
+
       mangohud.enable = true;
       minecraft.enable = true;
+      nautilus.enable = true;
       steam.enable = true;
       vmware.enable = false;
       vscode.enable = true;

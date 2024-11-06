@@ -16,7 +16,6 @@ let
           # From flakes
           inputs.chaotic.nixosModules.default
           inputs.disko.nixosModules.disko
-          inputs.home-manager.nixosModules.home-manager
           inputs.homix.nixosModules.default
           inputs.lanzaboote.nixosModules.lanzaboote
           self.nixosModules.mintWalls
@@ -25,22 +24,6 @@ let
           "${self}/hosts/${hostname}/config.nix"
           "${self}/hosts/${hostname}/hardware"
           "${self}/modules"
-
-          { # TODO: Deprecate HM
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = args;
-
-              users.${username}.imports = [
-                "${self}/hosts/${hostname}/user/config.nix"
-                {
-                  programs.home-manager.enable = true;
-                  home.stateVersion = "24.11";
-                }
-              ];
-            };
-          }
         ];
       });
 in {

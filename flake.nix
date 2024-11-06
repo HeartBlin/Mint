@@ -23,7 +23,7 @@
     # Bleeding edge kernel
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     chaotic.inputs = {
-      home-manager.follows = "home-manager";
+      home-manager.follows = "";
       nixpkgs.follows = "nixpkgs";
     };
 
@@ -32,10 +32,6 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     # Home management
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # Home management, to replace home-manager
     homix = {
       url = "github:sioodmy/homix";
       inputs.nixpkgs.follows = "nixpkgs";

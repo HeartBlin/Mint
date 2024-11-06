@@ -1,10 +1,9 @@
-{ config, inputs', lib, pkgs, self, username, ... }:
+{ config, inputs', lib, pkgs, self, ... }:
 
 let
-  inherit (lib) getExe mkEnableOption mkIf;
+  inherit (lib) mkIf;
   inherit (config.mintWalls) wallpaperPkg;
   inherit (self.lib) toHyprRGB;
-  inherit (config.users.users.${username}) description;
 
   cfg = config.Mint.gui.hyprland;
 
@@ -16,21 +15,6 @@ let
     surface = toHyprRGB config.mintWalls.palette.surface;
     tertiary = toHyprRGB config.mintWalls.palette.tertiary;
   };
-
-  time-hl = pkgs.writeShellScriptBin "time-hl" ''
-    current_hour=$(date +"%H")
-    user_string="<span color='#${colors.primary'}'>${description}</span>"
-
-    if [ "$current_hour" -ge 5 ] && [ "$current_hour" -lt 12 ]; then
-      echo "Good morning, $user_string"
-    elif [ "$current_hour" -ge 12 ] && [ "$current_hour" -lt 18 ]; then
-      echo "Good day, $user_string"
-    elif [ "$current_hour" -ge 18 ] && [ "$current_hour" -lt 22 ]; then
-      echo "Good evening, $user_string"
-    else
-      echo "Good night, $user_string"
-    fi
-  '';
 
   config' = ''
     background {
@@ -97,37 +81,15 @@ let
       text=cmd[update:1000] echo -e "$(date +"%M")"
       valign=center
     }
-
-    label {
-      monitor=
-      color=${colors.onSurface}
-      font_family=JetBrains Mono Bold
-      halign=left
-      position=70, -70
-      text=cmd[update:1000] echo -e "$(date +"%A, %b %d")"
-      valign=top
-    }
-
-    label {
-      monitor=
-      color=${colors.onSurface}
-      font_family=JetBrains Mono Bold
-      halign=left
-      position=70, -100
-      text=cmd[update:1000] bash ${getExe time-hl}
-      valign=top
-    }
   '';
 in {
-  options.Mint.gui.hyprland.enable = mkEnableOption "Enable Hyprland";
-
   config = mkIf cfg.enable {
     programs.hyprlock = {
       enable = true;
       package = inputs'.hyprlock.packages.hyprlock;
     };
 
-    environment.systemPackages = [ pkgs.jetbrains-mono time-hl ];
+    environment.systemPackages = [ pkgs.jetbrains-mono ];
     homix.".config/hypr/hyprlock.conf".text = config';
   };
 }

@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 let
   inherit (lib) mkEnableOption mkOption;
-  inherit (lib.types) attrsOf int package str submodule;
+  inherit (lib.types) attrsOf str submodule;
 
   wallpaperOption = attrsOf (submodule {
     options = {
@@ -26,56 +26,6 @@ in {
         wallpapers = mkOption {
           type = wallpaperOption;
           description = "Wallpaper config for multiple monitors";
-        };
-      };
-
-      theme = {
-        cursor = {
-          package = mkOption {
-            type = package;
-            description = "The package that contains the cursor";
-            default = pkgs.bibata-cursors;
-          };
-
-          size = mkOption {
-            type = int;
-            description = "The size of the cursor";
-            default = 16;
-          };
-
-          name = mkOption {
-            type = str;
-            description = "The name of the cursor";
-            default = "Bibata-Modern-Ice";
-          };
-        };
-
-        icons = {
-          name = mkOption {
-            type = str;
-            description = "The name of the icon theme";
-            default = "Adwaita";
-          };
-
-          package = mkOption {
-            type = package;
-            description = "The package that contains the icons";
-            default = pkgs.adwaita-icon-theme;
-          };
-        };
-
-        gtk = {
-          name = mkOption {
-            type = str;
-            description = "The name of the gtk theme";
-            default = "adw-gtk3-dark";
-          };
-
-          package = mkOption {
-            type = package;
-            description = "The package that contains the gtk theme";
-            default = pkgs.adw-gtk3;
-          };
         };
       };
     };

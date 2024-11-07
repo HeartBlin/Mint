@@ -5,6 +5,9 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   lint-and-check:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        task: [check-health, run-checks]
 
     steps:
       - name: Checkout repository
@@ -16,10 +19,13 @@ jobs:
           source-url: "https://install.lix.systems/lix/lix-installer-x86_64-linux"
 
       - name: Setup Magic Nix Cache
+        if: matrix.task == 'run-checks'
         uses: DeterminateSystems/magic-nix-cache-action@v8
 
       - name: Check flake health
+        if: matrix.task == 'check-health'
         uses: DeterminateSystems/flake-checker-action@v9
 
       - name: Run Checks
+        if: matrix.task == 'run-checks'
         run: nix flake check --all-systems

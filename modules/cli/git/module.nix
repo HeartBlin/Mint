@@ -1,20 +1,7 @@
-{ pkgs, username, ... }:
+{ username, ... }:
 
 let
-  gitConfig = ''
-    [commit]
-    	gpgsign = true
-
-    [gpg]
-    	format = "ssh"
-
-    [user]
-    	email = "heartblin@gmail.com"
-    	name = "HeartBlin"
-    	signingkey = "/home/${username}/.ssh/id_ed25519.github_signing.pub"
-  '';
-
-  sshConfig = ''
+  config' = ''
     Host *
       ForwardAgent no
       AddKeysToAgent no
@@ -33,9 +20,18 @@ let
       IdentityFile /home/${username}/.ssh/id_ed25519.github_auth
   '';
 in {
-  environment.systemPackages = [ pkgs.git ];
-  homix = {
-    ".config/git/config".text = gitConfig;
-    ".ssh/config".text = sshConfig;
+  programs.git = {
+    enable = true;
+    config = {
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      user = {
+        email = "heartblin@gmail.com";
+        name = "HeartBlin";
+        signingkey = "/home/${username}/.ssh/id_ed25519.github_signing.pub";
+      };
+    };
   };
+
+  homix.".ssh/config".text = config';
 }

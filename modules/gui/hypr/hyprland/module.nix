@@ -63,6 +63,7 @@ let
     exec-once = swayosd-server
     exec-once = ${pkgs.bash}/bin/bash -c ${MRoC}/bin/monitor-reload-on-connected"
     exec-once = swww-daemon --no-cache
+    exec-once = systemctl start --user hypridle
 
     # Cursor (nvidia)
     ${if nvidia then ''

@@ -7,13 +7,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        task: [flake-health, flake-checks]
-
+        include:
+          - task: flake-health
+            installer: nix
+          - task: flake-checks
+            installer: nix
+          - task: flake-checks
+            installer: lix
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Nix
+        if: matrix.installer == 'nix'
+        uses: DeterminateSystems/nix-installer-action@v14
+
       - name: Install Lix
+        if: matrix.installer == 'lix'
         uses: DeterminateSystems/nix-installer-action@v14
         with:
           source-url: "https://install.lix.systems/lix/lix-installer-x86_64-linux"

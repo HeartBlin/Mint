@@ -61,9 +61,9 @@ let
     exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
     ${if asus then "exec-once = ${changeColor}" else ""}
     exec-once = swayosd-server
-    exec-once = ${pkgs.bash}/bin/bash -c ${MRoC}/bin/monitor-reload-on-connected"
     exec-once = swww-daemon --no-cache
     exec-once = systemctl start --user hypridle
+    exec-once = monitor-reload-on-connected"
 
     # Cursor (nvidia)
     ${if nvidia then ''
@@ -301,7 +301,7 @@ in {
     };
 
     environment = {
-      systemPackages = with pkgs; [ swayosd swww ];
+      systemPackages = with pkgs; [ swayosd swww MRoC ];
       sessionVariables.NIXOS_OZONE_WL = "1";
     };
     homix.".config/hypr/hyprland.conf".text = configFinal;

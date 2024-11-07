@@ -1,4 +1,4 @@
-{ flakedir, lib, system, ... }:
+{ flakedir, lib, self', system, ... }:
 
 let inherit (lib) mkForce;
 in {
@@ -62,10 +62,13 @@ in {
     };
   };
 
-  # Allow unfree
-  environment.sessionVariables = {
-    NIXPKGS_ALLOW_UNFREE = "1";
-    FLAKE = flakedir;
+  # Allow unfree & install Leaf
+  environment = {
+    systemPackages = [ self'.packages.leaf ];
+    sessionVariables = {
+      NIXPKGS_ALLOW_UNFREE = "1";
+      FLAKE = flakedir;
+    };
   };
 
   nixpkgs = {
@@ -75,13 +78,6 @@ in {
       allowUnfree = true;
       enableParallelBuilding = true;
     };
-  };
-
-  # Neat Nix Helper
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    flake = flakedir;
   };
 
   # BLOAT

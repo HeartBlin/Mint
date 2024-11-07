@@ -12,6 +12,10 @@ let
       pkief.material-icon-theme
       esbenp.prettier-vscode
       github.vscode-github-actions
+
+      # Trying it out
+      github.copilot
+      github.copilot-chat
     ];
   };
 

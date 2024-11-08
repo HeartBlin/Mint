@@ -1,0 +1,29 @@
+name: Check Flake
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  lint-and-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Lix
+        uses: cachix/install-nix-action@v18
+        with:
+          install_url: https://install.lix.systems/lix/lix-installer-x86_64-linux
+          extra_nix_config: |
+            access-tokens = ${{ secrets.AUTH_TOKEN }}
+            auto-optimise-store = true
+            experimental-features = nix-command flakes
+
+      - name: Setup Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v8
+
+      - name: Check flake health
+        uses: DeterminateSystems/flake-checker-action@v9
+
+      - name: Run Checks
+        run: nix flake check --all-systems --no-build

@@ -21,10 +21,5 @@ jobs:
       - name: Check flake health
         uses: DeterminateSystems/flake-checker-action@v9
 
-      - name: Run Linters
-        run: |
-          nix develop .# --command \
-            deadnix -L && statix check && nixfmt -c *
-
       - name: Run Checks
-        run: nix flake check --all-systems --no-build
+        run: nix flake check --all-systems

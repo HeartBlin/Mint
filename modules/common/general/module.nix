@@ -2,6 +2,10 @@ _: {
   # Disable lightdm
   services.xserver.displayManager.lightdm.enable = false;
 
+  # Disable default programs
+  programs.nano.enable = false;
+  services.xserver.desktopManager.xterm.enable = false;
+
   boot = {
     bootspec.enable = true;
     initrd.systemd.enable = true;

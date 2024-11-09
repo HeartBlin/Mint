@@ -2,7 +2,7 @@
 
 let
   inherit (lib) getExe mkEnableOption mkIf;
-  inherit (config.Mint.gui) uwsm;
+  inherit (config.Mint.system) uwsm;
   cfg = config.Mint.cli.fish;
 in {
   options.Mint.cli.fish.enable = mkEnableOption "Enable Fish shell";

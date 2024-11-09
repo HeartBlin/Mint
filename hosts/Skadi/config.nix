@@ -29,7 +29,7 @@ _: {
     system = {
       asus.enable = true;
       bluetooth.enable = true;
-      gdm.enable = true;
+      gdm.enable = false;
       nvidia = {
         enable = true;
         hybrid.enable = true;
@@ -38,6 +38,7 @@ _: {
       secureboot.enable = true;
       tpm.enable = true;
       underclock.enable = false;
+      uwsm.enable = true;
     };
   };
 }

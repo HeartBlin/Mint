@@ -36,6 +36,7 @@ let
   nautilus = config.Mint.gui.nautilus.enable;
   nvidia = config.Mint.system.nvidia.enable;
   hyprshot = getExe pkgs.hyprshot;
+  uwsm = config.Mint.system.uwsm.enable;
 
   ledDevice = if asus then "asus::kbd_backlight" else "rgb:kbd_backlight";
   brightnessctl = getExe pkgs.brightnessctl;
@@ -43,7 +44,10 @@ let
   # Hyprlands main config file
   config' = ''
     # SystemD fuckery
-    exec-once = ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && ${pkgs.systemd}/systemctl --user stop hyprland-session.target && ${pkgs.systemd}/bin/systemctl --user start hyprland-session.target
+    ${if !uwsm then
+      "exec-once = ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && ${pkgs.systemd}/systemctl --user stop hyprland-session.target && ${pkgs.systemd}/bin/systemctl --user start hyprland-session.target"
+    else
+      ""}
 
     # Monitors
     monitor = eDP-1, 1920x1080@144, 0x0, 1
@@ -64,6 +68,9 @@ let
     exec-once = swww-daemon --no-cache
     exec-once = systemctl start --user hypridle
     exec-once = monitor-reload-on-connected"
+
+    # UWSM
+    ${if uwsm then "exec-once = uwsm finalize" else ""}
 
     # Cursor (nvidia)
     ${if nvidia then ''
@@ -304,6 +311,7 @@ in {
       systemPackages = with pkgs; [ swayosd swww MRoC ];
       sessionVariables.NIXOS_OZONE_WL = "1";
     };
+
     homix.".config/hypr/hyprland.conf".text = configFinal;
   };
 }

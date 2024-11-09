@@ -2,6 +2,7 @@
 
 let
   inherit (lib) getExe mkEnableOption mkIf;
+  inherit (config.Mint.gui) uwsm;
   cfg = config.Mint.cli.fish;
 in {
   options.Mint.cli.fish.enable = mkEnableOption "Enable Fish shell";
@@ -32,6 +33,12 @@ in {
           end
 
           enable_transience
+        '';
+
+        loginShellInit = mkIf uwsm.enable ''
+          if uwsm check may-start && uwsm select
+            exec systemd-cat -t uwsm_start uwsm start default
+          end
         '';
       };
 

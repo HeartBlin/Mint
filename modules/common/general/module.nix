@@ -1,4 +1,7 @@
 _: {
+  # Disable lightdm
+  services.xserver.displayManager.lightdm.enable = false;
+
   boot = {
     bootspec.enable = true;
     initrd.systemd.enable = true;

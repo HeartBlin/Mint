@@ -1,19 +1,29 @@
-_: {
-  # Disable lightdm
-  services.xserver.displayManager.lightdm.enable = false;
+{ lib, ... }:
 
+let inherit (lib) mkForce;
+in {
   # Disable default programs
-  programs.nano.enable = false;
-  services.xserver.desktopManager.xterm.enable = false;
+  programs.nano.enable = mkForce false;
+  services.xserver = {
+    desktopManager.xterm.enable = mkForce false;
+    displayManager.lightdm.enable = mkForce false;
+  };
 
+  environment.defaultPackages = mkForce [ ];
+  documentation = {
+    enable = mkForce false;
+    man.enable = mkForce false;
+  };
+
+  # Boot settings
   boot = {
-    bootspec.enable = true;
-    initrd.systemd.enable = true;
-    consoleLogLevel = 3;
+    bootspec.enable = mkForce true;
+    initrd.systemd.enable = mkForce true;
+    consoleLogLevel = mkForce 3;
     kernelParams = [ "quiet" "systemd.show_status=auto" "rd.udev.log_level=3" ];
     tmp = {
-      cleanOnBoot = true;
-      useTmpfs = true;
+      cleanOnBoot = mkForce true;
+      useTmpfs = mkForce true;
     };
   };
 

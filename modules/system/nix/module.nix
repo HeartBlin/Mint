@@ -1,7 +1,6 @@
-{ flakedir, lib, self', system, ... }:
+{ flakedir, self', system, ... }:
 
-let inherit (lib) mkForce;
-in {
+{
   nix = {
     # Optimise store
     optimise.automatic = true;
@@ -78,13 +77,6 @@ in {
       allowUnfree = true;
       enableParallelBuilding = true;
     };
-  };
-
-  # BLOAT
-  environment.defaultPackages = mkForce [ ];
-  documentation = {
-    enable = false;
-    man.enable = false; # Don't need this personally
   };
 
   system.stateVersion = "24.11";

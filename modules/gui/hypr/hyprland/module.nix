@@ -300,6 +300,7 @@ in {
   config = mkIf cfg.enable {
     programs = {
       xwayland.enable = true;
+      seahorse.enable = true;
       hyprland = {
         enable = true;
         xwayland.enable = true;
@@ -308,10 +309,12 @@ in {
     };
 
     environment = {
-      systemPackages = with pkgs; [ swayosd swww MRoC ];
+      systemPackages = with pkgs; [ swayosd swww MRoC libsecret ];
       sessionVariables.NIXOS_OZONE_WL = "1";
     };
 
+    services.gnome.gnome-keyring.enable = true;
+    security.pam.services.gdm-password.enableGnomeKeyring = true;
     homix.".config/hypr/hyprland.conf".text = configFinal;
   };
 }

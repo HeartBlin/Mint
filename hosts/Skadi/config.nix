@@ -22,6 +22,7 @@ _: {
       minecraft.enable = true;
       nautilus.enable = true;
       steam.enable = true;
+      thunderbird.enable = true;
       vmware.enable = false;
       vscode.enable = true;
     };

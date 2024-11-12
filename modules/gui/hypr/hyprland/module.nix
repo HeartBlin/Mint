@@ -67,7 +67,7 @@ let
     exec-once = swayosd-server
     exec-once = swww-daemon --no-cache
     exec-once = systemctl start --user hypridle
-    exec-once = monitor-reload-on-connected"
+    exec-once = monitor-reload-on-connected
 
     # UWSM
     ${if uwsm then "exec-once = uwsm finalize" else ""}

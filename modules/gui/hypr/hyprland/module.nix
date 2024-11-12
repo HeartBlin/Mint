@@ -167,7 +167,7 @@ let
 
     ## Actions
     bind = Super, Q, killactive
-    bind = Super Shift, Q, exec, pkill Hyprland
+    bind = Super Shift, Q, exec, uwsm stop
     bind = Super, F, fullscreen
     bind = Super, T, togglefloating
 

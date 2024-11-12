@@ -37,7 +37,7 @@ in {
 
         loginShellInit = mkIf uwsm.enable ''
           if uwsm check may-start && uwsm select
-            exec systemd-cat -t uwsm_start uwsm start default
+            uwsm start default
           end
         '';
       };

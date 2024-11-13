@@ -18,15 +18,10 @@ If you just want the wallpapers without all this nix bs, just click on the links
 | Black        | [Jean-Marc Denis](https://jmd.im/black) |
 | Flow         | [Basic Apple Guy](https://basicappleguy.com/haberdashery/flow) |
 | Soda         | [tychoregter](https://www.reddit.com/r/mac/comments/1fbkye2/i_made_a_set_of_wallpapers_for_mac_and_iphone/) |
+| SteamSpring  | [Nemu](https://x.com/nemupanart/status/1768332333768442156)
 
 ## 🎨 Palettes
 
 They are generated with matugen, with this command: ```matugen image <image-path> --show-colors```
 
 The palette.nix file can be generate using the script from the ```tools``` folder. Simply pass a path to a image to the script and it will give you the file
-
-## 📜 License
-
-This repo follows the [EUPL v1.2](https://opensource.org/licenses/MIT). The license refers to the code, not any assets.
-
-Contact: ```heartblin@gmail.com```

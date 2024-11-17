@@ -75,7 +75,7 @@ let
     # Cursor (nvidia)
     ${if nvidia then ''
       cursor {
-        allow_dumb_copy = true
+        use_cpu_buffer = true
       }'' else
       ""}
 

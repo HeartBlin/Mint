@@ -235,6 +235,9 @@ let
 
     # Idle Inhibit
     windowrulev2=idleinhibit always, title:^(Minecraft server)$
+
+    # Fix chromium
+    windowrulev2 = tile, class:^(chromium-browser)$
   '';
 
   # Generate commands to set wallpaper on any monitor that was declared

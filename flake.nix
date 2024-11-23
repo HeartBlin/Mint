@@ -89,6 +89,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixd = {
+      url = "github:/nix-community/nixd";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+
     # Import all packages
     pkgs-by-name.url = "github:drupol/pkgs-by-name-for-flake-parts";
 

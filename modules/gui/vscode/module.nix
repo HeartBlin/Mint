@@ -1,4 +1,4 @@
-{ config, flakedir, hostname, lib, pkgs, ... }:
+{ config, flakedir, hostname, inputs', lib, pkgs, ... }:
 
 let
   inherit (lib) mkEnableOption mkIf;
@@ -12,6 +12,7 @@ let
       pkief.material-icon-theme
       esbenp.prettier-vscode
       github.vscode-github-actions
+      ritwickdey.liveserver
 
       # Trying it out
       github.copilot
@@ -95,7 +96,8 @@ in {
   options.Mint.gui.vscode.enable = mkEnableOption "Enable Visual Studio Code";
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ vscode' nixd nixfmt-classic ];
+    environment.systemPackages =
+      [ vscode' inputs'.nixd.packages.nixd pkgs.nixfmt-classic ];
     homix.".config/Code/User/settings.json".text = config';
   };
 }

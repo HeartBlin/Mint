@@ -61,7 +61,8 @@ let
     "nix.serverSettings"."nixd" = {
       "formatting"."command" = [ "nixfmt" ];
       "nixos"."expr" = ''
-        (builtins.getFlake \"${flakedir}\").nixosConfigurations.${hostname}.options'';
+        (builtins.getFlake \"${flakedir}\").nixosConfigurations.${hostname}.options
+      '';
     };
 
     "[nix]" = {

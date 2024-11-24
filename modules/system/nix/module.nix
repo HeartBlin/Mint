@@ -1,9 +1,12 @@
-{ flakedir, self', system, ... }:
+{ flakedir, inputs, self', system, ... }:
 
 {
   nix = {
     # Optimise store
     optimise.automatic = true;
+
+    # Inform nixd about nixpkgs
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
     # Don't eat the CPU please
     daemonCPUSchedPolicy = "idle";

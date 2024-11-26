@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/setup/action.yml
+      - uses: ./.github/setup
       - name: Check flake health
         uses: DeterminateSystems/flake-checker-action@v9
 
@@ -15,6 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/setup/action.yml
+      - uses: ./.github/setup
       - name: Run Checks
         run: nix flake check --all-systems

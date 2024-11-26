@@ -3,23 +3,18 @@ name: Lint & Check Flake
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  lint-and-check:
+  flake-health:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v30
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup Magic Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@v8
-
+      - uses: actions/checkout@v4
+      - uses: ./.github/setup/action.yaml
       - name: Check flake health
         uses: DeterminateSystems/flake-checker-action@v9
 
+  check-flake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/setup/action.yaml
       - name: Run Checks
         run: nix flake check --all-systems

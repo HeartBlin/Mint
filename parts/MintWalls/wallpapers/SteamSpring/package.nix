@@ -16,4 +16,5 @@ in stdenvNoCC.mkDerivation {
   outputHash = hash;
 
   installPhase = "cp $src $out";
+  meta.description = "The Steam Spring Sale illustration, by nemupan";
 }

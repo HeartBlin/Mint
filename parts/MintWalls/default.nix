@@ -11,7 +11,14 @@
       let
         inherit (lib) mkOption;
         inherit (lib.types) attrsOf enum path str;
-        wallpapers = [ "Abstract" "BetterSonoma" "Black" "Flow" "SteamSpring" ];
+        wallpapers = [
+          "Abstract"
+          "BetterSonoma"
+          "Black"
+          "Flow"
+          "SteamSpring"
+          "SteamSummer"
+        ];
       in {
         options.mintWalls = {
           wallpaper = mkOption {

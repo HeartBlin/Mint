@@ -1,5 +1,5 @@
 _: {
-  mintWalls.wallpaper = "SteamSpring";
+  mintWalls.wallpaper = "SteamSummer";
 
   Mint = {
     cli = {

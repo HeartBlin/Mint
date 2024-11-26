@@ -22,6 +22,10 @@ let
     bO' = defaultPalette.borderOrange;
   };
 
+  runWithEnv = env: package: "uwsm app env ${env} ${getExe pkgs.${package}}";
+
+  runApp = package: flags: "uwsm app -- ${getExe pkgs.${package}} ${flags}";
+
   changeColor = pkgs.writeShellScript "changeColor" ''
     ${pkgs.asusctl}/bin/asusctl led-mode static -c ${colors.bB'} -z 1 &
     ${pkgs.asusctl}/bin/asusctl led-mode static -c ${colors.bV'} -z 2 &
@@ -158,12 +162,16 @@ let
 
     # Binds
     ## Programs
-    ${if foot then "bind = Super, Return, exec, foot" else ""}
-    ${if vscode then "bind = Super, C, exec, code" else ""}
-    ${if chrome then "bind = Super, W, exec, chromium" else ""}
-    ${if nautilus then "bind = Super, E, exec, nautilus" else ""}
-    bind = Super, Space, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun
-    bind = Super, L, exec, hyprlock
+    ${if foot then "bind = Super, Return, exec, ${runApp "foot" ""}" else ""}
+    ${if vscode then "bind = Super, C, exec, ${runApp "vscode" ""}" else ""}
+    ${if chrome then "bind = Super, W, exec, ${runApp "chromium" ""}" else ""}
+    ${if nautilus then "bind = Super, E, exec, ${runApp "nautilus" ""}" else ""}
+    bind = Super, Space, exec, ${runApp "rofi-wayland" "-show drun"}
+    bind = Super, L, exec, ${runApp "hyprlock" ""}
+    bind = Super, S, exec, ${
+      runWithEnv "XDG_CURRENT_DESKTOP=GNOME" "gnome-control-center"
+    }
+    bind = Super, D, exec, ${runApp "gnome-disk-utility" ""}
 
     ## Actions
     bind = Super, Q, killactive
@@ -186,7 +194,6 @@ let
     bind = Super, F3, workspace, 8
     bind = Super, F4, workspace, 9
     bind = Super, F5, workspace, 10
-    bind = Super, S, togglespecialworkspace
 
     bind = Super Shift, 1, movetoworkspace, 1
     bind = Super Shift, 2, movetoworkspace, 2
@@ -198,7 +205,6 @@ let
     bind = Super Shift, F3, movetoworkspace, 8
     bind = Super Shift, F4, movetoworkspace, 9
     bind = Super Shift, F5, movetoworkspace, 10
-    bind = Super Shift, S, movetoworkspace, special
 
     # Mouse binds
     bindm = Super, mouse:272, movewindow
@@ -312,7 +318,15 @@ in {
     };
 
     environment = {
-      systemPackages = with pkgs; [ swayosd swww MRoC libsecret ];
+      systemPackages = with pkgs; [
+        gnome-control-center
+        gnome-disk-utility
+        swayosd
+        swww
+        MRoC
+        libsecret
+      ];
+
       sessionVariables.NIXOS_OZONE_WL = "1";
     };
 

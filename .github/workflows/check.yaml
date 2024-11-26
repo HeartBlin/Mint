@@ -1,32 +1,31 @@
 name: Lint & Check Flake
 
-on: [push, pull_request, workflow_dispatch]
+on: [ push, pull_request, workflow_dispatch ]
 
 jobs:
+  # Run an check for flake.lock
   flake-health:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up Nix
         uses: ./.github/setup
-
       - name: Check flake health
         uses: DeterminateSystems/flake-checker-action@v9
 
+  # The main check. Checks flake.nix
   check-flake:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up Nix
         uses: ./.github/setup
-
       - name: Check flake
         run: nix flake check --all-systems
 
+  # Checks if Leaf builds
   check-leaf:
     runs-on: ubuntu-latest
     needs: [ flake-health, check-flake ]
@@ -39,4 +38,71 @@ jobs:
 
       - name: Check if Leaf builds
         run: nix build .#leaf
+
+  # Everything down from here ttempts to build all wallpapers.
+  build-abstract:
+    runs-on: ubuntu-latest
+    needs: [ flake-health, check-flake ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Nix
+        uses: ./.github/setup
+      - name: Build Abstract
+        run: nix build .#Abstract
+
+  build-better-sonoma:
+    runs-on: ubuntu-latest
+    needs: [ flake-health, check-flake ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Nix
+        uses: ./.github/setup
+      - name: Build BetterSonoma
+        run: nix build .#BetterSonoma
+
+  build-black:
+    runs-on: ubuntu-latest
+    needs: [ flake-health, check-flake ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Nix
+        uses: ./.github/setup
+      - name: Build Black
+        run: nix build .#Black
+
+  build-flow:
+    runs-on: ubuntu-latest
+    needs: [ flake-health, check-flake ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Nix
+        uses: ./.github/setup
+      - name: Build Flow
+        run: nix build .#Flow
+
+  build-soda:
+    runs-on: ubuntu-latest
+    needs: [ flake-health, check-flake ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Nix
+        uses: ./.github/setup
+      - name: Build Soda
+        run: nix build .#Soda
+
+  build-steam-spring:
+    runs-on: ubuntu-latest
+    needs: [ flake-health, check-flake ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Nix
+        uses: ./.github/setup
+      - name: Build SteamSpring
+        run: nix build .#SteamSpring
 

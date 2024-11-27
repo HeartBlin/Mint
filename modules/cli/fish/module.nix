@@ -21,6 +21,9 @@ in {
           gc = "git commit -m";
           gp = "git push";
           gs = "git status";
+
+          restoreLock =
+            "hyprctl --instance 0 'keyword misc:allow_session_lock_restore 1' && hyprctl --instance 0 'dispatch exec hyprlock'";
         };
 
         # Enable transience
@@ -76,7 +79,7 @@ in {
 
       mcserver = pkgs.writeText "openServer.fish" ''
         function openServer
-          env -C ~/MinecraftServer java -Xmx4096M -Xms4096M -jar ~/MinecraftServer/spigot.jar
+          env -C ~/MinecraftServer java ssh-Xmx4096M -Xms4096M -jar ~/MinecraftServer/spigot.jar
         end
       '';
 

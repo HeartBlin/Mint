@@ -7,7 +7,7 @@
     initrd.availableKernelModules =
       [ "nvme" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
     kernelModules = [ "kvm-amd" ];
-    kernelPackages = pkgs.linuxPackages_cachyos-lto;
+    kernelPackages = pkgs.linuxPackages_cachyos-rc;
   };
 
   hardware.cpu.amd.updateMicrocode = true;

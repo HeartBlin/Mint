@@ -26,7 +26,7 @@ in {
   options.Mint.gui.mangohud.enable = mkEnableOption "Enable MangoHUD";
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.mangohud ];
+    environment.systemPackages = [ pkgs.mangohud_git ];
     homix.".config/MangoHud/MangoHud.conf".text = config';
   };
 }

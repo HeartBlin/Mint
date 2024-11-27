@@ -16,6 +16,7 @@
           "BetterSonoma"
           "Black"
           "Flow"
+          "SteamAutumn"
           "SteamSpring"
           "SteamSummer"
         ];

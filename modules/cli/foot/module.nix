@@ -50,7 +50,6 @@ in {
       };
     };
 
-    fonts.packages =
-      [ (pkgs.nerdfonts.override { fonts = [ "CascadiaCode" ]; }) ];
+    fonts.packages = [ pkgs.nerd-fonts.caskaydia-cove ];
   };
 }

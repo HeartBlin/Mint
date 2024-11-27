@@ -13,7 +13,7 @@
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
     # The main NixOS repo
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Provides 'systems'
     systems.url = "github:nix-systems/x86_64-linux";

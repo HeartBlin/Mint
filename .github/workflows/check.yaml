@@ -45,7 +45,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Nix
-        uses: ./.github/setup
+        uses: ./.github/setup-cacheless
       - name: Build Wallpapers
         run: |
           nix build .#Abstract

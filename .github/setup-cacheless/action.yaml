@@ -1,0 +1,10 @@
+name: 'Setup Environment'
+description: 'Sets up Nix environment without Nix Magic Cache'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install Nix
+      uses: cachix/install-nix-action@v30
+      with:
+        github_access_token: ${{ github.token }}

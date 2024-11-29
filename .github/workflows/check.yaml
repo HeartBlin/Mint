@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Nix
-        uses: ./.github/setup
+        uses: ./.github/workflows/setup
       - name: Check flake health
         uses: DeterminateSystems/flake-checker-action@v9
 
@@ -21,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Nix
-        uses: ./.github/setup
+        uses: ./.github/workflows/setup
       - name: Check flake
         run: nix flake check --all-systems
 
@@ -33,7 +33,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Nix
-        uses: ./.github/setup
+        uses: ./.github/workflows/setup
       - name: Check if Leaf builds
         run: nix build .#leaf
 
@@ -45,7 +45,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Nix
-        uses: ./.github/setup-cacheless
+        uses: ./.github/workflows/setup-cacheless
       - name: Build Wallpapers
         run: |
           nix build .#Abstract

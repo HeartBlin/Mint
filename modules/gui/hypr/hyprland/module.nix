@@ -172,6 +172,7 @@ let
       runWithEnv "XDG_CURRENT_DESKTOP=GNOME" "gnome-control-center"
     }
     bind = Super, D, exec, ${runApp "gnome-disk-utility" ""}
+    bind = Control Shift, Escape, exec, ${runApp "gnome-system-monitor" ""}
 
     ## Actions
     bind = Super, Q, killactive

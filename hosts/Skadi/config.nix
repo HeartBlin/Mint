@@ -8,6 +8,7 @@ _: {
     };
 
     gui = {
+      bottles.enable = true;
       chrome.enable = true;
       discord.enable = true;
       hyprland = {

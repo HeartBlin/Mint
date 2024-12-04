@@ -24,7 +24,9 @@ let
     # Editor
     "editor.cursorBlinking" = "smooth";
     "editor.cursorSmoothCaretAnimation" = "on";
+    "editor.defaultFormatter" = "esbenp.prettier-vscode";
     "editor.fontLigatures" = true;
+    "editor.formatOnSave" = true;
     "editor.guides.bracketPairs" = true;
     "editor.guides.indentation" = true;
     "editor.inlineSuggest.enabled" = true;
@@ -47,12 +49,6 @@ let
     "files.insertFinalNewline" = false;
     "files.trimTrailingWhitespace" = true;
     "files.exclude" = { "tsconfig.json" = true; };
-
-    # Javascript/Typescript
-    "[javascript]" = {
-      "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      "[typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
-    };
 
     # Nix
     "nix.enableLanguageServer" = true;

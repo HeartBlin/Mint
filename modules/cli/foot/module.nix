@@ -2,6 +2,7 @@
 
 let
   inherit (lib) mkEnableOption mkIf;
+  inherit (config.mintWalls) palette;
 
   cfg = config.Mint.cli.foot;
 in {
@@ -20,9 +21,9 @@ in {
           pad = "20x20";
         };
 
-        colors = {
-          background = "141b1e";
-          foreground = "dadada";
+        colors = with palette; {
+          inherit background;
+          foreground = onBackground;
 
           regular0 = "232a2d";
           regular1 = "e57474";

@@ -13,7 +13,7 @@
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
     # The main NixOS repo
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Provides 'systems'
     systems.url = "github:nix-systems/x86_64-linux";
@@ -83,16 +83,10 @@
     };
 
     # Fork of Nix
-    lix-master = {
-      url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
-      flake = false;
-    };
-
     lix = {
       url =
         "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.lix.follows = "lix-master";
     };
 
     # Nix language server

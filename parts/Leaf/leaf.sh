@@ -3,12 +3,10 @@
 set -euo pipefail
 
 # Vars
-readonly VERSION="v0.2.2"
-readonly DEFAULT_FLAKE="${FLAKE:-$(pwd)}"
+readonly VERSION="v0.2.3"
 readonly NAME="Leaf"
 readonly CMDNAME="leaf"
 readonly HOSTNAME=$(hostname)
-readonly PATH_DIRS="/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:$PATH"
 
 # Colors/Formats
 readonly NC='\033[0m'
@@ -31,10 +29,9 @@ rebuild_system() {
 
   log "Starting action '$action'"
 
-  # FEED IT PATH
-  if ! run0 --background= --setenv=PATH="$PATH_DIRS" \
+  if ! pkexec \
     nixos-rebuild "$action" \
-    --flake "$DEFAULT_FLAKE#$HOSTNAME" \
+    --flake "$FLAKE#$HOSTNAME" \
     --log-format multiline-with-logs; then
     die "Failed to run action '$action'"
   fi
@@ -61,7 +58,7 @@ run_boot() {
 # Update flake.lock then rebuild & switch
 run_upgrade() {
   log "Updating flake inputs..."
-  if ! nix flake update --flake $DEFAULT_FLAKE; then
+  if ! nix flake update --flake $FLAKE; then
     die "Failed to update flake inputs"
   fi
   log "Flake updated successfully. Rebuilding system..."
@@ -71,7 +68,7 @@ run_upgrade() {
 # Remove old store links and rebuild & boot
 run_clean() {
   log "Collecting garbage..."
-  if ! run0 --background= --setenv=PATH="$PATH_DIRS" nix-collect-garbage -d; then
+  if ! pkexec nix-collect-garbage -d; then
     die "Failed to collect garbage"
   fi
   log "Clean completed successfully. Rebuilding system..."
@@ -81,7 +78,7 @@ run_clean() {
 # Just show the help
 show_help() {
   echo -e "${BOLD}${GREEN}${NAME}${NC} ${VERSION}
-A simple bash NixOS rebuild tool using systemd's run0
+A simple bash NixOS rebuild tool using pkexec
 
 Usage: ${GREEN}${CMDNAME}${NC} [OPTION]
 

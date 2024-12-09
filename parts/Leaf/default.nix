@@ -6,7 +6,7 @@
     in {
       packages.leaf = stdenvNoCC.mkDerivation rec {
         pname = "leaf";
-        version = "v0.2.2";
+        version = "v0.2.3";
         src = ./leaf.sh;
 
         nativeBuildInputs = [ pkgs.makeWrapper ];

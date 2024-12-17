@@ -19,7 +19,7 @@ _: {
         };
       };
 
-      mangohud.enable = true;
+      mangohud.enable = false;
       minecraft.enable = true;
       nautilus.enable = true;
       steam.enable = true;
